@@ -58,12 +58,15 @@ public class Role {
     @Column(name = "remark", length = 500)
     private String remark;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "roles")
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "role_menu",
             joinColumns = {@JoinColumn(name = "role_id")},
             inverseJoinColumns = {@JoinColumn(name = "menu_id")}
     )
     private List<Menu> menus;
+
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
 }
