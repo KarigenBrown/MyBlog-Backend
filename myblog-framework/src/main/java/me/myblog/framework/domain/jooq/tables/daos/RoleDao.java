@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.RoleRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 角色信息表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class RoleDao extends DAOImpl<RoleRecord, me.myblog.framework.domain.jooq.tables.pojos.Role, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class RoleDao extends DAOImpl<RoleRecord, me.myblog.framework.domain.jooq
     /**
      * Create a new RoleDao with an attached configuration
      */
+    @Autowired
     public RoleDao(Configuration configuration) {
         super(Role.ROLE, me.myblog.framework.domain.jooq.tables.pojos.Role.class, configuration);
     }

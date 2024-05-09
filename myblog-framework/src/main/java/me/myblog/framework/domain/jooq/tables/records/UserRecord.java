@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.User;
@@ -20,6 +28,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 用户表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "user",
+    schema = "myblog"
+)
 public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Record14<Long, String, String, String, String, String, String, String, String, String, Long, LocalDateTime, Long, LocalDateTime>, IUser {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +40,17 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.id</code>. 主键
      */
-    @Override
-    public void setId(Long value) {
+    public UserRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.id</code>. 主键
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +59,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.user_name</code>. 用户名
      */
-    @Override
-    public void setUserName(String value) {
+    public UserRecord setUserName(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.user_name</code>. 用户名
      */
+    @Column(name = "user_name", length = 64)
+    @Size(max = 64)
     @Override
     public String getUserName() {
         return (String) get(1);
@@ -59,14 +77,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.nick_name</code>. 昵称
      */
-    @Override
-    public void setNickName(String value) {
+    public UserRecord setNickName(String value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.nick_name</code>. 昵称
      */
+    @Column(name = "nick_name", length = 64)
+    @Size(max = 64)
     @Override
     public String getNickName() {
         return (String) get(2);
@@ -75,14 +95,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.password</code>. 密码
      */
-    @Override
-    public void setPassword(String value) {
+    public UserRecord setPassword(String value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.password</code>. 密码
      */
+    @Column(name = "password", length = 64)
+    @Size(max = 64)
     @Override
     public String getPassword() {
         return (String) get(3);
@@ -91,14 +113,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.type</code>. 用户类型（0代表普通用户，1代表管理员）
      */
-    @Override
-    public void setType(String value) {
+    public UserRecord setType(String value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.type</code>. 用户类型（0代表普通用户，1代表管理员）
      */
+    @Column(name = "type", length = 1)
+    @Size(max = 1)
     @Override
     public String getType() {
         return (String) get(4);
@@ -107,14 +131,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.status</code>. 账号状态（0正常，1停用）
      */
-    @Override
-    public void setStatus(String value) {
+    public UserRecord setStatus(String value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.status</code>. 账号状态（0正常，1停用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return (String) get(5);
@@ -123,14 +149,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.email</code>. 邮箱
      */
-    @Override
-    public void setEmail(String value) {
+    public UserRecord setEmail(String value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.email</code>. 邮箱
      */
+    @Column(name = "email", length = 64)
+    @Size(max = 64)
     @Override
     public String getEmail() {
         return (String) get(6);
@@ -139,14 +167,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.phonenumber</code>. 手机号
      */
-    @Override
-    public void setPhonenumber(String value) {
+    public UserRecord setPhonenumber(String value) {
         set(7, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.phonenumber</code>. 手机号
      */
+    @Column(name = "phonenumber", length = 32)
+    @Size(max = 32)
     @Override
     public String getPhonenumber() {
         return (String) get(7);
@@ -155,14 +185,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.sex</code>. 用户性别（0男，1女，2未知）
      */
-    @Override
-    public void setSex(String value) {
+    public UserRecord setSex(String value) {
         set(8, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.sex</code>. 用户性别（0男，1女，2未知）
      */
+    @Column(name = "sex", length = 1)
+    @Size(max = 1)
     @Override
     public String getSex() {
         return (String) get(8);
@@ -171,14 +203,16 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.avatar</code>. 头像
      */
-    @Override
-    public void setAvatar(String value) {
+    public UserRecord setAvatar(String value) {
         set(9, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.avatar</code>. 头像
      */
+    @Column(name = "avatar", length = 128)
+    @Size(max = 128)
     @Override
     public String getAvatar() {
         return (String) get(9);
@@ -187,14 +221,15 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.create_by</code>. 创建人的用户id
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public UserRecord setCreateBy(Long value) {
         set(10, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.create_by</code>. 创建人的用户id
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(10);
@@ -203,14 +238,15 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.create_time</code>. 创建时间
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public UserRecord setCreateTime(LocalDateTime value) {
         set(11, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(11);
@@ -219,14 +255,15 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.update_by</code>. 更新人
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public UserRecord setUpdateBy(Long value) {
         set(12, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.update_by</code>. 更新人
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(12);
@@ -235,14 +272,15 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>myblog.user.update_time</code>. 更新时间
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public UserRecord setUpdateTime(LocalDateTime value) {
         set(13, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(13);
@@ -588,7 +626,6 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(IUser from) {
         setId(from.getId());
         setUserName(from.getUserName());
@@ -605,12 +642,6 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
         setUpdateBy(from.getUpdateBy());
         setUpdateTime(from.getUpdateTime());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends IUser> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

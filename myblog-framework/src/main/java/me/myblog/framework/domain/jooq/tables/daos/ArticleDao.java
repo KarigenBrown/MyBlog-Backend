@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.ArticleRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 文章表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class ArticleDao extends DAOImpl<ArticleRecord, me.myblog.framework.domain.jooq.tables.pojos.Article, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class ArticleDao extends DAOImpl<ArticleRecord, me.myblog.framework.domai
     /**
      * Create a new ArticleDao with an attached configuration
      */
+    @Autowired
     public ArticleDao(Configuration configuration) {
         super(Article.ARTICLE, me.myblog.framework.domain.jooq.tables.pojos.Article.class, configuration);
     }

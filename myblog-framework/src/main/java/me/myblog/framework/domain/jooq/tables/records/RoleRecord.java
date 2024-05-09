@@ -4,6 +4,15 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.Role;
@@ -20,6 +29,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 角色信息表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "role",
+    schema = "myblog"
+)
 public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Record10<Long, String, String, Integer, String, Long, LocalDateTime, Long, LocalDateTime, String>, IRole {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +41,17 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.id</code>. 角色ID
      */
-    @Override
-    public void setId(Long value) {
+    public RoleRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.id</code>. 角色ID
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +60,17 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.role_name</code>. 角色名称
      */
-    @Override
-    public void setRoleName(String value) {
+    public RoleRecord setRoleName(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.role_name</code>. 角色名称
      */
+    @Column(name = "role_name", nullable = false, length = 30)
+    @NotNull
+    @Size(max = 30)
     @Override
     public String getRoleName() {
         return (String) get(1);
@@ -59,14 +79,17 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.role_key</code>. 角色权限字符串
      */
-    @Override
-    public void setRoleKey(String value) {
+    public RoleRecord setRoleKey(String value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.role_key</code>. 角色权限字符串
      */
+    @Column(name = "role_key", nullable = false, length = 100)
+    @NotNull
+    @Size(max = 100)
     @Override
     public String getRoleKey() {
         return (String) get(2);
@@ -75,14 +98,16 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.role_sort</code>. 显示顺序
      */
-    @Override
-    public void setRoleSort(Integer value) {
+    public RoleRecord setRoleSort(Integer value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.role_sort</code>. 显示顺序
      */
+    @Column(name = "role_sort", nullable = false)
+    @NotNull
     @Override
     public Integer getRoleSort() {
         return (Integer) get(3);
@@ -91,14 +116,17 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.status</code>. 角色状态（0正常，1停用）
      */
-    @Override
-    public void setStatus(String value) {
+    public RoleRecord setStatus(String value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.status</code>. 角色状态（0正常，1停用）
      */
+    @Column(name = "status", nullable = false, length = 1)
+    @NotNull
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return (String) get(4);
@@ -107,14 +135,15 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.create_by</code>. 创建者
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public RoleRecord setCreateBy(Long value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.create_by</code>. 创建者
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(5);
@@ -123,14 +152,15 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.create_time</code>. 创建时间
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public RoleRecord setCreateTime(LocalDateTime value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(6);
@@ -139,14 +169,15 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.update_by</code>. 更新者
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public RoleRecord setUpdateBy(Long value) {
         set(7, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.update_by</code>. 更新者
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(7);
@@ -155,14 +186,15 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.update_time</code>. 更新时间
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public RoleRecord setUpdateTime(LocalDateTime value) {
         set(8, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(8);
@@ -171,14 +203,16 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     /**
      * Setter for <code>myblog.role.remark</code>. 备注
      */
-    @Override
-    public void setRemark(String value) {
+    public RoleRecord setRemark(String value) {
         set(9, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.role.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     @Override
     public String getRemark() {
         return (String) get(9);
@@ -436,7 +470,6 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(IRole from) {
         setId(from.getId());
         setRoleName(from.getRoleName());
@@ -449,12 +482,6 @@ public class RoleRecord extends UpdatableRecordImpl<RoleRecord> implements Recor
         setUpdateTime(from.getUpdateTime());
         setRemark(from.getRemark());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends IRole> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.LinkRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 友链
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class LinkDao extends DAOImpl<LinkRecord, me.myblog.framework.domain.jooq.tables.pojos.Link, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class LinkDao extends DAOImpl<LinkRecord, me.myblog.framework.domain.jooq
     /**
      * Create a new LinkDao with an attached configuration
      */
+    @Autowired
     public LinkDao(Configuration configuration) {
         super(Link.LINK, me.myblog.framework.domain.jooq.tables.pojos.Link.class, configuration);
     }

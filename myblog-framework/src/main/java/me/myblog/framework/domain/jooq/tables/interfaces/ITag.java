@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,91 +20,56 @@ import java.time.LocalDateTime;
  * 标签
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "tag",
+    schema = "myblog"
+)
 public interface ITag extends Serializable {
-
-    /**
-     * Setter for <code>myblog.tag.id</code>.
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.tag.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.tag.name</code>. 标签名
-     */
-    public void setName(String value);
 
     /**
      * Getter for <code>myblog.tag.name</code>. 标签名
      */
+    @Column(name = "name", length = 128)
+    @Size(max = 128)
     public String getName();
-
-    /**
-     * Setter for <code>myblog.tag.create_by</code>.
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.tag.create_by</code>.
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.tag.create_time</code>.
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.tag.create_time</code>.
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.tag.update_by</code>.
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.tag.update_by</code>.
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.tag.update_time</code>.
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.tag.update_time</code>.
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    /**
-     * Setter for <code>myblog.tag.remark</code>. 备注
-     */
-    public void setRemark(String value);
 
     /**
      * Getter for <code>myblog.tag.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     public String getRemark();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface ITag
-     */
-    public void from(ITag from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface ITag
-     */
-    public <E extends ITag> E into(E into);
 }

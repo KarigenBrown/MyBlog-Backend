@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.UserRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 用户表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class UserDao extends DAOImpl<UserRecord, me.myblog.framework.domain.jooq.tables.pojos.User, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class UserDao extends DAOImpl<UserRecord, me.myblog.framework.domain.jooq
     /**
      * Create a new UserDao with an attached configuration
      */
+    @Autowired
     public UserDao(Configuration configuration) {
         super(User.USER, me.myblog.framework.domain.jooq.tables.pojos.User.class, configuration);
     }

@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.MenuRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 菜单权限表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class MenuDao extends DAOImpl<MenuRecord, me.myblog.framework.domain.jooq.tables.pojos.Menu, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class MenuDao extends DAOImpl<MenuRecord, me.myblog.framework.domain.jooq
     /**
      * Create a new MenuDao with an attached configuration
      */
+    @Autowired
     public MenuDao(Configuration configuration) {
         super(Menu.MENU, me.myblog.framework.domain.jooq.tables.pojos.Menu.class, configuration);
     }

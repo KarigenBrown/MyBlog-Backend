@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.Category;
@@ -20,6 +28,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 分类表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "category",
+    schema = "myblog"
+)
 public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implements Record9<Long, String, Long, String, String, Long, LocalDateTime, Long, LocalDateTime>, ICategory {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +40,17 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.id</code>.
      */
-    @Override
-    public void setId(Long value) {
+    public CategoryRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +59,16 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.name</code>. 分类名
      */
-    @Override
-    public void setName(String value) {
+    public CategoryRecord setName(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.name</code>. 分类名
      */
+    @Column(name = "name", length = 128)
+    @Size(max = 128)
     @Override
     public String getName() {
         return (String) get(1);
@@ -59,14 +77,15 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.pid</code>. 父分类id，如果没有父分类为-1
      */
-    @Override
-    public void setPid(Long value) {
+    public CategoryRecord setPid(Long value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.pid</code>. 父分类id，如果没有父分类为-1
      */
+    @Column(name = "pid")
     @Override
     public Long getPid() {
         return (Long) get(2);
@@ -75,14 +94,16 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.description</code>. 描述
      */
-    @Override
-    public void setDescription(String value) {
+    public CategoryRecord setDescription(String value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.description</code>. 描述
      */
+    @Column(name = "description", length = 512)
+    @Size(max = 512)
     @Override
     public String getDescription() {
         return (String) get(3);
@@ -91,14 +112,16 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.status</code>. 状态（0正常，1禁用）
      */
-    @Override
-    public void setStatus(String value) {
+    public CategoryRecord setStatus(String value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.status</code>. 状态（0正常，1禁用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return (String) get(4);
@@ -107,14 +130,15 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.create_by</code>.
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public CategoryRecord setCreateBy(Long value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(5);
@@ -123,14 +147,15 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.create_time</code>.
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public CategoryRecord setCreateTime(LocalDateTime value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(6);
@@ -139,14 +164,15 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.update_by</code>.
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public CategoryRecord setUpdateBy(Long value) {
         set(7, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(7);
@@ -155,14 +181,15 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     /**
      * Setter for <code>myblog.category.update_time</code>.
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public CategoryRecord setUpdateTime(LocalDateTime value) {
         set(8, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.category.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(8);
@@ -398,7 +425,6 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(ICategory from) {
         setId(from.getId());
         setName(from.getName());
@@ -410,12 +436,6 @@ public class CategoryRecord extends UpdatableRecordImpl<CategoryRecord> implemen
         setUpdateBy(from.getUpdateBy());
         setUpdateTime(from.getUpdateTime());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends ICategory> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

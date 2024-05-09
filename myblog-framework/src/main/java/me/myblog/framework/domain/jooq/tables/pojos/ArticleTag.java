@@ -4,6 +4,10 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import me.myblog.framework.domain.jooq.tables.interfaces.IArticleTag;
 
 
@@ -11,14 +15,17 @@ import me.myblog.framework.domain.jooq.tables.interfaces.IArticleTag;
  * 文章标签关联表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "article_tag",
+    schema = "myblog"
+)
 public class ArticleTag implements IArticleTag {
 
     private static final long serialVersionUID = 1L;
 
-    private Long articleId;
-    private Long tagId;
-
-    public ArticleTag() {}
+    private final Long articleId;
+    private final Long tagId;
 
     public ArticleTag(IArticleTag value) {
         this.articleId = value.getArticleId();
@@ -36,33 +43,19 @@ public class ArticleTag implements IArticleTag {
     /**
      * Getter for <code>myblog.article_tag.article_id</code>. 文章id
      */
+    @Column(name = "article_id")
     @Override
     public Long getArticleId() {
         return this.articleId;
     }
 
     /**
-     * Setter for <code>myblog.article_tag.article_id</code>. 文章id
-     */
-    @Override
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
-    }
-
-    /**
      * Getter for <code>myblog.article_tag.tag_id</code>. 标签id
      */
+    @Column(name = "tag_id")
     @Override
     public Long getTagId() {
         return this.tagId;
-    }
-
-    /**
-     * Setter for <code>myblog.article_tag.tag_id</code>. 标签id
-     */
-    @Override
-    public void setTagId(Long tagId) {
-        this.tagId = tagId;
     }
 
     @Override
@@ -107,21 +100,5 @@ public class ArticleTag implements IArticleTag {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(IArticleTag from) {
-        setArticleId(from.getArticleId());
-        setTagId(from.getTagId());
-    }
-
-    @Override
-    public <E extends IArticleTag> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

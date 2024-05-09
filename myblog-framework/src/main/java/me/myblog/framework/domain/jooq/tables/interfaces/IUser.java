@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,161 +20,105 @@ import java.time.LocalDateTime;
  * 用户表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "user",
+    schema = "myblog"
+)
 public interface IUser extends Serializable {
-
-    /**
-     * Setter for <code>myblog.user.id</code>. 主键
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.user.id</code>. 主键
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.user.user_name</code>. 用户名
-     */
-    public void setUserName(String value);
 
     /**
      * Getter for <code>myblog.user.user_name</code>. 用户名
      */
+    @Column(name = "user_name", length = 64)
+    @Size(max = 64)
     public String getUserName();
-
-    /**
-     * Setter for <code>myblog.user.nick_name</code>. 昵称
-     */
-    public void setNickName(String value);
 
     /**
      * Getter for <code>myblog.user.nick_name</code>. 昵称
      */
+    @Column(name = "nick_name", length = 64)
+    @Size(max = 64)
     public String getNickName();
-
-    /**
-     * Setter for <code>myblog.user.password</code>. 密码
-     */
-    public void setPassword(String value);
 
     /**
      * Getter for <code>myblog.user.password</code>. 密码
      */
+    @Column(name = "password", length = 64)
+    @Size(max = 64)
     public String getPassword();
-
-    /**
-     * Setter for <code>myblog.user.type</code>. 用户类型（0代表普通用户，1代表管理员）
-     */
-    public void setType(String value);
 
     /**
      * Getter for <code>myblog.user.type</code>. 用户类型（0代表普通用户，1代表管理员）
      */
+    @Column(name = "type", length = 1)
+    @Size(max = 1)
     public String getType();
-
-    /**
-     * Setter for <code>myblog.user.status</code>. 账号状态（0正常，1停用）
-     */
-    public void setStatus(String value);
 
     /**
      * Getter for <code>myblog.user.status</code>. 账号状态（0正常，1停用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     public String getStatus();
-
-    /**
-     * Setter for <code>myblog.user.email</code>. 邮箱
-     */
-    public void setEmail(String value);
 
     /**
      * Getter for <code>myblog.user.email</code>. 邮箱
      */
+    @Column(name = "email", length = 64)
+    @Size(max = 64)
     public String getEmail();
-
-    /**
-     * Setter for <code>myblog.user.phonenumber</code>. 手机号
-     */
-    public void setPhonenumber(String value);
 
     /**
      * Getter for <code>myblog.user.phonenumber</code>. 手机号
      */
+    @Column(name = "phonenumber", length = 32)
+    @Size(max = 32)
     public String getPhonenumber();
-
-    /**
-     * Setter for <code>myblog.user.sex</code>. 用户性别（0男，1女，2未知）
-     */
-    public void setSex(String value);
 
     /**
      * Getter for <code>myblog.user.sex</code>. 用户性别（0男，1女，2未知）
      */
+    @Column(name = "sex", length = 1)
+    @Size(max = 1)
     public String getSex();
-
-    /**
-     * Setter for <code>myblog.user.avatar</code>. 头像
-     */
-    public void setAvatar(String value);
 
     /**
      * Getter for <code>myblog.user.avatar</code>. 头像
      */
+    @Column(name = "avatar", length = 128)
+    @Size(max = 128)
     public String getAvatar();
-
-    /**
-     * Setter for <code>myblog.user.create_by</code>. 创建人的用户id
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.user.create_by</code>. 创建人的用户id
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.user.create_time</code>. 创建时间
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.user.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.user.update_by</code>. 更新人
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.user.update_by</code>. 更新人
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.user.update_time</code>. 更新时间
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.user.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface IUser
-     */
-    public void from(IUser from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface IUser
-     */
-    public <E extends IUser> E into(E into);
 }

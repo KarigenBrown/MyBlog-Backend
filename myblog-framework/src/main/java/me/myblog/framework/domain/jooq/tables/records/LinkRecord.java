@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.Link;
@@ -20,6 +28,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 友链
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "link",
+    schema = "myblog"
+)
 public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Record10<Long, String, String, String, String, String, Long, LocalDateTime, Long, LocalDateTime>, ILink {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +40,17 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.id</code>.
      */
-    @Override
-    public void setId(Long value) {
+    public LinkRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +59,16 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.name</code>.
      */
-    @Override
-    public void setName(String value) {
+    public LinkRecord setName(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.name</code>.
      */
+    @Column(name = "name", length = 256)
+    @Size(max = 256)
     @Override
     public String getName() {
         return (String) get(1);
@@ -59,14 +77,16 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.logo</code>.
      */
-    @Override
-    public void setLogo(String value) {
+    public LinkRecord setLogo(String value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.logo</code>.
      */
+    @Column(name = "logo", length = 256)
+    @Size(max = 256)
     @Override
     public String getLogo() {
         return (String) get(2);
@@ -75,14 +95,16 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.description</code>.
      */
-    @Override
-    public void setDescription(String value) {
+    public LinkRecord setDescription(String value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.description</code>.
      */
+    @Column(name = "description", length = 512)
+    @Size(max = 512)
     @Override
     public String getDescription() {
         return (String) get(3);
@@ -91,14 +113,16 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.address</code>. 网站地址
      */
-    @Override
-    public void setAddress(String value) {
+    public LinkRecord setAddress(String value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.address</code>. 网站地址
      */
+    @Column(name = "address", length = 128)
+    @Size(max = 128)
     @Override
     public String getAddress() {
         return (String) get(4);
@@ -108,15 +132,17 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
      * Setter for <code>myblog.link.status</code>. 审核状态
      * (0代表审核通过，1代表审核未通过，2代表未审核)
      */
-    @Override
-    public void setStatus(String value) {
+    public LinkRecord setStatus(String value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.status</code>. 审核状态
      * (0代表审核通过，1代表审核未通过，2代表未审核)
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return (String) get(5);
@@ -125,14 +151,15 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.create_by</code>.
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public LinkRecord setCreateBy(Long value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(6);
@@ -141,14 +168,15 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.create_time</code>.
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public LinkRecord setCreateTime(LocalDateTime value) {
         set(7, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(7);
@@ -157,14 +185,15 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.update_by</code>.
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public LinkRecord setUpdateBy(Long value) {
         set(8, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(8);
@@ -173,14 +202,15 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     /**
      * Setter for <code>myblog.link.update_time</code>.
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public LinkRecord setUpdateTime(LocalDateTime value) {
         set(9, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.link.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(9);
@@ -438,7 +468,6 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(ILink from) {
         setId(from.getId());
         setName(from.getName());
@@ -451,12 +480,6 @@ public class LinkRecord extends UpdatableRecordImpl<LinkRecord> implements Recor
         setUpdateBy(from.getUpdateBy());
         setUpdateTime(from.getUpdateTime());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends ILink> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

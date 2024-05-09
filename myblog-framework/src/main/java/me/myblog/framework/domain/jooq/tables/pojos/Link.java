@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.interfaces.ILink;
@@ -13,22 +21,25 @@ import me.myblog.framework.domain.jooq.tables.interfaces.ILink;
  * 友链
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "link",
+    schema = "myblog"
+)
 public class Link implements ILink {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String name;
-    private String logo;
-    private String description;
-    private String address;
-    private String status;
-    private Long createBy;
-    private LocalDateTime createTime;
-    private Long updateBy;
-    private LocalDateTime updateTime;
-
-    public Link() {}
+    private final Long id;
+    private final String name;
+    private final String logo;
+    private final String description;
+    private final String address;
+    private final String status;
+    private final Long createBy;
+    private final LocalDateTime createTime;
+    private final Long updateBy;
+    private final LocalDateTime updateTime;
 
     public Link(ILink value) {
         this.id = value.getId();
@@ -70,163 +81,99 @@ public class Link implements ILink {
     /**
      * Getter for <code>myblog.link.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return this.id;
     }
 
     /**
-     * Setter for <code>myblog.link.id</code>.
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Getter for <code>myblog.link.name</code>.
      */
+    @Column(name = "name", length = 256)
+    @Size(max = 256)
     @Override
     public String getName() {
         return this.name;
     }
 
     /**
-     * Setter for <code>myblog.link.name</code>.
-     */
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Getter for <code>myblog.link.logo</code>.
      */
+    @Column(name = "logo", length = 256)
+    @Size(max = 256)
     @Override
     public String getLogo() {
         return this.logo;
     }
 
     /**
-     * Setter for <code>myblog.link.logo</code>.
-     */
-    @Override
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    /**
      * Getter for <code>myblog.link.description</code>.
      */
+    @Column(name = "description", length = 512)
+    @Size(max = 512)
     @Override
     public String getDescription() {
         return this.description;
     }
 
     /**
-     * Setter for <code>myblog.link.description</code>.
-     */
-    @Override
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
      * Getter for <code>myblog.link.address</code>. 网站地址
      */
+    @Column(name = "address", length = 128)
+    @Size(max = 128)
     @Override
     public String getAddress() {
         return this.address;
     }
 
     /**
-     * Setter for <code>myblog.link.address</code>. 网站地址
-     */
-    @Override
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
      * Getter for <code>myblog.link.status</code>. 审核状态
      * (0代表审核通过，1代表审核未通过，2代表未审核)
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return this.status;
     }
 
     /**
-     * Setter for <code>myblog.link.status</code>. 审核状态
-     * (0代表审核通过，1代表审核未通过，2代表未审核)
-     */
-    @Override
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /**
      * Getter for <code>myblog.link.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return this.createBy;
     }
 
     /**
-     * Setter for <code>myblog.link.create_by</code>.
-     */
-    @Override
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
      * Getter for <code>myblog.link.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return this.createTime;
     }
 
     /**
-     * Setter for <code>myblog.link.create_time</code>.
-     */
-    @Override
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
      * Getter for <code>myblog.link.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return this.updateBy;
     }
 
     /**
-     * Setter for <code>myblog.link.update_by</code>.
-     */
-    @Override
-    public void setUpdateBy(Long updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
      * Getter for <code>myblog.link.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return this.updateTime;
-    }
-
-    /**
-     * Setter for <code>myblog.link.update_time</code>.
-     */
-    @Override
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
     }
 
     @Override
@@ -335,29 +282,5 @@ public class Link implements ILink {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(ILink from) {
-        setId(from.getId());
-        setName(from.getName());
-        setLogo(from.getLogo());
-        setDescription(from.getDescription());
-        setAddress(from.getAddress());
-        setStatus(from.getStatus());
-        setCreateBy(from.getCreateBy());
-        setCreateTime(from.getCreateTime());
-        setUpdateBy(from.getUpdateBy());
-        setUpdateTime(from.getUpdateTime());
-    }
-
-    @Override
-    public <E extends ILink> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

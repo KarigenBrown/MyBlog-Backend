@@ -4,6 +4,11 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
 import me.myblog.framework.domain.jooq.tables.interfaces.IUserRole;
 
 
@@ -11,14 +16,17 @@ import me.myblog.framework.domain.jooq.tables.interfaces.IUserRole;
  * 用户和角色关联表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "user_role",
+    schema = "myblog"
+)
 public class UserRole implements IUserRole {
 
     private static final long serialVersionUID = 1L;
 
-    private Long userId;
-    private Long roleId;
-
-    public UserRole() {}
+    private final Long userId;
+    private final Long roleId;
 
     public UserRole(IUserRole value) {
         this.userId = value.getUserId();
@@ -36,33 +44,21 @@ public class UserRole implements IUserRole {
     /**
      * Getter for <code>myblog.user_role.user_id</code>. 用户ID
      */
+    @Column(name = "user_id", nullable = false)
+    @NotNull
     @Override
     public Long getUserId() {
         return this.userId;
     }
 
     /**
-     * Setter for <code>myblog.user_role.user_id</code>. 用户ID
-     */
-    @Override
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    /**
      * Getter for <code>myblog.user_role.role_id</code>. 角色ID
      */
+    @Column(name = "role_id", nullable = false)
+    @NotNull
     @Override
     public Long getRoleId() {
         return this.roleId;
-    }
-
-    /**
-     * Setter for <code>myblog.user_role.role_id</code>. 角色ID
-     */
-    @Override
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
     }
 
     @Override
@@ -107,21 +103,5 @@ public class UserRole implements IUserRole {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(IUserRole from) {
-        setUserId(from.getUserId());
-        setRoleId(from.getRoleId());
-    }
-
-    @Override
-    public <E extends IUserRole> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

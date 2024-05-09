@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.Comment;
@@ -20,6 +28,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 评论表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "comment",
+    schema = "myblog"
+)
 public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements Record11<Long, String, Long, Long, String, Long, Long, Long, LocalDateTime, Long, LocalDateTime>, IComment {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +40,17 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.id</code>.
      */
-    @Override
-    public void setId(Long value) {
+    public CommentRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +59,16 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.type</code>. 评论类型（0代表文章评论，1代表友链评论）
      */
-    @Override
-    public void setType(String value) {
+    public CommentRecord setType(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.type</code>. 评论类型（0代表文章评论，1代表友链评论）
      */
+    @Column(name = "type", length = 1)
+    @Size(max = 1)
     @Override
     public String getType() {
         return (String) get(1);
@@ -59,14 +77,15 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.article_id</code>. 文章id
      */
-    @Override
-    public void setArticleId(Long value) {
+    public CommentRecord setArticleId(Long value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.article_id</code>. 文章id
      */
+    @Column(name = "article_id")
     @Override
     public Long getArticleId() {
         return (Long) get(2);
@@ -75,14 +94,15 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.root_id</code>. 根评论id
      */
-    @Override
-    public void setRootId(Long value) {
+    public CommentRecord setRootId(Long value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.root_id</code>. 根评论id
      */
+    @Column(name = "root_id")
     @Override
     public Long getRootId() {
         return (Long) get(3);
@@ -91,14 +111,16 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.content</code>. 评论内容
      */
-    @Override
-    public void setContent(String value) {
+    public CommentRecord setContent(String value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.content</code>. 评论内容
      */
+    @Column(name = "content", length = 512)
+    @Size(max = 512)
     @Override
     public String getContent() {
         return (String) get(4);
@@ -108,15 +130,16 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
      * Setter for <code>myblog.comment.to_comment_user_id</code>.
      * 所回复的目标评论的userid
      */
-    @Override
-    public void setToCommentUserId(Long value) {
+    public CommentRecord setToCommentUserId(Long value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.to_comment_user_id</code>.
      * 所回复的目标评论的userid
      */
+    @Column(name = "to_comment_user_id")
     @Override
     public Long getToCommentUserId() {
         return (Long) get(5);
@@ -125,14 +148,15 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.to_comment_id</code>. 回复目标评论id
      */
-    @Override
-    public void setToCommentId(Long value) {
+    public CommentRecord setToCommentId(Long value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.to_comment_id</code>. 回复目标评论id
      */
+    @Column(name = "to_comment_id")
     @Override
     public Long getToCommentId() {
         return (Long) get(6);
@@ -141,14 +165,15 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.create_by</code>.
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public CommentRecord setCreateBy(Long value) {
         set(7, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(7);
@@ -157,14 +182,15 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.create_time</code>.
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public CommentRecord setCreateTime(LocalDateTime value) {
         set(8, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(8);
@@ -173,14 +199,15 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.update_by</code>.
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public CommentRecord setUpdateBy(Long value) {
         set(9, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(9);
@@ -189,14 +216,15 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     /**
      * Setter for <code>myblog.comment.update_time</code>.
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public CommentRecord setUpdateTime(LocalDateTime value) {
         set(10, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.comment.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(10);
@@ -476,7 +504,6 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(IComment from) {
         setId(from.getId());
         setType(from.getType());
@@ -490,12 +517,6 @@ public class CommentRecord extends UpdatableRecordImpl<CommentRecord> implements
         setUpdateBy(from.getUpdateBy());
         setUpdateTime(from.getUpdateTime());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends IComment> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

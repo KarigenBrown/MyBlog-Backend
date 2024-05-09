@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.TagRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 标签
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class TagDao extends DAOImpl<TagRecord, me.myblog.framework.domain.jooq.tables.pojos.Tag, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class TagDao extends DAOImpl<TagRecord, me.myblog.framework.domain.jooq.t
     /**
      * Create a new TagDao with an attached configuration
      */
+    @Autowired
     public TagDao(Configuration configuration) {
         super(Tag.TAG, me.myblog.framework.domain.jooq.tables.pojos.Tag.class, configuration);
     }

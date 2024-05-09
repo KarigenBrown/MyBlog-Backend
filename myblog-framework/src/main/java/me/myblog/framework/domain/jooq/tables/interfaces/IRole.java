@@ -4,6 +4,15 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,121 +21,80 @@ import java.time.LocalDateTime;
  * 角色信息表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "role",
+    schema = "myblog"
+)
 public interface IRole extends Serializable {
-
-    /**
-     * Setter for <code>myblog.role.id</code>. 角色ID
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.role.id</code>. 角色ID
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.role.role_name</code>. 角色名称
-     */
-    public void setRoleName(String value);
 
     /**
      * Getter for <code>myblog.role.role_name</code>. 角色名称
      */
+    @Column(name = "role_name", nullable = false, length = 30)
+    @NotNull
+    @Size(max = 30)
     public String getRoleName();
-
-    /**
-     * Setter for <code>myblog.role.role_key</code>. 角色权限字符串
-     */
-    public void setRoleKey(String value);
 
     /**
      * Getter for <code>myblog.role.role_key</code>. 角色权限字符串
      */
+    @Column(name = "role_key", nullable = false, length = 100)
+    @NotNull
+    @Size(max = 100)
     public String getRoleKey();
-
-    /**
-     * Setter for <code>myblog.role.role_sort</code>. 显示顺序
-     */
-    public void setRoleSort(Integer value);
 
     /**
      * Getter for <code>myblog.role.role_sort</code>. 显示顺序
      */
+    @Column(name = "role_sort", nullable = false)
+    @NotNull
     public Integer getRoleSort();
-
-    /**
-     * Setter for <code>myblog.role.status</code>. 角色状态（0正常，1停用）
-     */
-    public void setStatus(String value);
 
     /**
      * Getter for <code>myblog.role.status</code>. 角色状态（0正常，1停用）
      */
+    @Column(name = "status", nullable = false, length = 1)
+    @NotNull
+    @Size(max = 1)
     public String getStatus();
-
-    /**
-     * Setter for <code>myblog.role.create_by</code>. 创建者
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.role.create_by</code>. 创建者
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.role.create_time</code>. 创建时间
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.role.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.role.update_by</code>. 更新者
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.role.update_by</code>. 更新者
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.role.update_time</code>. 更新时间
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.role.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    /**
-     * Setter for <code>myblog.role.remark</code>. 备注
-     */
-    public void setRemark(String value);
 
     /**
      * Getter for <code>myblog.role.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     public String getRemark();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface IRole
-     */
-    public void from(IRole from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface IRole
-     */
-    public <E extends IRole> E into(E into);
 }

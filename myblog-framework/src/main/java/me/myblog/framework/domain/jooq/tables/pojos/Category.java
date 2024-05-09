@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.interfaces.ICategory;
@@ -13,21 +21,24 @@ import me.myblog.framework.domain.jooq.tables.interfaces.ICategory;
  * 分类表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "category",
+    schema = "myblog"
+)
 public class Category implements ICategory {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String name;
-    private Long pid;
-    private String description;
-    private String status;
-    private Long createBy;
-    private LocalDateTime createTime;
-    private Long updateBy;
-    private LocalDateTime updateTime;
-
-    public Category() {}
+    private final Long id;
+    private final String name;
+    private final Long pid;
+    private final String description;
+    private final String status;
+    private final Long createBy;
+    private final LocalDateTime createTime;
+    private final Long updateBy;
+    private final LocalDateTime updateTime;
 
     public Category(ICategory value) {
         this.id = value.getId();
@@ -66,145 +77,87 @@ public class Category implements ICategory {
     /**
      * Getter for <code>myblog.category.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return this.id;
     }
 
     /**
-     * Setter for <code>myblog.category.id</code>.
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Getter for <code>myblog.category.name</code>. 分类名
      */
+    @Column(name = "name", length = 128)
+    @Size(max = 128)
     @Override
     public String getName() {
         return this.name;
     }
 
     /**
-     * Setter for <code>myblog.category.name</code>. 分类名
-     */
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Getter for <code>myblog.category.pid</code>. 父分类id，如果没有父分类为-1
      */
+    @Column(name = "pid")
     @Override
     public Long getPid() {
         return this.pid;
     }
 
     /**
-     * Setter for <code>myblog.category.pid</code>. 父分类id，如果没有父分类为-1
-     */
-    @Override
-    public void setPid(Long pid) {
-        this.pid = pid;
-    }
-
-    /**
      * Getter for <code>myblog.category.description</code>. 描述
      */
+    @Column(name = "description", length = 512)
+    @Size(max = 512)
     @Override
     public String getDescription() {
         return this.description;
     }
 
     /**
-     * Setter for <code>myblog.category.description</code>. 描述
-     */
-    @Override
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
      * Getter for <code>myblog.category.status</code>. 状态（0正常，1禁用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return this.status;
     }
 
     /**
-     * Setter for <code>myblog.category.status</code>. 状态（0正常，1禁用）
-     */
-    @Override
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /**
      * Getter for <code>myblog.category.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return this.createBy;
     }
 
     /**
-     * Setter for <code>myblog.category.create_by</code>.
-     */
-    @Override
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
      * Getter for <code>myblog.category.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return this.createTime;
     }
 
     /**
-     * Setter for <code>myblog.category.create_time</code>.
-     */
-    @Override
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
      * Getter for <code>myblog.category.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return this.updateBy;
     }
 
     /**
-     * Setter for <code>myblog.category.update_by</code>.
-     */
-    @Override
-    public void setUpdateBy(Long updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
      * Getter for <code>myblog.category.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return this.updateTime;
-    }
-
-    /**
-     * Setter for <code>myblog.category.update_time</code>.
-     */
-    @Override
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
     }
 
     @Override
@@ -305,28 +258,5 @@ public class Category implements ICategory {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(ICategory from) {
-        setId(from.getId());
-        setName(from.getName());
-        setPid(from.getPid());
-        setDescription(from.getDescription());
-        setStatus(from.getStatus());
-        setCreateBy(from.getCreateBy());
-        setCreateTime(from.getCreateTime());
-        setUpdateBy(from.getUpdateBy());
-        setUpdateTime(from.getUpdateTime());
-    }
-
-    @Override
-    public <E extends ICategory> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

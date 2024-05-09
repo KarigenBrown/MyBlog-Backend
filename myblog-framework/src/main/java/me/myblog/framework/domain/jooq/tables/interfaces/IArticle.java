@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,161 +20,102 @@ import java.time.LocalDateTime;
  * 文章表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "article",
+    schema = "myblog"
+)
 public interface IArticle extends Serializable {
-
-    /**
-     * Setter for <code>myblog.article.id</code>.
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.article.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.article.title</code>. 标题
-     */
-    public void setTitle(String value);
 
     /**
      * Getter for <code>myblog.article.title</code>. 标题
      */
+    @Column(name = "title", length = 256)
+    @Size(max = 256)
     public String getTitle();
-
-    /**
-     * Setter for <code>myblog.article.content</code>. 文章内容
-     */
-    public void setContent(String value);
 
     /**
      * Getter for <code>myblog.article.content</code>. 文章内容
      */
+    @Column(name = "content")
     public String getContent();
-
-    /**
-     * Setter for <code>myblog.article.summary</code>. 文章摘要
-     */
-    public void setSummary(String value);
 
     /**
      * Getter for <code>myblog.article.summary</code>. 文章摘要
      */
+    @Column(name = "summary", length = 1024)
+    @Size(max = 1024)
     public String getSummary();
-
-    /**
-     * Setter for <code>myblog.article.category_id</code>. 所属分类id
-     */
-    public void setCategoryId(Long value);
 
     /**
      * Getter for <code>myblog.article.category_id</code>. 所属分类id
      */
+    @Column(name = "category_id")
     public Long getCategoryId();
-
-    /**
-     * Setter for <code>myblog.article.thumbnail</code>. 缩略图
-     */
-    public void setThumbnail(String value);
 
     /**
      * Getter for <code>myblog.article.thumbnail</code>. 缩略图
      */
+    @Column(name = "thumbnail", length = 256)
+    @Size(max = 256)
     public String getThumbnail();
-
-    /**
-     * Setter for <code>myblog.article.is_top</code>. 是否置顶（0否，1是）
-     */
-    public void setIsTop(String value);
 
     /**
      * Getter for <code>myblog.article.is_top</code>. 是否置顶（0否，1是）
      */
+    @Column(name = "is_top", length = 1)
+    @Size(max = 1)
     public String getIsTop();
-
-    /**
-     * Setter for <code>myblog.article.status</code>. 状态（0已发布，1草稿）
-     */
-    public void setStatus(String value);
 
     /**
      * Getter for <code>myblog.article.status</code>. 状态（0已发布，1草稿）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     public String getStatus();
-
-    /**
-     * Setter for <code>myblog.article.view_count</code>. 访问量
-     */
-    public void setViewCount(Long value);
 
     /**
      * Getter for <code>myblog.article.view_count</code>. 访问量
      */
+    @Column(name = "view_count")
     public Long getViewCount();
-
-    /**
-     * Setter for <code>myblog.article.is_comment</code>. 是否允许评论（1是，0否）
-     */
-    public void setIsComment(String value);
 
     /**
      * Getter for <code>myblog.article.is_comment</code>. 是否允许评论（1是，0否）
      */
+    @Column(name = "is_comment", length = 1)
+    @Size(max = 1)
     public String getIsComment();
-
-    /**
-     * Setter for <code>myblog.article.create_by</code>.
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.article.create_by</code>.
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.article.create_time</code>.
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.article.create_time</code>.
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.article.update_by</code>.
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.article.update_by</code>.
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.article.update_time</code>.
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.article.update_time</code>.
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface IArticle
-     */
-    public void from(IArticle from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface IArticle
-     */
-    public <E extends IArticle> E into(E into);
 }

@@ -1,8 +1,5 @@
 package me.myblog.guest.controller;
 
-import me.myblog.framework.domain.entity.Article;
-import me.myblog.framework.domain.entity.Tag;
-import me.myblog.framework.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +11,6 @@ import java.util.List;
 @RequestMapping("/article")
 public class ArticleController {
 
-    @Autowired
-    private ArticleRepository articleRepository;
 
-    @GetMapping("/all")
-    public List<Tag> all(){
-        return articleRepository.findById(1L).get().getTags();
-    }
 
 }

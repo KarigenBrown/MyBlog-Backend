@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,133 +20,81 @@ import java.time.LocalDateTime;
  * 评论表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "comment",
+    schema = "myblog"
+)
 public interface IComment extends Serializable {
-
-    /**
-     * Setter for <code>myblog.comment.id</code>.
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.comment.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.comment.type</code>. 评论类型（0代表文章评论，1代表友链评论）
-     */
-    public void setType(String value);
 
     /**
      * Getter for <code>myblog.comment.type</code>. 评论类型（0代表文章评论，1代表友链评论）
      */
+    @Column(name = "type", length = 1)
+    @Size(max = 1)
     public String getType();
-
-    /**
-     * Setter for <code>myblog.comment.article_id</code>. 文章id
-     */
-    public void setArticleId(Long value);
 
     /**
      * Getter for <code>myblog.comment.article_id</code>. 文章id
      */
+    @Column(name = "article_id")
     public Long getArticleId();
-
-    /**
-     * Setter for <code>myblog.comment.root_id</code>. 根评论id
-     */
-    public void setRootId(Long value);
 
     /**
      * Getter for <code>myblog.comment.root_id</code>. 根评论id
      */
+    @Column(name = "root_id")
     public Long getRootId();
-
-    /**
-     * Setter for <code>myblog.comment.content</code>. 评论内容
-     */
-    public void setContent(String value);
 
     /**
      * Getter for <code>myblog.comment.content</code>. 评论内容
      */
+    @Column(name = "content", length = 512)
+    @Size(max = 512)
     public String getContent();
-
-    /**
-     * Setter for <code>myblog.comment.to_comment_user_id</code>.
-     * 所回复的目标评论的userid
-     */
-    public void setToCommentUserId(Long value);
 
     /**
      * Getter for <code>myblog.comment.to_comment_user_id</code>.
      * 所回复的目标评论的userid
      */
+    @Column(name = "to_comment_user_id")
     public Long getToCommentUserId();
-
-    /**
-     * Setter for <code>myblog.comment.to_comment_id</code>. 回复目标评论id
-     */
-    public void setToCommentId(Long value);
 
     /**
      * Getter for <code>myblog.comment.to_comment_id</code>. 回复目标评论id
      */
+    @Column(name = "to_comment_id")
     public Long getToCommentId();
-
-    /**
-     * Setter for <code>myblog.comment.create_by</code>.
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.comment.create_by</code>.
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.comment.create_time</code>.
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.comment.create_time</code>.
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.comment.update_by</code>.
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.comment.update_by</code>.
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.comment.update_time</code>.
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.comment.update_time</code>.
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface IComment
-     */
-    public void from(IComment from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface IComment
-     */
-    public <E extends IComment> E into(E into);
 }

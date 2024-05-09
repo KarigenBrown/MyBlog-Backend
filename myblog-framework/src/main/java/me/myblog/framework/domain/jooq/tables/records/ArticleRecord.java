@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.Article;
@@ -20,6 +28,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 文章表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "article",
+    schema = "myblog"
+)
 public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements Record14<Long, String, String, String, Long, String, String, String, Long, String, Long, LocalDateTime, Long, LocalDateTime>, IArticle {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +40,17 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.id</code>.
      */
-    @Override
-    public void setId(Long value) {
+    public ArticleRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +59,16 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.title</code>. 标题
      */
-    @Override
-    public void setTitle(String value) {
+    public ArticleRecord setTitle(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.title</code>. 标题
      */
+    @Column(name = "title", length = 256)
+    @Size(max = 256)
     @Override
     public String getTitle() {
         return (String) get(1);
@@ -59,14 +77,15 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.content</code>. 文章内容
      */
-    @Override
-    public void setContent(String value) {
+    public ArticleRecord setContent(String value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.content</code>. 文章内容
      */
+    @Column(name = "content")
     @Override
     public String getContent() {
         return (String) get(2);
@@ -75,14 +94,16 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.summary</code>. 文章摘要
      */
-    @Override
-    public void setSummary(String value) {
+    public ArticleRecord setSummary(String value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.summary</code>. 文章摘要
      */
+    @Column(name = "summary", length = 1024)
+    @Size(max = 1024)
     @Override
     public String getSummary() {
         return (String) get(3);
@@ -91,14 +112,15 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.category_id</code>. 所属分类id
      */
-    @Override
-    public void setCategoryId(Long value) {
+    public ArticleRecord setCategoryId(Long value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.category_id</code>. 所属分类id
      */
+    @Column(name = "category_id")
     @Override
     public Long getCategoryId() {
         return (Long) get(4);
@@ -107,14 +129,16 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.thumbnail</code>. 缩略图
      */
-    @Override
-    public void setThumbnail(String value) {
+    public ArticleRecord setThumbnail(String value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.thumbnail</code>. 缩略图
      */
+    @Column(name = "thumbnail", length = 256)
+    @Size(max = 256)
     @Override
     public String getThumbnail() {
         return (String) get(5);
@@ -123,14 +147,16 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.is_top</code>. 是否置顶（0否，1是）
      */
-    @Override
-    public void setIsTop(String value) {
+    public ArticleRecord setIsTop(String value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.is_top</code>. 是否置顶（0否，1是）
      */
+    @Column(name = "is_top", length = 1)
+    @Size(max = 1)
     @Override
     public String getIsTop() {
         return (String) get(6);
@@ -139,14 +165,16 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.status</code>. 状态（0已发布，1草稿）
      */
-    @Override
-    public void setStatus(String value) {
+    public ArticleRecord setStatus(String value) {
         set(7, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.status</code>. 状态（0已发布，1草稿）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return (String) get(7);
@@ -155,14 +183,15 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.view_count</code>. 访问量
      */
-    @Override
-    public void setViewCount(Long value) {
+    public ArticleRecord setViewCount(Long value) {
         set(8, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.view_count</code>. 访问量
      */
+    @Column(name = "view_count")
     @Override
     public Long getViewCount() {
         return (Long) get(8);
@@ -171,14 +200,16 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.is_comment</code>. 是否允许评论（1是，0否）
      */
-    @Override
-    public void setIsComment(String value) {
+    public ArticleRecord setIsComment(String value) {
         set(9, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.is_comment</code>. 是否允许评论（1是，0否）
      */
+    @Column(name = "is_comment", length = 1)
+    @Size(max = 1)
     @Override
     public String getIsComment() {
         return (String) get(9);
@@ -187,14 +218,15 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.create_by</code>.
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public ArticleRecord setCreateBy(Long value) {
         set(10, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(10);
@@ -203,14 +235,15 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.create_time</code>.
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public ArticleRecord setCreateTime(LocalDateTime value) {
         set(11, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(11);
@@ -219,14 +252,15 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.update_by</code>.
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public ArticleRecord setUpdateBy(Long value) {
         set(12, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(12);
@@ -235,14 +269,15 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     /**
      * Setter for <code>myblog.article.update_time</code>.
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public ArticleRecord setUpdateTime(LocalDateTime value) {
         set(13, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.article.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(13);
@@ -588,7 +623,6 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(IArticle from) {
         setId(from.getId());
         setTitle(from.getTitle());
@@ -605,12 +639,6 @@ public class ArticleRecord extends UpdatableRecordImpl<ArticleRecord> implements
         setUpdateBy(from.getUpdateBy());
         setUpdateTime(from.getUpdateTime());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends IArticle> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

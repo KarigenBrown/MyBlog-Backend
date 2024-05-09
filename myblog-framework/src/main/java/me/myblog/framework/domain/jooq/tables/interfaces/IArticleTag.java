@@ -4,6 +4,10 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.io.Serializable;
 
 
@@ -11,41 +15,22 @@ import java.io.Serializable;
  * 文章标签关联表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "article_tag",
+    schema = "myblog"
+)
 public interface IArticleTag extends Serializable {
-
-    /**
-     * Setter for <code>myblog.article_tag.article_id</code>. 文章id
-     */
-    public void setArticleId(Long value);
 
     /**
      * Getter for <code>myblog.article_tag.article_id</code>. 文章id
      */
+    @Column(name = "article_id")
     public Long getArticleId();
-
-    /**
-     * Setter for <code>myblog.article_tag.tag_id</code>. 标签id
-     */
-    public void setTagId(Long value);
 
     /**
      * Getter for <code>myblog.article_tag.tag_id</code>. 标签id
      */
+    @Column(name = "tag_id")
     public Long getTagId();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface IArticleTag
-     */
-    public void from(IArticleTag from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface IArticleTag
-     */
-    public <E extends IArticleTag> E into(E into);
 }

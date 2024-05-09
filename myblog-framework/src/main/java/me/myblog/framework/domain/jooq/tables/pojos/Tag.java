@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.interfaces.ITag;
@@ -13,19 +21,22 @@ import me.myblog.framework.domain.jooq.tables.interfaces.ITag;
  * 标签
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "tag",
+    schema = "myblog"
+)
 public class Tag implements ITag {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String name;
-    private Long createBy;
-    private LocalDateTime createTime;
-    private Long updateBy;
-    private LocalDateTime updateTime;
-    private String remark;
-
-    public Tag() {}
+    private final Long id;
+    private final String name;
+    private final Long createBy;
+    private final LocalDateTime createTime;
+    private final Long updateBy;
+    private final LocalDateTime updateTime;
+    private final String remark;
 
     public Tag(ITag value) {
         this.id = value.getId();
@@ -58,113 +69,68 @@ public class Tag implements ITag {
     /**
      * Getter for <code>myblog.tag.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return this.id;
     }
 
     /**
-     * Setter for <code>myblog.tag.id</code>.
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Getter for <code>myblog.tag.name</code>. 标签名
      */
+    @Column(name = "name", length = 128)
+    @Size(max = 128)
     @Override
     public String getName() {
         return this.name;
     }
 
     /**
-     * Setter for <code>myblog.tag.name</code>. 标签名
-     */
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Getter for <code>myblog.tag.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return this.createBy;
     }
 
     /**
-     * Setter for <code>myblog.tag.create_by</code>.
-     */
-    @Override
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
      * Getter for <code>myblog.tag.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return this.createTime;
     }
 
     /**
-     * Setter for <code>myblog.tag.create_time</code>.
-     */
-    @Override
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
      * Getter for <code>myblog.tag.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return this.updateBy;
     }
 
     /**
-     * Setter for <code>myblog.tag.update_by</code>.
-     */
-    @Override
-    public void setUpdateBy(Long updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
      * Getter for <code>myblog.tag.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return this.updateTime;
     }
 
     /**
-     * Setter for <code>myblog.tag.update_time</code>.
-     */
-    @Override
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    /**
      * Getter for <code>myblog.tag.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     @Override
     public String getRemark() {
         return this.remark;
-    }
-
-    /**
-     * Setter for <code>myblog.tag.remark</code>. 备注
-     */
-    @Override
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 
     @Override
@@ -249,26 +215,5 @@ public class Tag implements ITag {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(ITag from) {
-        setId(from.getId());
-        setName(from.getName());
-        setCreateBy(from.getCreateBy());
-        setCreateTime(from.getCreateTime());
-        setUpdateBy(from.getUpdateBy());
-        setUpdateTime(from.getUpdateTime());
-        setRemark(from.getRemark());
-    }
-
-    @Override
-    public <E extends ITag> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

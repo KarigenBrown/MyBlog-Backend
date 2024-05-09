@@ -4,6 +4,15 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.interfaces.IRole;
@@ -13,22 +22,25 @@ import me.myblog.framework.domain.jooq.tables.interfaces.IRole;
  * 角色信息表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "role",
+    schema = "myblog"
+)
 public class Role implements IRole {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String roleName;
-    private String roleKey;
-    private Integer roleSort;
-    private String status;
-    private Long createBy;
-    private LocalDateTime createTime;
-    private Long updateBy;
-    private LocalDateTime updateTime;
-    private String remark;
-
-    public Role() {}
+    private final Long id;
+    private final String roleName;
+    private final String roleKey;
+    private final Integer roleSort;
+    private final String status;
+    private final Long createBy;
+    private final LocalDateTime createTime;
+    private final Long updateBy;
+    private final LocalDateTime updateTime;
+    private final String remark;
 
     public Role(IRole value) {
         this.id = value.getId();
@@ -70,161 +82,101 @@ public class Role implements IRole {
     /**
      * Getter for <code>myblog.role.id</code>. 角色ID
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return this.id;
     }
 
     /**
-     * Setter for <code>myblog.role.id</code>. 角色ID
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Getter for <code>myblog.role.role_name</code>. 角色名称
      */
+    @Column(name = "role_name", nullable = false, length = 30)
+    @NotNull
+    @Size(max = 30)
     @Override
     public String getRoleName() {
         return this.roleName;
     }
 
     /**
-     * Setter for <code>myblog.role.role_name</code>. 角色名称
-     */
-    @Override
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    /**
      * Getter for <code>myblog.role.role_key</code>. 角色权限字符串
      */
+    @Column(name = "role_key", nullable = false, length = 100)
+    @NotNull
+    @Size(max = 100)
     @Override
     public String getRoleKey() {
         return this.roleKey;
     }
 
     /**
-     * Setter for <code>myblog.role.role_key</code>. 角色权限字符串
-     */
-    @Override
-    public void setRoleKey(String roleKey) {
-        this.roleKey = roleKey;
-    }
-
-    /**
      * Getter for <code>myblog.role.role_sort</code>. 显示顺序
      */
+    @Column(name = "role_sort", nullable = false)
+    @NotNull
     @Override
     public Integer getRoleSort() {
         return this.roleSort;
     }
 
     /**
-     * Setter for <code>myblog.role.role_sort</code>. 显示顺序
-     */
-    @Override
-    public void setRoleSort(Integer roleSort) {
-        this.roleSort = roleSort;
-    }
-
-    /**
      * Getter for <code>myblog.role.status</code>. 角色状态（0正常，1停用）
      */
+    @Column(name = "status", nullable = false, length = 1)
+    @NotNull
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return this.status;
     }
 
     /**
-     * Setter for <code>myblog.role.status</code>. 角色状态（0正常，1停用）
-     */
-    @Override
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /**
      * Getter for <code>myblog.role.create_by</code>. 创建者
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return this.createBy;
     }
 
     /**
-     * Setter for <code>myblog.role.create_by</code>. 创建者
-     */
-    @Override
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
      * Getter for <code>myblog.role.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return this.createTime;
     }
 
     /**
-     * Setter for <code>myblog.role.create_time</code>. 创建时间
-     */
-    @Override
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
      * Getter for <code>myblog.role.update_by</code>. 更新者
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return this.updateBy;
     }
 
     /**
-     * Setter for <code>myblog.role.update_by</code>. 更新者
-     */
-    @Override
-    public void setUpdateBy(Long updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
      * Getter for <code>myblog.role.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return this.updateTime;
     }
 
     /**
-     * Setter for <code>myblog.role.update_time</code>. 更新时间
-     */
-    @Override
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    /**
      * Getter for <code>myblog.role.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     @Override
     public String getRemark() {
         return this.remark;
-    }
-
-    /**
-     * Setter for <code>myblog.role.remark</code>. 备注
-     */
-    @Override
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 
     @Override
@@ -333,29 +285,5 @@ public class Role implements IRole {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(IRole from) {
-        setId(from.getId());
-        setRoleName(from.getRoleName());
-        setRoleKey(from.getRoleKey());
-        setRoleSort(from.getRoleSort());
-        setStatus(from.getStatus());
-        setCreateBy(from.getCreateBy());
-        setCreateTime(from.getCreateTime());
-        setUpdateBy(from.getUpdateBy());
-        setUpdateTime(from.getUpdateTime());
-        setRemark(from.getRemark());
-    }
-
-    @Override
-    public <E extends IRole> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

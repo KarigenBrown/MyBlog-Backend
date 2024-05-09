@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.interfaces.IComment;
@@ -13,23 +21,26 @@ import me.myblog.framework.domain.jooq.tables.interfaces.IComment;
  * 评论表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "comment",
+    schema = "myblog"
+)
 public class Comment implements IComment {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String type;
-    private Long articleId;
-    private Long rootId;
-    private String content;
-    private Long toCommentUserId;
-    private Long toCommentId;
-    private Long createBy;
-    private LocalDateTime createTime;
-    private Long updateBy;
-    private LocalDateTime updateTime;
-
-    public Comment() {}
+    private final Long id;
+    private final String type;
+    private final Long articleId;
+    private final Long rootId;
+    private final String content;
+    private final Long toCommentUserId;
+    private final Long toCommentId;
+    private final Long createBy;
+    private final LocalDateTime createTime;
+    private final Long updateBy;
+    private final LocalDateTime updateTime;
 
     public Comment(IComment value) {
         this.id = value.getId();
@@ -74,179 +85,105 @@ public class Comment implements IComment {
     /**
      * Getter for <code>myblog.comment.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return this.id;
     }
 
     /**
-     * Setter for <code>myblog.comment.id</code>.
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Getter for <code>myblog.comment.type</code>. 评论类型（0代表文章评论，1代表友链评论）
      */
+    @Column(name = "type", length = 1)
+    @Size(max = 1)
     @Override
     public String getType() {
         return this.type;
     }
 
     /**
-     * Setter for <code>myblog.comment.type</code>. 评论类型（0代表文章评论，1代表友链评论）
-     */
-    @Override
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
      * Getter for <code>myblog.comment.article_id</code>. 文章id
      */
+    @Column(name = "article_id")
     @Override
     public Long getArticleId() {
         return this.articleId;
     }
 
     /**
-     * Setter for <code>myblog.comment.article_id</code>. 文章id
-     */
-    @Override
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
-    }
-
-    /**
      * Getter for <code>myblog.comment.root_id</code>. 根评论id
      */
+    @Column(name = "root_id")
     @Override
     public Long getRootId() {
         return this.rootId;
     }
 
     /**
-     * Setter for <code>myblog.comment.root_id</code>. 根评论id
-     */
-    @Override
-    public void setRootId(Long rootId) {
-        this.rootId = rootId;
-    }
-
-    /**
      * Getter for <code>myblog.comment.content</code>. 评论内容
      */
+    @Column(name = "content", length = 512)
+    @Size(max = 512)
     @Override
     public String getContent() {
         return this.content;
     }
 
     /**
-     * Setter for <code>myblog.comment.content</code>. 评论内容
-     */
-    @Override
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
      * Getter for <code>myblog.comment.to_comment_user_id</code>.
      * 所回复的目标评论的userid
      */
+    @Column(name = "to_comment_user_id")
     @Override
     public Long getToCommentUserId() {
         return this.toCommentUserId;
     }
 
     /**
-     * Setter for <code>myblog.comment.to_comment_user_id</code>.
-     * 所回复的目标评论的userid
-     */
-    @Override
-    public void setToCommentUserId(Long toCommentUserId) {
-        this.toCommentUserId = toCommentUserId;
-    }
-
-    /**
      * Getter for <code>myblog.comment.to_comment_id</code>. 回复目标评论id
      */
+    @Column(name = "to_comment_id")
     @Override
     public Long getToCommentId() {
         return this.toCommentId;
     }
 
     /**
-     * Setter for <code>myblog.comment.to_comment_id</code>. 回复目标评论id
-     */
-    @Override
-    public void setToCommentId(Long toCommentId) {
-        this.toCommentId = toCommentId;
-    }
-
-    /**
      * Getter for <code>myblog.comment.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return this.createBy;
     }
 
     /**
-     * Setter for <code>myblog.comment.create_by</code>.
-     */
-    @Override
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
      * Getter for <code>myblog.comment.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return this.createTime;
     }
 
     /**
-     * Setter for <code>myblog.comment.create_time</code>.
-     */
-    @Override
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
      * Getter for <code>myblog.comment.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return this.updateBy;
     }
 
     /**
-     * Setter for <code>myblog.comment.update_by</code>.
-     */
-    @Override
-    public void setUpdateBy(Long updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
      * Getter for <code>myblog.comment.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return this.updateTime;
-    }
-
-    /**
-     * Setter for <code>myblog.comment.update_time</code>.
-     */
-    @Override
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
     }
 
     @Override
@@ -363,30 +300,5 @@ public class Comment implements IComment {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(IComment from) {
-        setId(from.getId());
-        setType(from.getType());
-        setArticleId(from.getArticleId());
-        setRootId(from.getRootId());
-        setContent(from.getContent());
-        setToCommentUserId(from.getToCommentUserId());
-        setToCommentId(from.getToCommentId());
-        setCreateBy(from.getCreateBy());
-        setCreateTime(from.getCreateTime());
-        setUpdateBy(from.getUpdateBy());
-        setUpdateTime(from.getUpdateTime());
-    }
-
-    @Override
-    public <E extends IComment> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

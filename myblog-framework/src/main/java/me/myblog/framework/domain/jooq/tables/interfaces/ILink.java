@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,123 +20,78 @@ import java.time.LocalDateTime;
  * 友链
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "link",
+    schema = "myblog"
+)
 public interface ILink extends Serializable {
-
-    /**
-     * Setter for <code>myblog.link.id</code>.
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.link.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.link.name</code>.
-     */
-    public void setName(String value);
 
     /**
      * Getter for <code>myblog.link.name</code>.
      */
+    @Column(name = "name", length = 256)
+    @Size(max = 256)
     public String getName();
-
-    /**
-     * Setter for <code>myblog.link.logo</code>.
-     */
-    public void setLogo(String value);
 
     /**
      * Getter for <code>myblog.link.logo</code>.
      */
+    @Column(name = "logo", length = 256)
+    @Size(max = 256)
     public String getLogo();
-
-    /**
-     * Setter for <code>myblog.link.description</code>.
-     */
-    public void setDescription(String value);
 
     /**
      * Getter for <code>myblog.link.description</code>.
      */
+    @Column(name = "description", length = 512)
+    @Size(max = 512)
     public String getDescription();
-
-    /**
-     * Setter for <code>myblog.link.address</code>. 网站地址
-     */
-    public void setAddress(String value);
 
     /**
      * Getter for <code>myblog.link.address</code>. 网站地址
      */
+    @Column(name = "address", length = 128)
+    @Size(max = 128)
     public String getAddress();
-
-    /**
-     * Setter for <code>myblog.link.status</code>. 审核状态
-     * (0代表审核通过，1代表审核未通过，2代表未审核)
-     */
-    public void setStatus(String value);
 
     /**
      * Getter for <code>myblog.link.status</code>. 审核状态
      * (0代表审核通过，1代表审核未通过，2代表未审核)
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     public String getStatus();
-
-    /**
-     * Setter for <code>myblog.link.create_by</code>.
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.link.create_by</code>.
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.link.create_time</code>.
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.link.create_time</code>.
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.link.update_by</code>.
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.link.update_by</code>.
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.link.update_time</code>.
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.link.update_time</code>.
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface ILink
-     */
-    public void from(ILink from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface ILink
-     */
-    public <E extends ILink> E into(E into);
 }

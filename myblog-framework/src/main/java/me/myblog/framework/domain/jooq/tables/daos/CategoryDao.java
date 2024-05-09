@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.CategoryRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 分类表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class CategoryDao extends DAOImpl<CategoryRecord, me.myblog.framework.domain.jooq.tables.pojos.Category, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class CategoryDao extends DAOImpl<CategoryRecord, me.myblog.framework.dom
     /**
      * Create a new CategoryDao with an attached configuration
      */
+    @Autowired
     public CategoryDao(Configuration configuration) {
         super(Category.CATEGORY, me.myblog.framework.domain.jooq.tables.pojos.Category.class, configuration);
     }

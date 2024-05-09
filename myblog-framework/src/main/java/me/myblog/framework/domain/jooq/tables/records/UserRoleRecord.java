@@ -4,6 +4,11 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
 import me.myblog.framework.domain.jooq.tables.UserRole;
 import me.myblog.framework.domain.jooq.tables.interfaces.IUserRole;
 
@@ -17,6 +22,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 用户和角色关联表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "user_role",
+    schema = "myblog"
+)
 public class UserRoleRecord extends UpdatableRecordImpl<UserRoleRecord> implements Record2<Long, Long>, IUserRole {
 
     private static final long serialVersionUID = 1L;
@@ -24,14 +34,16 @@ public class UserRoleRecord extends UpdatableRecordImpl<UserRoleRecord> implemen
     /**
      * Setter for <code>myblog.user_role.user_id</code>. 用户ID
      */
-    @Override
-    public void setUserId(Long value) {
+    public UserRoleRecord setUserId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user_role.user_id</code>. 用户ID
      */
+    @Column(name = "user_id", nullable = false)
+    @NotNull
     @Override
     public Long getUserId() {
         return (Long) get(0);
@@ -40,14 +52,16 @@ public class UserRoleRecord extends UpdatableRecordImpl<UserRoleRecord> implemen
     /**
      * Setter for <code>myblog.user_role.role_id</code>. 角色ID
      */
-    @Override
-    public void setRoleId(Long value) {
+    public UserRoleRecord setRoleId(Long value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.user_role.role_id</code>. 角色ID
      */
+    @Column(name = "role_id", nullable = false)
+    @NotNull
     @Override
     public Long getRoleId() {
         return (Long) get(1);
@@ -129,17 +143,10 @@ public class UserRoleRecord extends UpdatableRecordImpl<UserRoleRecord> implemen
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(IUserRole from) {
         setUserId(from.getUserId());
         setRoleId(from.getRoleId());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends IUserRole> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

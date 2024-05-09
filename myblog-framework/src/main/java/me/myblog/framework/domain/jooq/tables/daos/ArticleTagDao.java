@@ -12,12 +12,15 @@ import me.myblog.framework.domain.jooq.tables.records.ArticleTagRecord;
 import org.jooq.Configuration;
 import org.jooq.Record2;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 文章标签关联表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class ArticleTagDao extends DAOImpl<ArticleTagRecord, me.myblog.framework.domain.jooq.tables.pojos.ArticleTag, Record2<Long, Long>> {
 
     /**
@@ -30,6 +33,7 @@ public class ArticleTagDao extends DAOImpl<ArticleTagRecord, me.myblog.framework
     /**
      * Create a new ArticleTagDao with an attached configuration
      */
+    @Autowired
     public ArticleTagDao(Configuration configuration) {
         super(ArticleTag.ARTICLE_TAG, me.myblog.framework.domain.jooq.tables.pojos.ArticleTag.class, configuration);
     }

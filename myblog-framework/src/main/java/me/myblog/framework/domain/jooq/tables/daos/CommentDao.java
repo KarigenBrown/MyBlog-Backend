@@ -13,12 +13,15 @@ import me.myblog.framework.domain.jooq.tables.records.CommentRecord;
 
 import org.jooq.Configuration;
 import org.jooq.impl.DAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * 评论表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Repository
 public class CommentDao extends DAOImpl<CommentRecord, me.myblog.framework.domain.jooq.tables.pojos.Comment, Long> {
 
     /**
@@ -31,6 +34,7 @@ public class CommentDao extends DAOImpl<CommentRecord, me.myblog.framework.domai
     /**
      * Create a new CommentDao with an attached configuration
      */
+    @Autowired
     public CommentDao(Configuration configuration) {
         super(Comment.COMMENT, me.myblog.framework.domain.jooq.tables.pojos.Comment.class, configuration);
     }

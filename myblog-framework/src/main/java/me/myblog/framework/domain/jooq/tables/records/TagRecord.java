@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.Tag;
@@ -20,6 +28,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 标签
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "tag",
+    schema = "myblog"
+)
 public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7<Long, String, Long, LocalDateTime, Long, LocalDateTime, String>, ITag {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +40,17 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     /**
      * Setter for <code>myblog.tag.id</code>.
      */
-    @Override
-    public void setId(Long value) {
+    public TagRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.tag.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +59,16 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     /**
      * Setter for <code>myblog.tag.name</code>. 标签名
      */
-    @Override
-    public void setName(String value) {
+    public TagRecord setName(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.tag.name</code>. 标签名
      */
+    @Column(name = "name", length = 128)
+    @Size(max = 128)
     @Override
     public String getName() {
         return (String) get(1);
@@ -59,14 +77,15 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     /**
      * Setter for <code>myblog.tag.create_by</code>.
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public TagRecord setCreateBy(Long value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.tag.create_by</code>.
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(2);
@@ -75,14 +94,15 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     /**
      * Setter for <code>myblog.tag.create_time</code>.
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public TagRecord setCreateTime(LocalDateTime value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.tag.create_time</code>.
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(3);
@@ -91,14 +111,15 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     /**
      * Setter for <code>myblog.tag.update_by</code>.
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public TagRecord setUpdateBy(Long value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.tag.update_by</code>.
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(4);
@@ -107,14 +128,15 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     /**
      * Setter for <code>myblog.tag.update_time</code>.
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public TagRecord setUpdateTime(LocalDateTime value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.tag.update_time</code>.
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(5);
@@ -123,14 +145,16 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     /**
      * Setter for <code>myblog.tag.remark</code>. 备注
      */
-    @Override
-    public void setRemark(String value) {
+    public TagRecord setRemark(String value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.tag.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     @Override
     public String getRemark() {
         return (String) get(6);
@@ -322,7 +346,6 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(ITag from) {
         setId(from.getId());
         setName(from.getName());
@@ -332,12 +355,6 @@ public class TagRecord extends UpdatableRecordImpl<TagRecord> implements Record7
         setUpdateTime(from.getUpdateTime());
         setRemark(from.getRemark());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends ITag> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

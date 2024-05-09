@@ -4,6 +4,11 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
 import java.io.Serializable;
 
 
@@ -11,41 +16,24 @@ import java.io.Serializable;
  * 用户和角色关联表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "user_role",
+    schema = "myblog"
+)
 public interface IUserRole extends Serializable {
-
-    /**
-     * Setter for <code>myblog.user_role.user_id</code>. 用户ID
-     */
-    public void setUserId(Long value);
 
     /**
      * Getter for <code>myblog.user_role.user_id</code>. 用户ID
      */
+    @Column(name = "user_id", nullable = false)
+    @NotNull
     public Long getUserId();
-
-    /**
-     * Setter for <code>myblog.user_role.role_id</code>. 角色ID
-     */
-    public void setRoleId(Long value);
 
     /**
      * Getter for <code>myblog.user_role.role_id</code>. 角色ID
      */
+    @Column(name = "role_id", nullable = false)
+    @NotNull
     public Long getRoleId();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface IUserRole
-     */
-    public void from(IUserRole from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface IUserRole
-     */
-    public <E extends IUserRole> E into(E into);
 }

@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,111 +20,69 @@ import java.time.LocalDateTime;
  * 分类表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "category",
+    schema = "myblog"
+)
 public interface ICategory extends Serializable {
-
-    /**
-     * Setter for <code>myblog.category.id</code>.
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.category.id</code>.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.category.name</code>. 分类名
-     */
-    public void setName(String value);
 
     /**
      * Getter for <code>myblog.category.name</code>. 分类名
      */
+    @Column(name = "name", length = 128)
+    @Size(max = 128)
     public String getName();
-
-    /**
-     * Setter for <code>myblog.category.pid</code>. 父分类id，如果没有父分类为-1
-     */
-    public void setPid(Long value);
 
     /**
      * Getter for <code>myblog.category.pid</code>. 父分类id，如果没有父分类为-1
      */
+    @Column(name = "pid")
     public Long getPid();
-
-    /**
-     * Setter for <code>myblog.category.description</code>. 描述
-     */
-    public void setDescription(String value);
 
     /**
      * Getter for <code>myblog.category.description</code>. 描述
      */
+    @Column(name = "description", length = 512)
+    @Size(max = 512)
     public String getDescription();
-
-    /**
-     * Setter for <code>myblog.category.status</code>. 状态（0正常，1禁用）
-     */
-    public void setStatus(String value);
 
     /**
      * Getter for <code>myblog.category.status</code>. 状态（0正常，1禁用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     public String getStatus();
-
-    /**
-     * Setter for <code>myblog.category.create_by</code>.
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.category.create_by</code>.
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.category.create_time</code>.
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.category.create_time</code>.
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.category.update_by</code>.
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.category.update_by</code>.
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.category.update_time</code>.
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.category.update_time</code>.
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface ICategory
-     */
-    public void from(ICategory from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface ICategory
-     */
-    public <E extends ICategory> E into(E into);
 }

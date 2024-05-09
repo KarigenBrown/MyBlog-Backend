@@ -4,6 +4,14 @@
 package me.myblog.framework.domain.jooq.tables.pojos;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.interfaces.IUser;
@@ -13,26 +21,29 @@ import me.myblog.framework.domain.jooq.tables.interfaces.IUser;
  * 用户表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "user",
+    schema = "myblog"
+)
 public class User implements IUser {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
-    private String userName;
-    private String nickName;
-    private String password;
-    private String type;
-    private String status;
-    private String email;
-    private String phonenumber;
-    private String sex;
-    private String avatar;
-    private Long createBy;
-    private LocalDateTime createTime;
-    private Long updateBy;
-    private LocalDateTime updateTime;
-
-    public User() {}
+    private final Long id;
+    private final String userName;
+    private final String nickName;
+    private final String password;
+    private final String type;
+    private final String status;
+    private final String email;
+    private final String phonenumber;
+    private final String sex;
+    private final String avatar;
+    private final Long createBy;
+    private final LocalDateTime createTime;
+    private final Long updateBy;
+    private final LocalDateTime updateTime;
 
     public User(IUser value) {
         this.id = value.getId();
@@ -86,225 +97,138 @@ public class User implements IUser {
     /**
      * Getter for <code>myblog.user.id</code>. 主键
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return this.id;
     }
 
     /**
-     * Setter for <code>myblog.user.id</code>. 主键
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * Getter for <code>myblog.user.user_name</code>. 用户名
      */
+    @Column(name = "user_name", length = 64)
+    @Size(max = 64)
     @Override
     public String getUserName() {
         return this.userName;
     }
 
     /**
-     * Setter for <code>myblog.user.user_name</code>. 用户名
-     */
-    @Override
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    /**
      * Getter for <code>myblog.user.nick_name</code>. 昵称
      */
+    @Column(name = "nick_name", length = 64)
+    @Size(max = 64)
     @Override
     public String getNickName() {
         return this.nickName;
     }
 
     /**
-     * Setter for <code>myblog.user.nick_name</code>. 昵称
-     */
-    @Override
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    /**
      * Getter for <code>myblog.user.password</code>. 密码
      */
+    @Column(name = "password", length = 64)
+    @Size(max = 64)
     @Override
     public String getPassword() {
         return this.password;
     }
 
     /**
-     * Setter for <code>myblog.user.password</code>. 密码
-     */
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
      * Getter for <code>myblog.user.type</code>. 用户类型（0代表普通用户，1代表管理员）
      */
+    @Column(name = "type", length = 1)
+    @Size(max = 1)
     @Override
     public String getType() {
         return this.type;
     }
 
     /**
-     * Setter for <code>myblog.user.type</code>. 用户类型（0代表普通用户，1代表管理员）
-     */
-    @Override
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
      * Getter for <code>myblog.user.status</code>. 账号状态（0正常，1停用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return this.status;
     }
 
     /**
-     * Setter for <code>myblog.user.status</code>. 账号状态（0正常，1停用）
-     */
-    @Override
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /**
      * Getter for <code>myblog.user.email</code>. 邮箱
      */
+    @Column(name = "email", length = 64)
+    @Size(max = 64)
     @Override
     public String getEmail() {
         return this.email;
     }
 
     /**
-     * Setter for <code>myblog.user.email</code>. 邮箱
-     */
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
      * Getter for <code>myblog.user.phonenumber</code>. 手机号
      */
+    @Column(name = "phonenumber", length = 32)
+    @Size(max = 32)
     @Override
     public String getPhonenumber() {
         return this.phonenumber;
     }
 
     /**
-     * Setter for <code>myblog.user.phonenumber</code>. 手机号
-     */
-    @Override
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    /**
      * Getter for <code>myblog.user.sex</code>. 用户性别（0男，1女，2未知）
      */
+    @Column(name = "sex", length = 1)
+    @Size(max = 1)
     @Override
     public String getSex() {
         return this.sex;
     }
 
     /**
-     * Setter for <code>myblog.user.sex</code>. 用户性别（0男，1女，2未知）
-     */
-    @Override
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    /**
      * Getter for <code>myblog.user.avatar</code>. 头像
      */
+    @Column(name = "avatar", length = 128)
+    @Size(max = 128)
     @Override
     public String getAvatar() {
         return this.avatar;
     }
 
     /**
-     * Setter for <code>myblog.user.avatar</code>. 头像
-     */
-    @Override
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    /**
      * Getter for <code>myblog.user.create_by</code>. 创建人的用户id
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return this.createBy;
     }
 
     /**
-     * Setter for <code>myblog.user.create_by</code>. 创建人的用户id
-     */
-    @Override
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
      * Getter for <code>myblog.user.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return this.createTime;
     }
 
     /**
-     * Setter for <code>myblog.user.create_time</code>. 创建时间
-     */
-    @Override
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
      * Getter for <code>myblog.user.update_by</code>. 更新人
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return this.updateBy;
     }
 
     /**
-     * Setter for <code>myblog.user.update_by</code>. 更新人
-     */
-    @Override
-    public void setUpdateBy(Long updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
      * Getter for <code>myblog.user.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return this.updateTime;
-    }
-
-    /**
-     * Setter for <code>myblog.user.update_time</code>. 更新时间
-     */
-    @Override
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
     }
 
     @Override
@@ -445,33 +369,5 @@ public class User implements IUser {
 
         sb.append(")");
         return sb.toString();
-    }
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    @Override
-    public void from(IUser from) {
-        setId(from.getId());
-        setUserName(from.getUserName());
-        setNickName(from.getNickName());
-        setPassword(from.getPassword());
-        setType(from.getType());
-        setStatus(from.getStatus());
-        setEmail(from.getEmail());
-        setPhonenumber(from.getPhonenumber());
-        setSex(from.getSex());
-        setAvatar(from.getAvatar());
-        setCreateBy(from.getCreateBy());
-        setCreateTime(from.getCreateTime());
-        setUpdateBy(from.getUpdateBy());
-        setUpdateTime(from.getUpdateTime());
-    }
-
-    @Override
-    public <E extends IUser> E into(E into) {
-        into.from(this);
-        return into;
     }
 }

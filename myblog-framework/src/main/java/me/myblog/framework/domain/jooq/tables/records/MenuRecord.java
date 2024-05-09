@@ -4,6 +4,15 @@
 package me.myblog.framework.domain.jooq.tables.records;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 import me.myblog.framework.domain.jooq.tables.Menu;
@@ -20,6 +29,11 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 菜单权限表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "menu",
+    schema = "myblog"
+)
 public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Record17<Long, String, Long, Integer, String, String, Integer, String, String, String, String, String, Long, LocalDateTime, Long, LocalDateTime, String>, IMenu {
 
     private static final long serialVersionUID = 1L;
@@ -27,14 +41,17 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.id</code>. 菜单ID
      */
-    @Override
-    public void setId(Long value) {
+    public MenuRecord setId(Long value) {
         set(0, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.id</code>. 菜单ID
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     @Override
     public Long getId() {
         return (Long) get(0);
@@ -43,14 +60,17 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.menu_name</code>. 菜单名称
      */
-    @Override
-    public void setMenuName(String value) {
+    public MenuRecord setMenuName(String value) {
         set(1, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.menu_name</code>. 菜单名称
      */
+    @Column(name = "menu_name", nullable = false, length = 50)
+    @NotNull
+    @Size(max = 50)
     @Override
     public String getMenuName() {
         return (String) get(1);
@@ -59,14 +79,15 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.parent_id</code>. 父菜单ID
      */
-    @Override
-    public void setParentId(Long value) {
+    public MenuRecord setParentId(Long value) {
         set(2, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.parent_id</code>. 父菜单ID
      */
+    @Column(name = "parent_id")
     @Override
     public Long getParentId() {
         return (Long) get(2);
@@ -75,14 +96,15 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.order_num</code>. 显示顺序
      */
-    @Override
-    public void setOrderNum(Integer value) {
+    public MenuRecord setOrderNum(Integer value) {
         set(3, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.order_num</code>. 显示顺序
      */
+    @Column(name = "order_num")
     @Override
     public Integer getOrderNum() {
         return (Integer) get(3);
@@ -91,14 +113,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.path</code>. 路由地址
      */
-    @Override
-    public void setPath(String value) {
+    public MenuRecord setPath(String value) {
         set(4, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.path</code>. 路由地址
      */
+    @Column(name = "path", length = 200)
+    @Size(max = 200)
     @Override
     public String getPath() {
         return (String) get(4);
@@ -107,14 +131,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.component</code>. 组件路径
      */
-    @Override
-    public void setComponent(String value) {
+    public MenuRecord setComponent(String value) {
         set(5, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.component</code>. 组件路径
      */
+    @Column(name = "component", length = 255)
+    @Size(max = 255)
     @Override
     public String getComponent() {
         return (String) get(5);
@@ -123,14 +149,15 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.is_frame</code>. 是否为外链（0是，1否）
      */
-    @Override
-    public void setIsFrame(Integer value) {
+    public MenuRecord setIsFrame(Integer value) {
         set(6, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.is_frame</code>. 是否为外链（0是，1否）
      */
+    @Column(name = "is_frame")
     @Override
     public Integer getIsFrame() {
         return (Integer) get(6);
@@ -139,14 +166,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.menu_type</code>. 菜单类型（M目录，C菜单，F按钮）
      */
-    @Override
-    public void setMenuType(String value) {
+    public MenuRecord setMenuType(String value) {
         set(7, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.menu_type</code>. 菜单类型（M目录，C菜单，F按钮）
      */
+    @Column(name = "menu_type", length = 1)
+    @Size(max = 1)
     @Override
     public String getMenuType() {
         return (String) get(7);
@@ -155,14 +184,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.visible</code>. 菜单状态（0显示，1隐藏）
      */
-    @Override
-    public void setVisible(String value) {
+    public MenuRecord setVisible(String value) {
         set(8, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.visible</code>. 菜单状态（0显示，1隐藏）
      */
+    @Column(name = "visible", length = 1)
+    @Size(max = 1)
     @Override
     public String getVisible() {
         return (String) get(8);
@@ -171,14 +202,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.status</code>. 菜单状态（0正常，1停用）
      */
-    @Override
-    public void setStatus(String value) {
+    public MenuRecord setStatus(String value) {
         set(9, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.status</code>. 菜单状态（0正常，1停用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     @Override
     public String getStatus() {
         return (String) get(9);
@@ -187,14 +220,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.perms</code>. 权限标识
      */
-    @Override
-    public void setPerms(String value) {
+    public MenuRecord setPerms(String value) {
         set(10, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.perms</code>. 权限标识
      */
+    @Column(name = "perms", length = 100)
+    @Size(max = 100)
     @Override
     public String getPerms() {
         return (String) get(10);
@@ -203,14 +238,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.icon</code>. 菜单图标
      */
-    @Override
-    public void setIcon(String value) {
+    public MenuRecord setIcon(String value) {
         set(11, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.icon</code>. 菜单图标
      */
+    @Column(name = "icon", length = 100)
+    @Size(max = 100)
     @Override
     public String getIcon() {
         return (String) get(11);
@@ -219,14 +256,15 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.create_by</code>. 创建者
      */
-    @Override
-    public void setCreateBy(Long value) {
+    public MenuRecord setCreateBy(Long value) {
         set(12, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.create_by</code>. 创建者
      */
+    @Column(name = "create_by")
     @Override
     public Long getCreateBy() {
         return (Long) get(12);
@@ -235,14 +273,15 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.create_time</code>. 创建时间
      */
-    @Override
-    public void setCreateTime(LocalDateTime value) {
+    public MenuRecord setCreateTime(LocalDateTime value) {
         set(13, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     @Override
     public LocalDateTime getCreateTime() {
         return (LocalDateTime) get(13);
@@ -251,14 +290,15 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.update_by</code>. 更新者
      */
-    @Override
-    public void setUpdateBy(Long value) {
+    public MenuRecord setUpdateBy(Long value) {
         set(14, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.update_by</code>. 更新者
      */
+    @Column(name = "update_by")
     @Override
     public Long getUpdateBy() {
         return (Long) get(14);
@@ -267,14 +307,15 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.update_time</code>. 更新时间
      */
-    @Override
-    public void setUpdateTime(LocalDateTime value) {
+    public MenuRecord setUpdateTime(LocalDateTime value) {
         set(15, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     @Override
     public LocalDateTime getUpdateTime() {
         return (LocalDateTime) get(15);
@@ -283,14 +324,16 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     /**
      * Setter for <code>myblog.menu.remark</code>. 备注
      */
-    @Override
-    public void setRemark(String value) {
+    public MenuRecord setRemark(String value) {
         set(16, value);
+        return this;
     }
 
     /**
      * Getter for <code>myblog.menu.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     @Override
     public String getRemark() {
         return (String) get(16);
@@ -702,7 +745,6 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
     // FROM and INTO
     // -------------------------------------------------------------------------
 
-    @Override
     public void from(IMenu from) {
         setId(from.getId());
         setMenuName(from.getMenuName());
@@ -722,12 +764,6 @@ public class MenuRecord extends UpdatableRecordImpl<MenuRecord> implements Recor
         setUpdateTime(from.getUpdateTime());
         setRemark(from.getRemark());
         resetChangedOnNotNull();
-    }
-
-    @Override
-    public <E extends IMenu> E into(E into) {
-        into.from(this);
-        return into;
     }
 
     // -------------------------------------------------------------------------

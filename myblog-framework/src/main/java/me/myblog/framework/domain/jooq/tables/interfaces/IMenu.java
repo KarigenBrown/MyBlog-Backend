@@ -4,6 +4,15 @@
 package me.myblog.framework.domain.jooq.tables.interfaces;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,191 +21,124 @@ import java.time.LocalDateTime;
  * 菜单权限表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes", "this-escape" })
+@Entity
+@Table(
+    name = "menu",
+    schema = "myblog"
+)
 public interface IMenu extends Serializable {
-
-    /**
-     * Setter for <code>myblog.menu.id</code>. 菜单ID
-     */
-    public void setId(Long value);
 
     /**
      * Getter for <code>myblog.menu.id</code>. 菜单ID
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public Long getId();
-
-    /**
-     * Setter for <code>myblog.menu.menu_name</code>. 菜单名称
-     */
-    public void setMenuName(String value);
 
     /**
      * Getter for <code>myblog.menu.menu_name</code>. 菜单名称
      */
+    @Column(name = "menu_name", nullable = false, length = 50)
+    @NotNull
+    @Size(max = 50)
     public String getMenuName();
-
-    /**
-     * Setter for <code>myblog.menu.parent_id</code>. 父菜单ID
-     */
-    public void setParentId(Long value);
 
     /**
      * Getter for <code>myblog.menu.parent_id</code>. 父菜单ID
      */
+    @Column(name = "parent_id")
     public Long getParentId();
-
-    /**
-     * Setter for <code>myblog.menu.order_num</code>. 显示顺序
-     */
-    public void setOrderNum(Integer value);
 
     /**
      * Getter for <code>myblog.menu.order_num</code>. 显示顺序
      */
+    @Column(name = "order_num")
     public Integer getOrderNum();
-
-    /**
-     * Setter for <code>myblog.menu.path</code>. 路由地址
-     */
-    public void setPath(String value);
 
     /**
      * Getter for <code>myblog.menu.path</code>. 路由地址
      */
+    @Column(name = "path", length = 200)
+    @Size(max = 200)
     public String getPath();
-
-    /**
-     * Setter for <code>myblog.menu.component</code>. 组件路径
-     */
-    public void setComponent(String value);
 
     /**
      * Getter for <code>myblog.menu.component</code>. 组件路径
      */
+    @Column(name = "component", length = 255)
+    @Size(max = 255)
     public String getComponent();
-
-    /**
-     * Setter for <code>myblog.menu.is_frame</code>. 是否为外链（0是，1否）
-     */
-    public void setIsFrame(Integer value);
 
     /**
      * Getter for <code>myblog.menu.is_frame</code>. 是否为外链（0是，1否）
      */
+    @Column(name = "is_frame")
     public Integer getIsFrame();
-
-    /**
-     * Setter for <code>myblog.menu.menu_type</code>. 菜单类型（M目录，C菜单，F按钮）
-     */
-    public void setMenuType(String value);
 
     /**
      * Getter for <code>myblog.menu.menu_type</code>. 菜单类型（M目录，C菜单，F按钮）
      */
+    @Column(name = "menu_type", length = 1)
+    @Size(max = 1)
     public String getMenuType();
-
-    /**
-     * Setter for <code>myblog.menu.visible</code>. 菜单状态（0显示，1隐藏）
-     */
-    public void setVisible(String value);
 
     /**
      * Getter for <code>myblog.menu.visible</code>. 菜单状态（0显示，1隐藏）
      */
+    @Column(name = "visible", length = 1)
+    @Size(max = 1)
     public String getVisible();
-
-    /**
-     * Setter for <code>myblog.menu.status</code>. 菜单状态（0正常，1停用）
-     */
-    public void setStatus(String value);
 
     /**
      * Getter for <code>myblog.menu.status</code>. 菜单状态（0正常，1停用）
      */
+    @Column(name = "status", length = 1)
+    @Size(max = 1)
     public String getStatus();
-
-    /**
-     * Setter for <code>myblog.menu.perms</code>. 权限标识
-     */
-    public void setPerms(String value);
 
     /**
      * Getter for <code>myblog.menu.perms</code>. 权限标识
      */
+    @Column(name = "perms", length = 100)
+    @Size(max = 100)
     public String getPerms();
-
-    /**
-     * Setter for <code>myblog.menu.icon</code>. 菜单图标
-     */
-    public void setIcon(String value);
 
     /**
      * Getter for <code>myblog.menu.icon</code>. 菜单图标
      */
+    @Column(name = "icon", length = 100)
+    @Size(max = 100)
     public String getIcon();
-
-    /**
-     * Setter for <code>myblog.menu.create_by</code>. 创建者
-     */
-    public void setCreateBy(Long value);
 
     /**
      * Getter for <code>myblog.menu.create_by</code>. 创建者
      */
+    @Column(name = "create_by")
     public Long getCreateBy();
-
-    /**
-     * Setter for <code>myblog.menu.create_time</code>. 创建时间
-     */
-    public void setCreateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.menu.create_time</code>. 创建时间
      */
+    @Column(name = "create_time")
     public LocalDateTime getCreateTime();
-
-    /**
-     * Setter for <code>myblog.menu.update_by</code>. 更新者
-     */
-    public void setUpdateBy(Long value);
 
     /**
      * Getter for <code>myblog.menu.update_by</code>. 更新者
      */
+    @Column(name = "update_by")
     public Long getUpdateBy();
-
-    /**
-     * Setter for <code>myblog.menu.update_time</code>. 更新时间
-     */
-    public void setUpdateTime(LocalDateTime value);
 
     /**
      * Getter for <code>myblog.menu.update_time</code>. 更新时间
      */
+    @Column(name = "update_time")
     public LocalDateTime getUpdateTime();
-
-    /**
-     * Setter for <code>myblog.menu.remark</code>. 备注
-     */
-    public void setRemark(String value);
 
     /**
      * Getter for <code>myblog.menu.remark</code>. 备注
      */
+    @Column(name = "remark", length = 500)
+    @Size(max = 500)
     public String getRemark();
-
-    // -------------------------------------------------------------------------
-    // FROM and INTO
-    // -------------------------------------------------------------------------
-
-    /**
-     * Load data from another generated Record/POJO implementing the common
-     * interface IMenu
-     */
-    public void from(IMenu from);
-
-    /**
-     * Copy data into another generated Record/POJO implementing the common
-     * interface IMenu
-     */
-    public <E extends IMenu> E into(E into);
 }
