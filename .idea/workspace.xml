@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +80,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="me.myblog.framework.utils" />
       <recent name="me.myblog.framework.constants" />
       <recent name="me.myblog.framework.enums" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyBlogGuestApplicationTests.testGetHotArticles">
+  <component name="RunManager" selected="Spring Boot.MyBlogGuestApplication">
     <configuration name="MyBlogGuestApplicationTests.testGetHotArticles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="myblog-guest" />
       <extension name="coverage">
@@ -136,9 +133,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.MyBlogGuestApplication" />
         <item itemvalue="JUnit.MyBlogGuestApplicationTests.testGetHotArticles" />
         <item itemvalue="JUnit.MyBlogGuestApplicationTests.testRepository" />
-        <item itemvalue="Spring Boot.MyBlogGuestApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -156,6 +153,7 @@
       <workItem from="1715261322902" duration="9317000" />
       <workItem from="1715270914804" duration="2199000" />
       <workItem from="1715307395176" duration="449000" />
+      <workItem from="1715324989718" duration="3068000" />
     </task>
     <servers />
   </component>
