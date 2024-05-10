@@ -4,6 +4,8 @@ public class SystemConstants {
     private SystemConstants() {
     }
 
+    public static final String ContentDisposition = "Content-Disposition";
+
     public static final Integer HOT_ARTICLE_PAGE_NUMBER = 1;
 
     public static final Integer HOT_ARTICLE_PAGE_SIZE = 10;
