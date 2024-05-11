@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface ArticleService {
     List<Article> getHotArticles();
+
+    List<Article> getArticlesByCategoryId(Long categoryId, Integer pageNumber, Integer pageSize);
 }
 
