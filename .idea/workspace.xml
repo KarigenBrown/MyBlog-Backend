@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/ArticleVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/CategoryVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/HotArticleVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/PageVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/BeanCopyUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/easyCodeTableSetting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/JsonUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/impl/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,6 +123,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyBlogAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="myblog-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="me.myblog.admin.MyBlogAdminApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyBlogGuestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="myblog-guest" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="me.myblog.guest.MyBlogGuestApplication" />
@@ -170,7 +168,12 @@
       <workItem from="1715324989718" duration="3741000" />
       <workItem from="1715342985622" duration="21000" />
       <workItem from="1715360110487" duration="2143000" />
-      <workItem from="1715399714643" duration="6539000" />
+      <workItem from="1715399714643" duration="6577000" />
+      <workItem from="1715440354447" duration="747000" />
+      <workItem from="1715443702442" duration="206000" />
+      <workItem from="1715445412036" duration="1535000" />
+      <workItem from="1715481483448" duration="8000" />
+      <workItem from="1715495174429" duration="450000" />
     </task>
     <servers />
   </component>
