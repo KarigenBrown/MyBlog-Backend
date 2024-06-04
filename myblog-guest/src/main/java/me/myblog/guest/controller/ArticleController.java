@@ -1,7 +1,7 @@
 package me.myblog.guest.controller;
 
 import me.myblog.framework.domain.Response;
-import me.myblog.framework.domain.jooq.tables.pojos.Article;
+import me.myblog.framework.domain.entity.Article;
 import me.myblog.framework.domain.vo.ArticleVo;
 import me.myblog.framework.domain.vo.HotArticleVo;
 import me.myblog.framework.domain.vo.PageVo;

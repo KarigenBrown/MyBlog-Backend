@@ -1,7 +1,7 @@
 package me.myblog.guest.controller;
 
 import me.myblog.framework.domain.Response;
-import me.myblog.framework.domain.jooq.tables.pojos.Category;
+import me.myblog.framework.domain.entity.Category;
 import me.myblog.framework.domain.vo.CategoryVo;
 import me.myblog.framework.service.CategoryService;
 import me.myblog.framework.utils.BeanCopyUtils;

@@ -17,7 +17,7 @@ public class SystemConstants {
     /**
      * 文章是正常分布状态
      */
-    public static final String ARTICLE_STATUS_NORMAL = "0";
+    public static final Character ARTICLE_STATUS_NORMAL = '0';
 
     public static final String CATEGORY_STATUS_NORMAL = "0";
 

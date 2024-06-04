@@ -41,8 +41,4 @@ public class WebUtils {
                 .replaceAll("\\+", "%20");
         response.setHeader(SystemConstants.ContentDisposition, ContentDisposition.attachment().filename(urlFilename).build().toString());
     }
-
-    public static Integer calculatePageOffset(Integer pageNumber, Integer pageSize) {
-        return (pageNumber - 1) * pageSize;
-    }
 }
