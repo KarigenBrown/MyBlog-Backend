@@ -42,4 +42,8 @@ public class CategoryService {
             return criteriaBuilder.in(id).value(categoryIds);
         });
     }
+
+    public Category getCategoryById(Long categoryId) {
+        return categoryRepository.getReferenceById(categoryId);
+    }
 }

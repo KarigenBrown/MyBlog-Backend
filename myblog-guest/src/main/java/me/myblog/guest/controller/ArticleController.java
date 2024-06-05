@@ -3,7 +3,8 @@ package me.myblog.guest.controller;
 import me.myblog.framework.domain.Response;
 import me.myblog.framework.domain.entity.Article;
 import me.myblog.framework.domain.entity.Category;
-import me.myblog.framework.domain.vo.ArticleVo;
+import me.myblog.framework.domain.vo.ArticleDetailVo;
+import me.myblog.framework.domain.vo.ArticleListVo;
 import me.myblog.framework.domain.vo.HotArticleVo;
 import me.myblog.framework.domain.vo.PageVo;
 import me.myblog.framework.service.ArticleService;
@@ -45,12 +46,21 @@ public class ArticleController {
             // @PathVariable("pageSize") Integer pageSize
             @RequestParam("pageSize") Integer pageSize) {
         List<Article> articles = articleService.getArticlesByCategoryId(categoryId, pageNum, pageSize);
-        List<ArticleVo> articleVos = BeanCopyUtils.copyBeanList(articles, ArticleVo.class);
+        List<ArticleListVo> articleListVos = BeanCopyUtils.copyBeanList(articles, ArticleListVo.class);
         Map<Long, String> categories = categoryService.getAllCategory()
                 .stream()
                 .collect(Collectors.toMap(Category::getId, Category::getName));
-        articleVos.forEach(articleVo -> articleVo.setCategoryName(categories.get(articleVo.getCategoryId())));
-        PageVo pageVo = new PageVo(articleVos, Integer.toUnsignedLong(articleVos.size()));
+        articleListVos.forEach(articleListVo -> articleListVo.setCategoryName(categories.get(articleListVo.getCategoryId())));
+        PageVo pageVo = new PageVo(articleListVos, Integer.toUnsignedLong(articleListVos.size()));
         return Response.ok(pageVo);
+    }
+
+    @GetMapping("/{id}")
+    public Response<ArticleDetailVo> getArticleById(@PathVariable("id") Long id) {
+        Article article = articleService.getArticleById(id);
+        ArticleDetailVo articleDetailVo = BeanCopyUtils.copyBean(article, ArticleDetailVo.class);
+        Category category = categoryService.getCategoryById(articleDetailVo.getCategoryId());
+        articleDetailVo.setCategoryName(category.getName());
+        return Response.ok(articleDetailVo);
     }
 }

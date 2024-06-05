@@ -46,4 +46,8 @@ public class ArticleService {
         article.setStatus(SystemConstants.ARTICLE_STATUS_NORMAL);
         return articleRepository.findAll(Example.of(article), page).getContent();
     }
+
+    public Article getArticleById(Long id) {
+        return articleRepository.getReferenceById(id);
+    }
 }
