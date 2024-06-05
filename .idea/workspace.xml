@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Article_.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Category_.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Comment_.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Link_.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Menu_.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Role_.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Tag_.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/User_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c/storage_v2/_src_/schema/myblog.TofXwA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c/storage_v2/_src_/schema/myblog.TofXwA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/ArticleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/ArticleVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/WebUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/WebUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +61,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "HTTP Request.generated-requests | #1.executor": "Run",
     "JPA.DatabaseSchemaImportDialog": "367279a4-a844-4ea4-a46d-522edff82c8c",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -127,12 +110,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.MyBlogGuestApplication">
-    <configuration name="link.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$PROJECT_DIR$/sql/link.sql" />
-      <script-mode>FILE</script-mode>
-      <data-source id="367279a4-a844-4ea4-a46d-522edff82c8c" />
-      <method v="2" />
-    </configuration>
     <configuration name="menu.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/sql/menu.sql" />
       <script-mode>FILE</script-mode>
@@ -149,6 +126,9 @@
       <script-file value="$PROJECT_DIR$/sql/user.sql" />
       <script-mode>FILE</script-mode>
       <data-source id="367279a4-a844-4ea4-a46d-522edff82c8c" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="MyBlogGuestApplicationTests.testGetHotArticles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -183,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #1" />
         <item itemvalue="JUnit.MyBlogGuestApplicationTests.testGetHotArticles" />
         <item itemvalue="Database Script.user.sql" />
         <item itemvalue="Database Script.tag.sql" />
         <item itemvalue="Database Script.menu.sql" />
-        <item itemvalue="Database Script.link.sql" />
       </list>
     </recent_temporary>
   </component>
@@ -235,7 +215,7 @@
       <workItem from="1717514160735" duration="3023000" />
       <workItem from="1717568673091" duration="28000" />
       <workItem from="1717569289287" duration="546000" />
-      <workItem from="1717569844507" duration="667000" />
+      <workItem from="1717569844507" duration="3146000" />
     </task>
     <servers />
   </component>

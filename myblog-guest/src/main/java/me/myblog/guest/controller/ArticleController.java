@@ -46,7 +46,9 @@ public class ArticleController {
             @RequestParam("pageSize") Integer pageSize) {
         List<Article> articles = articleService.getArticlesByCategoryId(categoryId, pageNum, pageSize);
         List<ArticleVo> articleVos = BeanCopyUtils.copyBeanList(articles, ArticleVo.class);
-        Map<Long, String> categories = categoryService.getAllCategory().stream().collect(Collectors.toMap(Category::getId, Category::getName));
+        Map<Long, String> categories = categoryService.getAllCategory()
+                .stream()
+                .collect(Collectors.toMap(Category::getId, Category::getName));
         articleVos.forEach(articleVo -> articleVo.setCategoryName(categories.get(articleVo.getCategoryId())));
         PageVo pageVo = new PageVo(articleVos, Integer.toUnsignedLong(articleVos.size()));
         return Response.ok(pageVo);
