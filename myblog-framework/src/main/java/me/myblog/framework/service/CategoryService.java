@@ -4,6 +4,7 @@ import jakarta.persistence.criteria.*;
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.Article;
 import me.myblog.framework.domain.entity.Category;
+import me.myblog.framework.domain.meta.Category_;
 import me.myblog.framework.repository.ArticleRepository;
 import me.myblog.framework.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,8 @@ public class CategoryService {
                 .map(Article::getCategoryId)
                 .collect(Collectors.toSet());
 
-        System.out.println("categoryIds = " + categoryIds);
-
         return categoryRepository.findAll((Specification<Category>) (root, query, criteriaBuilder) -> {
-            Path<Object> id = root.get("id");
+            Path<Object> id = root.get(Category_.ID);
 
             return criteriaBuilder.in(id).value(categoryIds);
         });

@@ -41,4 +41,8 @@ public class WebUtils {
                 .replaceAll("\\+", "%20");
         response.setHeader(SystemConstants.ContentDisposition, ContentDisposition.attachment().filename(urlFilename).build().toString());
     }
+
+    public static Integer toJpaPageNumber(Integer realPageNumber) {
+        return realPageNumber - 1;
+    }
 }

@@ -21,6 +21,7 @@
         <jjwt.version>0.12.5</jjwt.version>
         <spring-boot.version>3.2.5</spring-boot.version>
         <native-plugin.version>0.9.28</native-plugin.version>
+        <hibernate.version>6.4.4.Final</hibernate.version>
     </properties>
 
     <dependencyManagement>
@@ -38,6 +39,11 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${hibernate.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>

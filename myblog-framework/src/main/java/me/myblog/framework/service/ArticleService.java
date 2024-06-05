@@ -2,7 +2,9 @@ package me.myblog.framework.service;
 
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.Article;
+import me.myblog.framework.domain.meta.Article_;
 import me.myblog.framework.repository.ArticleRepository;
+import me.myblog.framework.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.PageRequest;
@@ -19,9 +21,9 @@ public class ArticleService {
     // 查询热门文章，封装成List<Article>返回
     public List<Article> getHotArticles() {
         // 按照浏览量进行排序
-        Sort sort = Sort.by(Sort.Direction.DESC, "viewCount");
+        Sort sort = Sort.by(Sort.Direction.DESC, Article_.VIEW_COUNT);
         // 最多只查询10条
-        PageRequest page = PageRequest.of(SystemConstants.HOT_ARTICLE_PAGE_NUMBER - 1, SystemConstants.HOT_ARTICLE_PAGE_SIZE, sort);
+        PageRequest page = PageRequest.of(WebUtils.toJpaPageNumber(SystemConstants.HOT_ARTICLE_PAGE_NUMBER), SystemConstants.HOT_ARTICLE_PAGE_SIZE, sort);
 
         Article article = new Article();
         // 必须是正式文章
@@ -32,9 +34,9 @@ public class ArticleService {
 
     public List<Article> getArticlesByCategoryId(Long categoryId, Integer pageNum, Integer pageSize) {
         // 对isTop进行降序
-        Sort sort = Sort.by(Sort.Direction.DESC, "isTop");
+        Sort sort = Sort.by(Sort.Direction.DESC, Article_.IS_TOP);
         // 分页查询
-        PageRequest page = PageRequest.of(pageNum - 1, pageSize, sort);
+        PageRequest page = PageRequest.of(WebUtils.toJpaPageNumber(pageNum), pageSize, sort);
 
         Article article = new Article();
         // 如果有categoryId就要查询，查询时要和传入的相同

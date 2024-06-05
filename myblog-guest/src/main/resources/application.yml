@@ -12,3 +12,7 @@ spring:
       max-file-size: 2MB
   jpa:
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
