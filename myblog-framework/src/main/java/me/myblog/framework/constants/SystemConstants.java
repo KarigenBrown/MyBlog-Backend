@@ -26,7 +26,7 @@ public class SystemConstants {
     /**
      * 链接审核通过
      */
-    public static final String LINK_STATUS_NORMAL = "0";
+    public static final Character LINK_STATUS_NORMAL = '0';
 
     public static final Long ROOT_COMMENT = -1L;
 
