@@ -1,5 +1,6 @@
 package me.myblog.framework.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -44,6 +45,7 @@ public class Tag {
     private String remark;
 
     @ManyToMany(mappedBy = "tags")
+    @JsonIgnore
     private List<Article> articles;
 
 }

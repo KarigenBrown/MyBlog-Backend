@@ -2,11 +2,9 @@ package me.myblog.framework.domain.meta;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.metamodel.EntityType;
-import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import me.myblog.framework.domain.entity.Article;
-import me.myblog.framework.domain.entity.Tag;
 
 import java.time.Instant;
 
@@ -44,11 +42,6 @@ public abstract class Article_ {
 	 * @see Article#content
 	 **/
 	public static volatile SingularAttribute<Article, String> content;
-	
-	/**
-	 * @see Article#tags
-	 **/
-	public static volatile ListAttribute<Article, Tag> tags;
 	
 	/**
 	 * @see Article#createBy
@@ -101,7 +94,6 @@ public abstract class Article_ {
 	public static final String UPDATE_TIME = "updateTime";
 	public static final String TITLE = "title";
 	public static final String CONTENT = "content";
-	public static final String TAGS = "tags";
 	public static final String CREATE_BY = "createBy";
 	public static final String CREATE_TIME = "createTime";
 	public static final String UPDATE_BY = "updateBy";

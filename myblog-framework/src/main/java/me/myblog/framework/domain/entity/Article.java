@@ -1,5 +1,6 @@
 package me.myblog.framework.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -73,6 +74,7 @@ public class Article {
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
+    @JsonIgnore
     private List<Tag> tags;
 
 }

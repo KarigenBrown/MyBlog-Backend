@@ -2,11 +2,9 @@ package me.myblog.framework.domain.meta;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.metamodel.EntityType;
-import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import me.myblog.framework.domain.entity.Menu;
-import me.myblog.framework.domain.entity.Role;
 
 import java.time.Instant;
 
@@ -19,11 +17,6 @@ public abstract class Menu_ {
 	 * @see Menu#visible
 	 **/
 	public static volatile SingularAttribute<Menu, Character> visible;
-	
-	/**
-	 * @see Menu#roles
-	 **/
-	public static volatile ListAttribute<Menu, Role> roles;
 	
 	/**
 	 * @see Menu#icon
@@ -111,7 +104,6 @@ public abstract class Menu_ {
 	public static volatile SingularAttribute<Menu, Character> status;
 
 	public static final String VISIBLE = "visible";
-	public static final String ROLES = "roles";
 	public static final String ICON = "icon";
 	public static final String ORDER_NUM = "orderNum";
 	public static final String MENU_NAME = "menuName";

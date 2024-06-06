@@ -2,10 +2,8 @@ package me.myblog.framework.domain.meta;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.metamodel.EntityType;
-import jakarta.persistence.metamodel.ListAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
-import me.myblog.framework.domain.entity.Role;
 import me.myblog.framework.domain.entity.User;
 
 import java.time.Instant;
@@ -24,11 +22,6 @@ public abstract class User_ {
 	 * @see User#sex
 	 **/
 	public static volatile SingularAttribute<User, Character> sex;
-	
-	/**
-	 * @see User#roles
-	 **/
-	public static volatile ListAttribute<User, Role> roles;
 	
 	/**
 	 * @see User#phonenumber
@@ -97,7 +90,6 @@ public abstract class User_ {
 
 	public static final String NICK_NAME = "nickName";
 	public static final String SEX = "sex";
-	public static final String ROLES = "roles";
 	public static final String PHONENUMBER = "phonenumber";
 	public static final String UPDATE_TIME = "updateTime";
 	public static final String AVATAR = "avatar";

@@ -10,22 +10,14 @@ public class SystemConstants {
 
     public static final Integer HOT_ARTICLE_PAGE_SIZE = 10;
 
-    /**
-     * 文章是草稿
-     */
     public static final Integer ARTICLE_STATUS_DRAFT = 1;
-    /**
-     * 文章是正常分布状态
-     */
+
     public static final Character ARTICLE_STATUS_NORMAL = '0';
 
     public static final String CATEGORY_STATUS_NORMAL = "0";
 
     public static final String MENU_STATUS_NORMAL = "0";
 
-    /**
-     * 链接审核通过
-     */
     public static final Character LINK_STATUS_NORMAL = '0';
 
     public static final Long ROOT_COMMENT = -1L;
