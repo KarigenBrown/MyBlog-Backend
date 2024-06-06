@@ -2,8 +2,7 @@ package me.myblog.framework.domain.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -12,8 +11,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.time.Instant;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "article", schema = "myblog")
 public class Article {
