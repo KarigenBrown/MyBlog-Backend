@@ -37,9 +37,13 @@ public class Response<T> {
                 .setCode(responseStatusEnum.getCode())
                 .setMessage(responseStatusEnum.getMessage()); */
 
+        return error(responseStatusEnum.getCode(), responseStatusEnum.getMessage());
+    }
+
+    public static Response<String> error(Integer code, String message) {
         Response<String> response = new Response<>();
-        response.setCode(responseStatusEnum.getCode());
-        response.setMsg(responseStatusEnum.getMessage());
+        response.setCode(code);
+        response.setMsg(message);
         return response;
     }
 }
