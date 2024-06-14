@@ -12,7 +12,7 @@ import me.myblog.framework.enums.ResponseStatusEnum;
 @NoArgsConstructor
 public class Response<T> {
     private Integer code;
-    private String message;
+    private String msg;
     private T data;
 
     public static <T> Response<T> ok(T data) {
@@ -23,7 +23,7 @@ public class Response<T> {
 
         Response<T> response = new Response<>();
         response.setCode(ResponseStatusEnum.SUCCESS.getCode());
-        response.setMessage(ResponseStatusEnum.SUCCESS.getMessage());
+        response.setMsg(ResponseStatusEnum.SUCCESS.getMessage());
         response.setData(data);
         return response;
     }
@@ -39,7 +39,7 @@ public class Response<T> {
 
         Response<String> response = new Response<>();
         response.setCode(responseStatusEnum.getCode());
-        response.setMessage(responseStatusEnum.getMessage());
+        response.setMsg(responseStatusEnum.getMessage());
         return response;
     }
 }

@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public Response login(@RequestBody User user) {
+    public Response<Map<String, Object>> login(@RequestBody User user) {
         Map<String, Object> result = userService.login(user);
         return Response.ok(result);
     }

@@ -41,7 +41,7 @@ public class JwtUtils {
                 .subject(subject)
                 .issuer("karigen")
                 .issuedAt(nowDate)
-                .signWith(secretKey,macAlgorithm)
+                .signWith(secretKey, macAlgorithm)
                 .expiration(expireDate)
                 .json(new JacksonSerializer<>(new ObjectMapper()));
     }

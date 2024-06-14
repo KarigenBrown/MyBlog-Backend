@@ -1,16 +1,21 @@
 package me.myblog.guest.config;
 
+import me.myblog.guest.filter.JwtAuthenticationTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class GuestSecurityConfig {
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    SecurityFilterChain securityFilterChain(
+            HttpSecurity httpSecurity,
+            JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter
+    ) throws Exception {
         httpSecurity.csrf(csrf -> csrf.disable())
                 .sessionManagement(
                         sessionManagement ->
@@ -20,8 +25,10 @@ public class GuestSecurityConfig {
                 .authorizeHttpRequests(
                         authorizeHttpRequests -> authorizeHttpRequests
                                 .requestMatchers("/login").anonymous()
+                                .requestMatchers("/link/getAllLink").authenticated()
                                 .anyRequest().permitAll()
                 ).logout(logout -> logout.disable())
+                .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .cors(Customizer.withDefaults());
 
         return httpSecurity.build();
