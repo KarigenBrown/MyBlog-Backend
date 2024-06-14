@@ -1,5 +1,6 @@
 package me.myblog.framework.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -66,6 +67,7 @@ public class User implements UserDetails {
 
     @Column(name = "create_time")
     @CreatedDate
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Instant createTime;
 
     @Column(name = "update_by")
@@ -74,6 +76,7 @@ public class User implements UserDetails {
 
     @Column(name = "update_time")
     @LastModifiedDate
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Instant updateTime;
 
     @ManyToMany(cascade = CascadeType.PERSIST)

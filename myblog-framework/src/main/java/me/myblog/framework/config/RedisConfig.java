@@ -15,17 +15,21 @@ import java.time.Instant;
 
 @Configuration
 public class RedisConfig {
-    // todo 增加json序列化器
-//    @Bean
-//    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-//        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
-//        redisTemplate.setConnectionFactory(redisConnectionFactory);
-//
-//        redisTemplate.setKeySerializer(RedisSerializer.string());
-//        redisTemplate.setValueSerializer(RedisSerializer.json());
-//
-//        redisTemplate.setHashKeySerializer(RedisSerializer.string());
-//        redisTemplate.setHashValueSerializer(RedisSerializer.json());
-//        return redisTemplate;
-//    }
+    @Bean
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+
+        RedisSerializer<String> keySerializer = RedisSerializer.string();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        RedisSerializer<Object> valueSerializer = new GenericJackson2JsonRedisSerializer(objectMapper);
+
+        redisTemplate.setKeySerializer(keySerializer);
+        redisTemplate.setValueSerializer(valueSerializer);
+
+        redisTemplate.setHashKeySerializer(keySerializer);
+        redisTemplate.setHashValueSerializer(valueSerializer);
+        return redisTemplate;
+    }
 }

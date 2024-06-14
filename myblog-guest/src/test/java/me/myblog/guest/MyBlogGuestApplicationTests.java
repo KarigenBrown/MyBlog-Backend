@@ -10,11 +10,12 @@ import me.myblog.framework.domain.entity.User;
 import me.myblog.framework.repository.UserRepository;
 import me.myblog.framework.service.ArticleService;
 import me.myblog.framework.utils.BeanCopyUtils;
-import me.myblog.framework.utils.JsonUtils;
+import me.myblog.framework.utils.RedisCache;
 import me.myblog.framework.utils.RedisCacheUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,9 @@ public class MyBlogGuestApplicationTests {
     @Autowired
     private RedisCacheUtils redisCacheUtils;
 
+    @Autowired
+    private RedisCache<User> redisCache;
+
     @Test
     @Transactional(readOnly = true)
     public void testGetHotArticles() {
@@ -50,8 +54,11 @@ public class MyBlogGuestApplicationTests {
 
     @Test
     @Transactional(readOnly = true)
-    public void testJackson() {
-        Map<String, Integer> map = Map.of("1", 1, "2", 2);
-        redisCacheUtils.setCacheObject("1", map);
+    public void testJackson() throws JsonProcessingException {
+        User user = userRepository.getReferenceById(1L);
+        //redisCacheUtils.setCacheObject("1", user);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        System.out.println(objectMapper.writeValueAsString(BeanCopyUtils.copyBean(user, User.class)));
     }
 }

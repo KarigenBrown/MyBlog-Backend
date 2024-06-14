@@ -30,7 +30,7 @@ public class UserService implements UserDetailsService {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private RedisCacheUtils<User> redisCacheUtils;
+    private RedisCacheUtils redisCacheUtils;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -61,8 +61,7 @@ public class UserService implements UserDetailsService {
         String jwt = JwtUtils.createJWT(userid);
 
         // 把用户信息存入redis
-        // todo 修复redis序列化器
-        // redisCacheUtils.setCacheObject(SystemConstants.USER_LOGIN_KEY_PREFIX + userid, BeanCopyUtils.copyBean(user, User.class));
+        redisCacheUtils.setCacheObject(SystemConstants.USER_LOGIN_KEY_PREFIX + userid, BeanCopyUtils.copyBean(user, User.class));
 
         // 把token和用户信息封装返回
         return Map.of("token", jwt, "userInfo", user);

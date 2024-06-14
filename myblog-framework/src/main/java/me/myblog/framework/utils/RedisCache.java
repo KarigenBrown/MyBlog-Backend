@@ -14,16 +14,15 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class RedisCacheUtils {
-
+public class RedisCache<V> {
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, V> redisTemplate;
 
-    public <T> void setCacheObject(final String key, final T value) {
+    public void setCacheObject(final String key, final V value) {
         redisTemplate.opsForValue().set(key, value);
     }
 
-    public <T> void setCacheObject(final String key, final T value, final Integer timeout, final TimeUnit timeUnit) {
+    public void setCacheObject(final String key, final V value, final Integer timeout, final TimeUnit timeUnit) {
         redisTemplate.opsForValue().set(key, value, timeout, timeUnit);
     }
 
@@ -35,8 +34,8 @@ public class RedisCacheUtils {
         return expire(key, timeout, TimeUnit.SECONDS);
     }
 
-    public <T> T getCacheObject(final String key) {
-        ValueOperations<String, T> operations = redisTemplate.opsForValue();
+    public V getCacheObject(final String key) {
+        ValueOperations<String, V> operations = redisTemplate.opsForValue();
         return operations.get(key);
     }
 
@@ -44,28 +43,26 @@ public class RedisCacheUtils {
         return Boolean.TRUE.equals(redisTemplate.delete(key));
     }
 
-    public Long deleteCacheObjects(final Collection<Object> collection) {
+    public Long deleteCacheObjects(final Collection<String> collection) {
         return redisTemplate.delete(collection);
     }
 
-    public long setCacheList(final String key, final List<?> dataList) {
+    public long setCacheList(final String key, final List<V> dataList) {
         Long count = redisTemplate.opsForList().rightPushAll(key, dataList);
         return count == null ? 0 : count;
     }
 
-    public <T> List<T> getCacheList(final String key) {
+    public List<V> getCacheList(final String key) {
         return redisTemplate.opsForList().range(key, 0, -1);
     }
 
-    public <T> BoundSetOperations<String, T> setCacheSet(final String key, final Set<T> dataSet) {
-        BoundSetOperations<String, T> setOperation = redisTemplate.boundSetOps(key);
-        for (T o : dataSet) {
-            setOperation.add(o);
-        }
+    public BoundSetOperations<String, V> setCacheSet(final String key, final Set<V> dataSet) {
+        BoundSetOperations<String, V> setOperation = redisTemplate.boundSetOps(key);
+        dataSet.forEach(setOperation::add);
         return setOperation;
     }
 
-    public <T> Set<T> getCacheSet(final String key) {
+    public Set<V> getCacheSet(final String key) {
         return redisTemplate.opsForSet().members(key);
     }
 
@@ -75,25 +72,25 @@ public class RedisCacheUtils {
         }
     }
 
-    public <T> Map<String, T> getCacheMap(final String key) {
+    public Map<Object, Object> getCacheMap(final String key) {
         return redisTemplate.opsForHash().entries(key);
     }
 
-    public <T> void setCacheMapValue(final String key, final String hKey, final T value) {
+    public void setCacheMapValue(final String key, final String hKey, final V value) {
         redisTemplate.opsForHash().put(key, hKey, value);
     }
 
-    public <T> T getCacheMapValue(final String key, final String hKey) {
-        HashOperations<Object, Object, T> opsForHash = redisTemplate.opsForHash();
+    public Object getCacheMapValue(final String key, final String hKey) {
+        HashOperations<String, Object, Object> opsForHash = redisTemplate.opsForHash();
         return opsForHash.get(key, hKey);
     }
 
     public void delCacheMapValue(final String key, final String hKey) {
-        HashOperations<Object, Object, Object> hashOperations = redisTemplate.opsForHash();
+        HashOperations<String, Object, Object> hashOperations = redisTemplate.opsForHash();
         hashOperations.delete(key, hKey);
     }
 
-    public <T> List<T> getMultiCacheMapValue(final String key, final Collection<Object> hKeys) {
+    public List<Object> getMultiCacheMapValue(final String key, final Collection<Object> hKeys) {
         return redisTemplate.opsForHash().multiGet(key, hKeys);
     }
 

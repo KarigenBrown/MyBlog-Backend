@@ -5,31 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/config/AdminSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/RedisConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/JwtUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/RedisCacheUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/RedisCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/constants/SystemConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/constants/SystemConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/RedisConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Article_.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Article_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Menu_.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Menu_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Role_.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Role_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Tag_.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/Tag_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/User_.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/meta/User_.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/JsonUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/RedisCacheUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/RedisCacheUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-guest/src/test/java/me/myblog/guest/MyBlogGuestApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/test/java/me/myblog/guest/MyBlogGuestApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,46 +67,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.generated-requests | #1.executor": "Run",
-    "JPA.DatabaseSchemaImportDialog": "367279a4-a844-4ea4-a46d-522edff82c8c",
-    "JUnit.MyBlogGuestApplicationTests.testJackson (1).executor": "Run",
-    "JUnit.MyBlogGuestApplicationTests.testJackson.executor": "Run",
-    "JUnit.MyBlogGuestApplicationTests.testJoin.executor": "Run",
-    "Maven.MyBlog-Backend [clean].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.MyBlogGuestApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/CodeSpace/Project/MyBlog/MyBlog-Backend/myblog-framework/src/main/java/me/myblog/framework/utils",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;367279a4-a844-4ea4-a46d-522edff82c8c&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testJackson (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testJackson.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testJoin.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MyBlog-Backend [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MyBlogGuestApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/CodeSpace/Project/MyBlog/MyBlog-Backend/myblog-framework/src/main/java/me/myblog/framework/utils&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "367279a4-a844-4ea4-a46d-522edff82c8c"
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;367279a4-a844-4ea4-a46d-522edff82c8c&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -132,8 +117,8 @@
       <recent name="E:\CodeSpace\Project\MyBlog\MyBlog-Backend" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="me.myblog.framework.config" />
       <recent name="me.myblog.framework.utils" />
+      <recent name="me.myblog.framework.config" />
       <recent name="me.myblog.framework.constants" />
       <recent name="me.myblog.framework.enums" />
     </key>
@@ -141,7 +126,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyBlogGuestApplicationTests.testJackson">
+  <component name="RunManager" selected="Spring Boot.MyBlogGuestApplication">
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -278,7 +263,8 @@
       <workItem from="1717568673091" duration="28000" />
       <workItem from="1717569289287" duration="546000" />
       <workItem from="1717569844507" duration="6217000" />
-      <workItem from="1717635307152" duration="15082000" />
+      <workItem from="1717635307152" duration="15263000" />
+      <workItem from="1718332191653" duration="2153000" />
     </task>
     <servers />
   </component>
