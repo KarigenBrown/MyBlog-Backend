@@ -77,4 +77,8 @@ public class UserService implements UserDetailsService {
         ).getId().toString();
         redisCacheUtils.deleteCacheObject(SystemConstants.USER_LOGIN_KEY_PREFIX + userid);
     }
+
+    public User getById(Long createBy) {
+        return userRepository.getReferenceById(createBy);
+    }
 }

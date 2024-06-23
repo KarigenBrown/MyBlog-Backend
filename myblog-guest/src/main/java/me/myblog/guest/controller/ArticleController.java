@@ -44,7 +44,8 @@ public class ArticleController {
             // @PathVariable("pageNumber") Integer pageNumber,
             @RequestParam("pageNum") Integer pageNum,
             // @PathVariable("pageSize") Integer pageSize
-            @RequestParam("pageSize") Integer pageSize) {
+            @RequestParam("pageSize") Integer pageSize
+    ) {
         List<Article> articles = articleService.getArticlesByCategoryId(categoryId, pageNum, pageSize);
         List<ArticleListVo> articleListVos = BeanCopyUtils.copyBeanList(articles, ArticleListVo.class);
         Map<Long, String> categories = categoryService.getAllCategory()
