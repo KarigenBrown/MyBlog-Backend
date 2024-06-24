@@ -5,13 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/CommentVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/repository/CommentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CommentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/handler/auditing/UserAuditorAware.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/SecurityUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Link.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Link.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CommentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/filter/JwtAuthenticationTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/filter/JwtAuthenticationTokenFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,11 +273,28 @@
       <workItem from="1718332191653" duration="15034000" />
       <workItem from="1718523978239" duration="1976000" />
       <workItem from="1719120661634" duration="1786000" />
-      <workItem from="1719146086276" duration="5071000" />
+      <workItem from="1719146086276" duration="5284000" />
+      <workItem from="1719204252900" duration="4821000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/filter/JwtAuthenticationTokenFilter.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="(User) SecurityContextHolder&#10;                        .getContext()&#10;                        .getAuthentication()&#10;                        .getPrincipal()" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

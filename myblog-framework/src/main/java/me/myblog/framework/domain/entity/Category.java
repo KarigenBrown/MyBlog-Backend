@@ -1,24 +1,24 @@
 package me.myblog.framework.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 
 @Data
 @Entity
 @Table(name = "category", schema = "myblog")
+@EntityListeners(AuditingEntityListener.class)
 public class Category {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Size(max = 128)
@@ -40,6 +40,7 @@ public class Category {
     private Long createBy;
 
     @Column(name = "create_time")
+    @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Instant createTime;
 
@@ -48,6 +49,7 @@ public class Category {
     private Long updateBy;
 
     @Column(name = "update_time")
+    @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Instant updateTime;
 

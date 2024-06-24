@@ -6,6 +6,7 @@ import me.myblog.framework.repository.UserRepository;
 import me.myblog.framework.utils.BeanCopyUtils;
 import me.myblog.framework.utils.JwtUtils;
 import me.myblog.framework.utils.RedisCacheUtils;
+import me.myblog.framework.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Example;
@@ -69,12 +70,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void logout() {
-        String userid = (
-                (User) SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getPrincipal()
-        ).getId().toString();
+        String userid = SecurityUtils.getUserId().toString();
         redisCacheUtils.deleteCacheObject(SystemConstants.USER_LOGIN_KEY_PREFIX + userid);
     }
 

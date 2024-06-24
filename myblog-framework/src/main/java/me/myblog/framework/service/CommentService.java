@@ -3,6 +3,8 @@ package me.myblog.framework.service;
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.Comment;
 import me.myblog.framework.domain.entity.Comment_;
+import me.myblog.framework.enums.ResponseStatusEnum;
+import me.myblog.framework.exception.SystemException;
 import me.myblog.framework.repository.CommentRepository;
 import me.myblog.framework.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -35,5 +38,12 @@ public class CommentService {
         Comment comment = new Comment();
         comment.setRootId(id);
         return commentRepository.findAll(Example.of(comment), sort);
+    }
+
+    public void postComment(Comment comment) {
+        if (!StringUtils.hasText(comment.getContent())) {
+            throw new SystemException(ResponseStatusEnum.CONTENT_NOT_NULL);
+        }
+        commentRepository.saveAndFlush(comment);
     }
 }

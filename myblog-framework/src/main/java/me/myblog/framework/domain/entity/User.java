@@ -11,6 +11,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,9 +22,11 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "user", schema = "myblog")
+@EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Size(max = 64)
@@ -68,6 +71,7 @@ public class User implements UserDetails {
     private Long createBy;
 
     @Column(name = "create_time")
+    @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Instant createTime;
@@ -77,6 +81,7 @@ public class User implements UserDetails {
     private Long updateBy;
 
     @Column(name = "update_time")
+    @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Instant updateTime;

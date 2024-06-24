@@ -39,7 +39,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             String userid = JwtUtils.parseJWT(token).getSubject();
             // 从redis中获取用户信息
             Object object = redisCacheUtils.getCacheObject(SystemConstants.USER_LOGIN_KEY_PREFIX + userid);
-            User user = BeanCopyUtils.copyBean(object, User.class);
+            // todo 拷贝不成功
+            // User user = BeanCopyUtils.copyBean(object, User.class);
+            User user = objectMapper.readValue(objectMapper.writeValueAsString(object), User.class);
             // 如果获取不到
             if (user == null) {
                 // 说明登录过期，提示重新登录

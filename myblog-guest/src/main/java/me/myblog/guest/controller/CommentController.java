@@ -11,10 +11,7 @@ import me.myblog.framework.service.UserService;
 import me.myblog.framework.utils.BeanCopyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -61,5 +58,11 @@ public class CommentController {
 
         PageVo pageVo = new PageVo(commentVos, Integer.toUnsignedLong(commentVos.size()));
         return Response.ok(pageVo);
+    }
+
+    @PostMapping
+    public Response<Object> postComment(@RequestBody Comment comment) {
+        commentService.postComment(comment);
+        return Response.ok();
     }
 }

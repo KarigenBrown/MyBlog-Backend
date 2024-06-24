@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 import java.util.List;
@@ -16,9 +17,11 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "menu", schema = "myblog")
+@EntityListeners(AuditingEntityListener.class)
 public class Menu {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Size(max = 50)
@@ -65,6 +68,7 @@ public class Menu {
     private Long createBy;
 
     @Column(name = "create_time")
+    @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Instant createTime;
 
@@ -73,6 +77,7 @@ public class Menu {
     private Long updateBy;
 
     @Column(name = "update_time")
+    @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Instant updateTime;
 

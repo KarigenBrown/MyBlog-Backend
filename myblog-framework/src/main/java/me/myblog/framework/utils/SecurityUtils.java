@@ -1,0 +1,25 @@
+package me.myblog.framework.utils;
+
+import me.myblog.framework.constants.SystemConstants;
+import me.myblog.framework.domain.entity.User;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.Objects;
+
+public class SecurityUtils {
+    private SecurityUtils() {
+    }
+
+    public static Long getUserId() {
+        return (
+                (User) SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getPrincipal()
+        ).getId();
+    }
+
+    public static Boolean isAdmin() {
+        return Objects.equals(SystemConstants.ADMINISTRATOR, SecurityUtils.getUserId());
+    }
+}
