@@ -46,4 +46,14 @@ public class CommentService {
         }
         commentRepository.saveAndFlush(comment);
     }
+
+    public List<Comment> getLinkComments(Integer pageNum, Integer pageSize) {
+        Sort sort = Sort.by(Sort.Direction.ASC, Comment_.CREATE_TIME);
+        PageRequest page = PageRequest.of(WebUtils.toJpaPageNumber(pageNum), pageSize, sort);
+
+        Comment comment = new Comment();
+        comment.setType(SystemConstants.LINK_COMMENT);
+        comment.setRootId(SystemConstants.ROOT_COMMENT);
+        return commentRepository.findAll(Example.of(comment), page).getContent();
+    }
 }

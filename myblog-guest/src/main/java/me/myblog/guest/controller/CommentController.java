@@ -3,7 +3,6 @@ package me.myblog.guest.controller;
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.Response;
 import me.myblog.framework.domain.entity.Comment;
-import me.myblog.framework.domain.entity.User;
 import me.myblog.framework.domain.vo.CommentVo;
 import me.myblog.framework.domain.vo.PageVo;
 import me.myblog.framework.service.CommentService;
@@ -27,7 +26,7 @@ public class CommentController {
     @Autowired
     private UserService userService;
 
-    // @GetMapping("/comments")
+    // @GetMapping("/comments/{articleId}/{pageNumber}/{pageSize}")
     @GetMapping("/commentList")
     public Response<PageVo> getComments(
             // @PathVariable("articleId") Long articleId,
@@ -64,5 +63,36 @@ public class CommentController {
     public Response<Object> postComment(@RequestBody Comment comment) {
         commentService.postComment(comment);
         return Response.ok();
+    }
+
+    // @GetMapping("/linkComments/{pageNumber}/{pageSize}")
+    @GetMapping("/linkCommentList")
+    public Response<PageVo> getLinkComments(
+            // @PathVariable("pageNumber") Integer pageNumber,
+            @RequestParam("pageNum") Integer pageNum,
+            // @PathVariable("pageSize") Integer pageSize
+            @RequestParam("pageSize") Integer pageSize
+    ) {
+        List<Comment> comments = commentService.getLinkComments(pageNum, pageSize);
+        List<CommentVo> commentVos = BeanCopyUtils.copyBeanList(comments, CommentVo.class);
+
+        Consumer<CommentVo> commentVoConsumer = commentVo -> {
+            String nickName = userService.getById(commentVo.getCreateBy()).getNickName();
+            commentVo.setUsername(nickName);
+            if (!Objects.equals(commentVo.getToCommentUserId(), SystemConstants.ROOT_COMMENT)) {
+                String toCommentUsername = userService.getById(commentVo.getToCommentUserId()).getNickName();
+                commentVo.setToCommentUserName(toCommentUsername);
+            }
+            List<Comment> children = commentService.getCommentsByRootId(commentVo.getId());
+            commentVo.setChildren(BeanCopyUtils.copyBeanList(children, CommentVo.class));
+        };
+
+        commentVos.forEach(commentVo -> {
+            commentVoConsumer.accept(commentVo);
+            commentVo.getChildren().forEach(commentVoConsumer);
+        });
+
+        PageVo pageVo = new PageVo(commentVos, Integer.toUnsignedLong(commentVos.size()));
+        return Response.ok(pageVo);
     }
 }

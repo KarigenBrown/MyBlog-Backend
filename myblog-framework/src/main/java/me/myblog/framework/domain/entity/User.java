@@ -56,8 +56,8 @@ public class User implements UserDetails {
     private String email;
 
     @Size(max = 32)
-    @Column(name = "phonenumber", length = 32)
-    private String phonenumber;
+    @Column(name = "phone_number", length = 32)
+    private String phoneNumber;
 
     @Column(name = "sex")
     private Character sex;

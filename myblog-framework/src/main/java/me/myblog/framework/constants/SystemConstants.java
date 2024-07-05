@@ -23,7 +23,7 @@ public class SystemConstants {
     public static final Long ROOT_COMMENT = -1L;
 
     public static final String ARTICLE_COMMENT = "0";
-    public static final String LINK_COMMENT = "1";
+    public static final Character LINK_COMMENT = '1';
 
     public static final String USER_LOGIN_KEY_PREFIX = "loginUser:";
 

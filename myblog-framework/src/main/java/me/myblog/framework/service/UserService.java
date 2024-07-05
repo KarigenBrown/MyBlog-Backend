@@ -77,4 +77,9 @@ public class UserService implements UserDetailsService {
     public User getById(Long createBy) {
         return userRepository.getReferenceById(createBy);
     }
+
+    public User getUserInfo() {
+        Long userId = SecurityUtils.getUserId();
+        return userRepository.findById(userId).get();
+    }
 }

@@ -30,7 +30,7 @@ CREATE TABLE `user`
     `type`        char(1)              DEFAULT '0' COMMENT '用户类型（0代表普通用户，1代表管理员）',
     `status`      char(1)              DEFAULT '0' COMMENT '账号状态（0正常，1停用）',
     `email`       varchar(64)          DEFAULT NULL COMMENT '邮箱',
-    `phonenumber` varchar(32)          DEFAULT NULL COMMENT '手机号',
+    `phone_number` varchar(32)          DEFAULT NULL COMMENT '手机号',
     `sex`         char(1)              DEFAULT NULL COMMENT '用户性别（0男，1女，2未知）',
     `avatar`      varchar(128)         DEFAULT NULL COMMENT '头像',
     `create_by`   bigint(20)           DEFAULT NULL COMMENT '创建人的用户id',
@@ -44,7 +44,7 @@ CREATE TABLE `user`
 
 /*Data for the table `user` */
 
-insert into `user`(`id`, `user_name`, `nick_name`, `password`, `type`, `status`, `email`, `phonenumber`, `sex`,
+insert into `user`(`id`, `user_name`, `nick_name`, `password`, `type`, `status`, `email`, `phone_number`, `sex`,
                        `avatar`, `create_by`, `create_time`, `update_by`, `update_time`)
 values (1, 'sg', 'sg333', '$2a$10$Jnq31rRkNV3RNzXe0REsEOSKaYK8UgVZZqlNlNXqn.JeVcj2NdeZy', '1', '0', '23412332@qq.com',
         '18888888888', '1',

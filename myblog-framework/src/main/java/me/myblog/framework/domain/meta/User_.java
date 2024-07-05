@@ -26,7 +26,7 @@ public abstract class User_ {
 	/**
 	 * @see User#phonenumber
 	 **/
-	public static volatile SingularAttribute<User, String> phonenumber;
+	public static volatile SingularAttribute<User, String> phoneNumber;
 	
 	/**
 	 * @see User#updateTime
@@ -90,7 +90,7 @@ public abstract class User_ {
 
 	public static final String NICK_NAME = "nickName";
 	public static final String SEX = "sex";
-	public static final String PHONENUMBER = "phonenumber";
+	public static final String PHONE_NUMBER = "phoneNumber";
 	public static final String UPDATE_TIME = "updateTime";
 	public static final String AVATAR = "avatar";
 	public static final String USER_NAME = "userName";

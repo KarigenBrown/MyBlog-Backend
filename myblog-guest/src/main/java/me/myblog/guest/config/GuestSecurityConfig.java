@@ -29,7 +29,7 @@ public class GuestSecurityConfig {
                         authorizeHttpRequests -> authorizeHttpRequests
                                 .requestMatchers("/login").anonymous()
                                 .requestMatchers("/logout").authenticated()
-                                .requestMatchers("/link/getAllLink").authenticated()
+                                .requestMatchers("/user/userInfo").authenticated()
                                 .anyRequest().permitAll()
                 ).exceptionHandling(
                         exceptionHandling -> exceptionHandling
