@@ -8,6 +8,8 @@ public class SystemConstants {
 
     public static final Integer HOT_ARTICLE_PAGE_NUMBER = 1;
 
+    public static final Long DURATION = 7L;
+
     public static final Integer HOT_ARTICLE_PAGE_SIZE = 10;
 
     public static final Integer ARTICLE_STATUS_DRAFT = 1;

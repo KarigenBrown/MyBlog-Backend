@@ -16,3 +16,8 @@ spring:
       hibernate:
         format_sql: true
         highlight_sql: true
+oss:
+  accessKey:
+  secretKey:
+  endpoint:
+  bucketName:
