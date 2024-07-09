@@ -32,43 +32,58 @@ public class OssUtils {
     }
 
     @SneakyThrows
-    public String uploadObject(String fileName, MultipartFile file) {
+    public String uploadPublicObject(String fileName, MultipartFile file) {
         PutObjectRequest request = PutObjectRequest.builder()
                 .bucket(ossConfig.getBucketName())
                 .contentDisposition(file.getContentType())
                 .build();
-
-        // 私有bucket
-        /*PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder()
-                .putObjectRequest(request)
-                .signatureDuration(Duration.ofDays(SystemConstants.DURATION))
-                .build();
-
-        ossClient.putObject(request, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
-
-        return ossConfig.getPresigner().presignPutObject(presignRequest).url().toString();*/
 
         // 公有bucket
         String eTag = ossClient.putObject(request, RequestBody.fromInputStream(file.getInputStream(), file.getSize())).eTag();
         return this.composeUrl(eTag);
     }
 
-    public String getObjectUrl(String fileName) {
+    @SneakyThrows
+    public String uploadPrivateObject(String fileName, MultipartFile file) {
+        PutObjectRequest request = PutObjectRequest.builder()
+                .bucket(ossConfig.getBucketName())
+                .contentDisposition(file.getContentType())
+                .build();
+
+        // 私有bucket
+        PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder()
+                .putObjectRequest(request)
+                .signatureDuration(Duration.ofDays(SystemConstants.DURATION))
+                .build();
+
+        ossClient.putObject(request, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
+
+        return ossConfig.getPresigner().presignPutObject(presignRequest).url().toString();
+    }
+
+    public String getPublicObjectUrl(String fileName) {
+        GetObjectRequest request = GetObjectRequest.builder()
+                .bucket(ossConfig.getBucketName())
+                .key(fileName)
+                .build();
+
+        // 公有bucket
+        String eTag = ossClient.getObject(request).response().eTag();
+        return this.composeUrl(eTag);
+    }
+
+    public String getPrivateObjectUrl(String fileName) {
         GetObjectRequest request = GetObjectRequest.builder()
                 .bucket(ossConfig.getBucketName())
                 .key(fileName)
                 .build();
 
         // 私有bucket
-        /*GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder()
+        GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder()
                 .getObjectRequest(request)
                 .signatureDuration(Duration.ofDays(SystemConstants.DURATION))
                 .build();
 
-        return ossConfig.getPresigner().presignGetObject(presignRequest).url().toString();*/
-
-        // 公有bucket
-        String eTag = ossClient.getObject(request).response().eTag();
-        return this.composeUrl(eTag);
+        return ossConfig.getPresigner().presignGetObject(presignRequest).url().toString();
     }
 }
