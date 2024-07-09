@@ -1,5 +1,8 @@
 package me.myblog.framework.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
+import me.myblog.framework.domain.entity.User;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
@@ -20,6 +23,12 @@ public class BeanCopyUtils {
         }
         // 返回结果
         return target;
+    }
+
+    @SneakyThrows
+    public static <T> T copyBeanViaJson(Object source, Class<T> clazz) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(objectMapper.writeValueAsString(source), clazz);
     }
 
     public static <S, T> List<T> copyBeanList(List<S> sources, Class<T> clazz) {

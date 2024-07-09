@@ -31,7 +31,7 @@ public class OssUtils {
         return ossConfig.getEndpoint() + "/" + eTag;
     }
 
-    @SneakyThrows(Exception.class)
+    @SneakyThrows
     public String uploadObject(String fileName, MultipartFile file) {
         PutObjectRequest request = PutObjectRequest.builder()
                 .bucket(ossConfig.getBucketName())

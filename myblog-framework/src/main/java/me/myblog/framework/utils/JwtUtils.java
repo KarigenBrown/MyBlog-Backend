@@ -54,7 +54,7 @@ public class JwtUtils {
         return getJwtBuilder(subject, null, UUID.randomUUID().toString()).compact();
     }
 
-    @SneakyThrows(Exception.class)
+    @SneakyThrows
     public static Claims parseJWT(String jwt) {
         SecretKey secretKey = generalKey();
         return Jwts.parser()

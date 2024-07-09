@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/OssConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/OssUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/constants/SystemConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/constants/SystemConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +264,7 @@
       <workItem from="1719204252900" duration="5150000" />
       <workItem from="1720110217512" duration="190000" />
       <workItem from="1720182084495" duration="3136000" />
-      <workItem from="1720262601470" duration="3846000" />
+      <workItem from="1720262601470" duration="4955000" />
     </task>
     <servers />
   </component>
