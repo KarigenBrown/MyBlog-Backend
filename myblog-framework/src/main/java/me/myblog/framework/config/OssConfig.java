@@ -23,7 +23,7 @@ public class OssConfig {
     private S3Presigner presigner;
 
     @Bean
-    public S3Client s3Client() {
+    protected S3Client s3Client() {
         this.awsCredentials = AwsBasicCredentials.create(accessKey, secretKey);
         this.credentialsProvider = StaticCredentialsProvider.create(awsCredentials);
         this.presigner = S3Presigner.builder()
