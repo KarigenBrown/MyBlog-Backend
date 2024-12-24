@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="" />
+    <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/367279a4-a844-4ea4-a46d-522edff82c8c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/OssConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/config/OssConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/link.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/link.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,48 +64,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
-    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;367279a4-a844-4ea4-a46d-522edff82c8c&quot;,
-    &quot;JUnit.MyBlogGuestApplicationTests.testJackson (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyBlogGuestApplicationTests.testJackson.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyBlogGuestApplicationTests.testJoin.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyBlogGuestApplicationTests.testPassword.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.MyBlog-Backend [clean].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.MyBlogGuestApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/CodeSpace/Project/MyBlog/MyBlog-Backend/myblog-framework/src/main/java/me/myblog/framework/utils&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Database Script.article.sql.executor": "Run",
+    "Database Script.article_tag.sql.executor": "Run",
+    "Database Script.category.sql.executor": "Run",
+    "Database Script.comment.sql.executor": "Run",
+    "Database Script.link.sql.executor": "Run",
+    "Database Script.menu.sql.executor": "Run",
+    "Database Script.tag.sql.executor": "Run",
+    "Database Script.user.sql.executor": "Run",
+    "HTTP Request.generated-requests | #1.executor": "Run",
+    "JPA.DatabaseSchemaImportDialog": "367279a4-a844-4ea4-a46d-522edff82c8c",
+    "JUnit.MyBlogGuestApplicationTests.testJackson (1).executor": "Run",
+    "JUnit.MyBlogGuestApplicationTests.testJackson.executor": "Run",
+    "JUnit.MyBlogGuestApplicationTests.testJoin.executor": "Run",
+    "JUnit.MyBlogGuestApplicationTests.testPassword.executor": "Run",
+    "Maven.MyBlog-Backend [clean].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.MyBlogAdminApplication.executor": "Run",
+    "Spring Boot.MyBlogGuestApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/CodeSpace/Project/MyBlog/MyBlog-Backend/myblog-framework/src/main/java/me/myblog/framework/utils",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;367279a4-a844-4ea4-a46d-522edff82c8c&quot;
+    "RunConfigurationTargetLRU": [
+      "367279a4-a844-4ea4-a46d-522edff82c8c",
+      "367279a4-a844-4ea4-a46d-522edff82c8c/schema/\"myblog\""
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -117,73 +136,36 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MyBlogGuestApplication">
-    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
+  <component name="RunManager" selected="Spring Boot.MyBlogAdminApplication">
+    <configuration name="comment.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/comment.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="367279a4-a844-4ea4-a46d-522edff82c8c" namespace="schema/&quot;myblog&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="MyBlogGuestApplicationTests.testJackson (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myblog-guest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="me.myblog.guest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="me.myblog.guest" />
-      <option name="MAIN_CLASS_NAME" value="me.myblog.guest.MyBlogGuestApplicationTests" />
-      <option name="METHOD_NAME" value="testJackson(com.fasterxml.jackson.databind.ObjectMapper)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="link.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/link.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="367279a4-a844-4ea4-a46d-522edff82c8c" namespace="schema/&quot;myblog&quot;" />
+      <method v="2" />
     </configuration>
-    <configuration name="MyBlogGuestApplicationTests.testJackson" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myblog-guest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="me.myblog.guest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="me.myblog.guest" />
-      <option name="MAIN_CLASS_NAME" value="me.myblog.guest.MyBlogGuestApplicationTests" />
-      <option name="METHOD_NAME" value="testJackson" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="menu.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/menu.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="367279a4-a844-4ea4-a46d-522edff82c8c" namespace="schema/&quot;myblog&quot;" />
+      <method v="2" />
     </configuration>
-    <configuration name="MyBlogGuestApplicationTests.testJoin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myblog-guest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="me.myblog.guest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="me.myblog.guest" />
-      <option name="MAIN_CLASS_NAME" value="me.myblog.guest.MyBlogGuestApplicationTests" />
-      <option name="METHOD_NAME" value="testJoin" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="tag.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/tag.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="367279a4-a844-4ea4-a46d-522edff82c8c" namespace="schema/&quot;myblog&quot;" />
+      <method v="2" />
     </configuration>
-    <configuration name="MyBlogGuestApplicationTests.testPassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myblog-guest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="me.myblog.guest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="me.myblog.guest" />
-      <option name="MAIN_CLASS_NAME" value="me.myblog.guest.MyBlogGuestApplicationTests" />
-      <option name="METHOD_NAME" value="testPassword" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="user.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/sql/user.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="367279a4-a844-4ea4-a46d-522edff82c8c" namespace="schema/&quot;myblog&quot;" />
+      <method v="2" />
     </configuration>
     <configuration name="MyBlogAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="myblog-admin" />
@@ -201,19 +183,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MyBlogGuestApplicationTests.testJackson" />
-        <item itemvalue="JUnit.MyBlogGuestApplicationTests.testPassword" />
-        <item itemvalue="JUnit.MyBlogGuestApplicationTests.testJackson (1)" />
-        <item itemvalue="JUnit.MyBlogGuestApplicationTests.testJoin" />
-        <item itemvalue="HTTP Request.generated-requests | #1" />
+        <item itemvalue="Database Script.user.sql" />
+        <item itemvalue="Database Script.tag.sql" />
+        <item itemvalue="Database Script.menu.sql" />
+        <item itemvalue="Database Script.link.sql" />
+        <item itemvalue="Database Script.comment.sql" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -263,7 +245,15 @@
       <workItem from="1720110217512" duration="190000" />
       <workItem from="1720182084495" duration="3136000" />
       <workItem from="1720262601470" duration="4955000" />
-      <workItem from="1720536878210" duration="781000" />
+      <workItem from="1720536878210" duration="1096000" />
+      <workItem from="1721199156393" duration="101000" />
+      <workItem from="1725032637020" duration="18000" />
+      <workItem from="1725521479705" duration="27000" />
+      <workItem from="1726509017238" duration="136000" />
+      <workItem from="1734877050062" duration="361000" />
+      <workItem from="1734878863455" duration="2815000" />
+      <workItem from="1734955507806" duration="83000" />
+      <workItem from="1735079935933" duration="1487000" />
     </task>
     <servers />
   </component>

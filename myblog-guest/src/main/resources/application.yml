@@ -17,7 +17,7 @@ spring:
         format_sql: true
         highlight_sql: true
 oss:
-  accessKey:
-  secretKey:
-  endpoint:
-  bucketName:
+  endpoint: http://localhost:9000
+  bucketName: myblog
+  accessKey: minioadmin
+  secretKey: minioadmin

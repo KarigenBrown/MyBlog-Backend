@@ -16,3 +16,8 @@ spring:
       hibernate:
         format_sql: true
         highlight_sql: true
+oss:
+  endpoint: http://localhost:9000
+  bucketName: myblog
+  accessKey: minioadmin
+  secretKey: minioadmin

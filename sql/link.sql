@@ -28,7 +28,7 @@ CREATE TABLE `link`
     `logo`        varchar(256) DEFAULT NULL,
     `description` varchar(512) DEFAULT NULL,
     `address`     varchar(128) DEFAULT NULL COMMENT '网站地址',
-    `status`      char(1)      DEFAULT '2' COMMENT '审核状态 (0代表审核通过，1代表审核未通过，2代表未审核)',
+    `status`      char(1)      DEFAULT '2' COMMENT '审核状态（0代表审核通过，1代表审核未通过，2代表未审核）',
     `create_by`   bigint(20)   DEFAULT NULL,
     `create_time` datetime     DEFAULT NULL,
     `update_by`   bigint(20)   DEFAULT NULL,
