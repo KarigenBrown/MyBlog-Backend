@@ -6,14 +6,10 @@ import me.myblog.framework.constants.SystemConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
-import software.amazon.awssdk.services.s3.model.PutObjectResponse;
-import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
 
@@ -35,7 +31,8 @@ public class OssUtils {
     public String uploadPublicObject(String fileName, MultipartFile file) {
         PutObjectRequest request = PutObjectRequest.builder()
                 .bucket(ossConfig.getBucketName())
-                .contentDisposition(file.getContentType())
+                .key(fileName)
+                .contentType(file.getContentType())
                 .build();
 
         // 公有bucket
@@ -47,7 +44,8 @@ public class OssUtils {
     public String uploadPrivateObject(String fileName, MultipartFile file) {
         PutObjectRequest request = PutObjectRequest.builder()
                 .bucket(ossConfig.getBucketName())
-                .contentDisposition(file.getContentType())
+                .key(fileName)
+                .contentType(file.getContentType())
                 .build();
 
         // 私有bucket

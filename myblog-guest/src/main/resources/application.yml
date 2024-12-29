@@ -18,6 +18,7 @@ spring:
         highlight_sql: true
 oss:
   endpoint: http://localhost:9000
+  region: Myblog
   bucketName: myblog
   accessKey: minioadmin
   secretKey: minioadmin

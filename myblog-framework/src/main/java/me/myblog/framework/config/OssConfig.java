@@ -18,6 +18,7 @@ public class OssConfig {
     private String bucketName;
     private String accessKey;
     private String secretKey;
+    private String region;
 
     private AwsBasicCredentials awsCredentials;
     private StaticCredentialsProvider credentialsProvider;
@@ -29,11 +30,12 @@ public class OssConfig {
         this.credentialsProvider = StaticCredentialsProvider.create(awsCredentials);
         this.presigner = S3Presigner.builder()
                 .credentialsProvider(this.credentialsProvider)
-                .region(Region.AWS_GLOBAL)
+                .region(Region.of(region))
                 .build();
         return S3Client.builder()
                 .credentialsProvider(credentialsProvider)
-                .region(Region.AWS_GLOBAL)
+                .region(Region.of(region))
+                .forcePathStyle(true)
                 .build();
     }
 }

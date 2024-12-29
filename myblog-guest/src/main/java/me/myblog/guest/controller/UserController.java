@@ -5,11 +5,13 @@ import me.myblog.framework.domain.entity.User;
 import me.myblog.framework.domain.vo.UserInfoVo;
 import me.myblog.framework.enums.ResponseStatusEnum;
 import me.myblog.framework.exception.SystemException;
+import me.myblog.framework.service.FileService;
 import me.myblog.framework.service.UserService;
 import me.myblog.framework.utils.BeanCopyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -18,6 +20,9 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private FileService fileService;
 
     @PostMapping("/login")
     public Response<Map<String, Object>> login(@RequestBody User user) {
@@ -42,5 +47,12 @@ public class UserController {
         User user = userService.getUserInfo();
         UserInfoVo userInfoVo = BeanCopyUtils.copyBean(user, UserInfoVo.class);
         return Response.ok(userInfoVo);
+    }
+
+    // @PostMapping("/userPhoto")
+    @PostMapping("/upload")
+    public Response<Object> putUserPhoto(@RequestPart("img") MultipartFile photo) {
+        fileService.uploadPicture(photo);
+        return Response.ok();
     }
 }

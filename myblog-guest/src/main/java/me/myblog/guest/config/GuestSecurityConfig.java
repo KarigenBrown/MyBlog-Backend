@@ -30,6 +30,7 @@ public class GuestSecurityConfig {
                                 .requestMatchers("/login").anonymous()
                                 .requestMatchers("/logout").authenticated()
                                 .requestMatchers("/user/userInfo").authenticated()
+                                .requestMatchers("/upload").authenticated()
                                 .anyRequest().permitAll()
                 ).exceptionHandling(
                         exceptionHandling -> exceptionHandling
