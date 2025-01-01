@@ -12,7 +12,6 @@ import me.myblog.framework.domain.vo.PageVo;
 import me.myblog.framework.repository.UserRepository;
 import me.myblog.framework.service.ArticleService;
 import me.myblog.framework.utils.BeanCopyUtils;
-import me.myblog.framework.utils.RedisCache;
 import me.myblog.framework.utils.RedisCacheUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +36,6 @@ public class MyBlogGuestApplicationTests {
 
     @Autowired
     private RedisCacheUtils redisCacheUtils;
-
-    @Autowired
-    private RedisCache<User> redisCache;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

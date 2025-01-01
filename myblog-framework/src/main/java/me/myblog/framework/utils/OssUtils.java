@@ -23,10 +23,6 @@ public class OssUtils {
     @Autowired
     private S3Client ossClient;
 
-    private String composeUrl(String eTag) {
-        return ossConfig.getEndpoint() + "/" + eTag;
-    }
-
     @SneakyThrows
     public String uploadPublicObject(String fileName, MultipartFile file) {
         PutObjectRequest request = PutObjectRequest.builder()
@@ -36,52 +32,15 @@ public class OssUtils {
                 .build();
 
         // 公有bucket
-        String eTag = ossClient.putObject(request, RequestBody.fromInputStream(file.getInputStream(), file.getSize())).eTag();
-        return this.composeUrl(eTag);
-    }
-
-    @SneakyThrows
-    public String uploadPrivateObject(String fileName, MultipartFile file) {
-        PutObjectRequest request = PutObjectRequest.builder()
-                .bucket(ossConfig.getBucketName())
-                .key(fileName)
-                .contentType(file.getContentType())
-                .build();
-
-        // 私有bucket
-        PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder()
-                .putObjectRequest(request)
-                .signatureDuration(Duration.ofDays(SystemConstants.DURATION))
-                .build();
-
-        ossClient.putObject(request, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
-
-        return ossConfig.getPresigner().presignPutObject(presignRequest).url().toString();
+        ossClient.putObject(request, RequestBody.fromInputStream(file.getInputStream(), file.getSize())).eTag();
+        return ossClient.utilities()
+                .getUrl(r->r.bucket(ossConfig.getBucketName()).key(fileName))
+                .toExternalForm();
     }
 
     public String getPublicObjectUrl(String fileName) {
-        GetObjectRequest request = GetObjectRequest.builder()
-                .bucket(ossConfig.getBucketName())
-                .key(fileName)
-                .build();
-
-        // 公有bucket
-        String eTag = ossClient.getObject(request).response().eTag();
-        return this.composeUrl(eTag);
-    }
-
-    public String getPrivateObjectUrl(String fileName) {
-        GetObjectRequest request = GetObjectRequest.builder()
-                .bucket(ossConfig.getBucketName())
-                .key(fileName)
-                .build();
-
-        // 私有bucket
-        GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder()
-                .getObjectRequest(request)
-                .signatureDuration(Duration.ofDays(SystemConstants.DURATION))
-                .build();
-
-        return ossConfig.getPresigner().presignGetObject(presignRequest).url().toString();
+        return ossClient.utilities()
+                .getUrl(r->r.bucket(ossConfig.getBucketName()).key(fileName))
+                .toExternalForm();
     }
 }

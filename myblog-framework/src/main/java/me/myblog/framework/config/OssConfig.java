@@ -20,7 +20,6 @@ public class OssConfig {
     private String bucketName;
     private String accessKey;
     private String secretKey;
-    private String region;
 
     private AwsBasicCredentials awsCredentials;
     private StaticCredentialsProvider credentialsProvider;

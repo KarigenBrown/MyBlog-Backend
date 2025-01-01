@@ -51,8 +51,8 @@ public class UserController {
 
     // @PostMapping("/userPhoto")
     @PostMapping("/upload")
-    public Response<Object> putUserPhoto(@RequestPart("img") MultipartFile photo) {
-        fileService.uploadPicture(photo);
-        return Response.ok();
+    public Response<String> putUserPhoto(@RequestPart("img") MultipartFile photo) {
+        String url = fileService.uploadPicture(photo);
+        return Response.ok(url);
     }
 }

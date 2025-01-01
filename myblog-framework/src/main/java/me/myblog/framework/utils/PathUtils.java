@@ -9,7 +9,7 @@ public class PathUtils {
 
     public static String dateUuidPath(String originalFilename) {
         int index = originalFilename.lastIndexOf(".");
-        String extendFileName = originalFilename.substring(index);
-        return formatter.format(LocalDate.now()) + "/" + UUID.randomUUID() + extendFileName;
+        String fileType = originalFilename.substring(index);
+        return formatter.format(LocalDate.now()) + "/" + UUID.randomUUID() + fileType;
     }
 }

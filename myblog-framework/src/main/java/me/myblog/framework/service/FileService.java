@@ -14,8 +14,7 @@ public class FileService {
     private OssUtils ossUtils;
 
     public String uploadPicture(MultipartFile picture) {
-        //TODO 判断文件类型或者文件大小
-        // 判断文件类型或者文件大小
+        // 判断文件类型
         // 获取原始文件名
         String originalFilename = picture.getOriginalFilename();
         // 对原始文件名进行判断
