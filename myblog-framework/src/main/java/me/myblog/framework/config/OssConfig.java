@@ -10,6 +10,8 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
+import java.net.URI;
+
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "oss")
@@ -30,12 +32,13 @@ public class OssConfig {
         this.credentialsProvider = StaticCredentialsProvider.create(awsCredentials);
         this.presigner = S3Presigner.builder()
                 .credentialsProvider(this.credentialsProvider)
-                .region(Region.of(region))
+                .region(Region.EU_WEST_2)
                 .build();
         return S3Client.builder()
-                .credentialsProvider(credentialsProvider)
-                .region(Region.of(region))
+                .region(Region.EU_WEST_2)
+                .endpointOverride(URI.create(endpoint))
                 .forcePathStyle(true)
+                .credentialsProvider(credentialsProvider)
                 .build();
     }
 }
