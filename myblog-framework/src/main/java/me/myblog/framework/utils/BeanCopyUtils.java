@@ -4,8 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import me.myblog.framework.domain.entity.User;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 
-import java.util.List;
+import java.beans.PropertyDescriptor;
+import java.util.*;
 
 public class BeanCopyUtils {
     private BeanCopyUtils() {

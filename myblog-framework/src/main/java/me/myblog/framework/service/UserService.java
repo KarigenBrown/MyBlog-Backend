@@ -7,6 +7,7 @@ import me.myblog.framework.utils.BeanCopyUtils;
 import me.myblog.framework.utils.JwtUtils;
 import me.myblog.framework.utils.RedisCacheUtils;
 import me.myblog.framework.utils.SecurityUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Example;
@@ -78,8 +79,17 @@ public class UserService implements UserDetailsService {
         return userRepository.getReferenceById(createBy);
     }
 
-    public User getUserInfo() {
+    public User getUserInformation() {
         Long userId = SecurityUtils.getUserId();
         return userRepository.findById(userId).get();
+    }
+
+    public void putUserInformation(User user) {
+        User record = userRepository.getReferenceById(user.getId());
+        record.setAvatar(user.getAvatar());
+        record.setEmail(user.getEmail());
+        record.setNickName(user.getNickName());
+        record.setSex(user.getSex());
+        userRepository.saveAndFlush(record);
     }
 }

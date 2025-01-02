@@ -14,6 +14,7 @@ import me.myblog.framework.service.ArticleService;
 import me.myblog.framework.utils.BeanCopyUtils;
 import me.myblog.framework.utils.RedisCacheUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -66,5 +67,16 @@ public class MyBlogGuestApplicationTests {
     @Test
     public void testPassword() {
         System.out.println(passwordEncoder.matches("1234", "$2a$10$Jnq31rRkNV3RNzXe0REsEOSKaYK8UgVZZqlNlNXqn.JeVcj2NdeZy"));
+    }
+
+    @Test
+    @Transactional
+    public void testUpdate(){
+        User user = new User();
+        user.setId(6L);
+        user.setNickName("test");
+        User record = userRepository.getReferenceById(user.getId());
+        BeanCopyUtils.updateBeanNonNull(user,record);
+        System.out.println(record);
     }
 }

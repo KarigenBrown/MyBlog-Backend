@@ -43,8 +43,8 @@ public class UserController {
 
     // @GetMapping("/userInformation")
     @GetMapping("/user/userInfo")
-    public Response<UserInfoVo> getUserInfo() {
-        User user = userService.getUserInfo();
+    public Response<UserInfoVo> getUserInformation() {
+        User user = userService.getUserInformation();
         UserInfoVo userInfoVo = BeanCopyUtils.copyBean(user, UserInfoVo.class);
         return Response.ok(userInfoVo);
     }
@@ -54,5 +54,12 @@ public class UserController {
     public Response<String> putUserPhoto(@RequestPart("img") MultipartFile photo) {
         String url = fileService.uploadPicture(photo);
         return Response.ok(url);
+    }
+
+    // @PutMapping("/userInformation")
+    @PutMapping("/user/userInfo")
+    public Response<Object> putUserInformation(@RequestBody User user) {
+        userService.putUserInformation(user);
+        return Response.ok();
     }
 }

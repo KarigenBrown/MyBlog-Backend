@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -22,6 +24,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "user", schema = "myblog")
+@DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails {
     @Id
