@@ -1,5 +1,6 @@
 package me.myblog.framework.domain.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.time.Instant;
 
 @Data
 @Entity
+@Schema(description = "评论实体")
 @Table(name = "comment", schema = "myblog")
 @EntityListeners(AuditingEntityListener.class)
 public class Comment {

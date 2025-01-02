@@ -1,5 +1,6 @@
 package me.myblog.guest.controller;
 
+import me.myblog.framework.annotation.SystemLog;
 import me.myblog.framework.domain.Response;
 import me.myblog.framework.domain.entity.User;
 import me.myblog.framework.domain.vo.UserInfoVo;
@@ -24,6 +25,7 @@ public class UserController {
     @Autowired
     private FileService fileService;
 
+    @SystemLog(businessName = "用户登录")
     @PostMapping("/login")
     public Response<Map<String, Object>> login(@RequestBody User user) {
         if (!StringUtils.hasText(user.getUsername())) {
@@ -56,10 +58,18 @@ public class UserController {
         return Response.ok(url);
     }
 
+    @SystemLog(businessName = "更新用户信息")
     // @PutMapping("/userInformation")
     @PutMapping("/user/userInfo")
     public Response<Object> putUserInformation(@RequestBody User user) {
         userService.putUserInformation(user);
+        return Response.ok();
+    }
+
+    // @PostMapping("/register")
+    @PostMapping("/user/register")
+    public Response<Object> register(@RequestBody User user) {
+        userService.register(user);
         return Response.ok();
     }
 }

@@ -10,6 +10,13 @@ import java.util.Optional;
 public class UserAuditorAware implements AuditorAware<Long> {
     @Override
     public Optional<Long> getCurrentAuditor() {
-        return Optional.of(SecurityUtils.getUserId());
+        Long userId = -1L;
+        try {
+            userId = SecurityUtils.getUserId();
+        } catch (Exception exception) {
+            // 表示是自己创建的
+            exception.printStackTrace();
+        }
+        return Optional.of(userId);
     }
 }

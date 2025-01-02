@@ -64,4 +64,11 @@ public class ArticleController {
         articleDetailVo.setCategoryName(category.getName());
         return Response.ok(articleDetailVo);
     }
+
+    // @PutMapping("/viewCount/{id}")
+    @PutMapping("/updateViewCount/{id}")
+    public Response<Object> putViewCount(@PathVariable("id") Long id) {
+        articleService.putViewCount(id);
+        return Response.ok();
+    }
 }

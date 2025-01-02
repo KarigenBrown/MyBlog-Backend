@@ -76,7 +76,6 @@ public class MyBlogGuestApplicationTests {
         user.setId(6L);
         user.setNickName("test");
         User record = userRepository.getReferenceById(user.getId());
-        BeanCopyUtils.updateBeanNonNull(user,record);
         System.out.println(record);
     }
 }

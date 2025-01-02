@@ -1,7 +1,12 @@
 package me.myblog.guest.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.Response;
+import me.myblog.framework.domain.dto.AddCommentDto;
 import me.myblog.framework.domain.entity.Comment;
 import me.myblog.framework.domain.vo.CommentVo;
 import me.myblog.framework.domain.vo.PageVo;
@@ -16,6 +21,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 
+@Tag(name = "评论", description = "评论相关接口")
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
@@ -60,11 +66,17 @@ public class CommentController {
     }
 
     @PostMapping
-    public Response<Object> postComment(@RequestBody Comment comment) {
+    public Response<Object> postComment(@RequestBody AddCommentDto addCommentDto) {
+        Comment comment = BeanCopyUtils.copyBean(addCommentDto, Comment.class);
         commentService.postComment(comment);
         return Response.ok();
     }
 
+    @Operation(summary = "友链评论列表", description = "获取每一页友链评论")
+    @Parameters({
+            @Parameter(name = "pageNum", description = "页号"),
+            @Parameter(name = "pageSize", description = "每页大小")
+    })
     // @GetMapping("/linkComments/{pageNumber}/{pageSize}")
     @GetMapping("/linkCommentList")
     public Response<PageVo> getLinkComments(

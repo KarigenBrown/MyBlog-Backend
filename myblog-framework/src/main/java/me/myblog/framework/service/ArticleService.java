@@ -4,6 +4,7 @@ import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.Article;
 import me.myblog.framework.domain.meta.Article_;
 import me.myblog.framework.repository.ArticleRepository;
+import me.myblog.framework.utils.RedisCacheUtils;
 import me.myblog.framework.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -12,11 +13,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
+
+    @Autowired
+    private RedisCacheUtils redisCacheUtils;
 
     // 查询热门文章，封装成List<Article>返回
     public List<Article> getHotArticles() {
@@ -48,6 +55,33 @@ public class ArticleService {
     }
 
     public Article getArticleById(Long id) {
-        return articleRepository.getReferenceById(id);
+        // 根据id查询文章
+        Article article = articleRepository.getReferenceById(id);
+        // 从redis中获取viewCount
+        Integer viewCount = redisCacheUtils.getCacheMapValue(SystemConstants.VIEW_COUNT_KEY, id.toString());
+        article.setViewCount(viewCount.longValue());
+        return article;
+    }
+
+    public List<Article> list() {
+        return articleRepository.findAll();
+    }
+
+    public void updateBatchViewCountById(List<Article> articles) {
+        Map<Long, Article> records = articleRepository.findAll().stream().collect(Collectors.toMap(
+                Article::getId,
+                Function.identity()
+        ));
+        for (Article article : articles) {
+            Article record = records.get(article.getId());
+            record.setViewCount(article.getViewCount());
+            articleRepository.save(record);
+        }
+        articleRepository.flush();
+    }
+
+    public void putViewCount(Long id) {
+        // 更新redis中对应id的浏览量
+        redisCacheUtils.incrementCacheMapValue(SystemConstants.VIEW_COUNT_KEY, id.toString(), 1);
     }
 }

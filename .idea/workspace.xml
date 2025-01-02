@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/annotation/SystemLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/aspect/LogAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/dto/AddCommentDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestOpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/job/ViewCountJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/runner/ViewCountRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/handler/auditing/UserAuditorAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/handler/auditing/UserAuditorAware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/BeanCopyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/utils/BeanCopyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-guest/src/test/java/me/myblog/guest/MyBlogGuestApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/test/java/me/myblog/guest/MyBlogGuestApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +35,7 @@
         <option value="com.haulmont.jpb.JpaEntity" />
         <option value="com.haulmont.jpb.JpaRepository" />
         <option value="com.intellij.jpb.JpaRepository" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -63,60 +76,60 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Database Script.article.sql.executor": "Run",
-    "Database Script.article_tag.sql.executor": "Run",
-    "Database Script.category.sql.executor": "Run",
-    "Database Script.comment.sql.executor": "Run",
-    "Database Script.link.sql.executor": "Run",
-    "Database Script.menu.sql.executor": "Run",
-    "Database Script.tag.sql.executor": "Run",
-    "Database Script.user.sql.executor": "Run",
-    "HTTP Request.generated-requests | #1.executor": "Run",
-    "JPA.DatabaseSchemaImportDialog": "367279a4-a844-4ea4-a46d-522edff82c8c",
-    "JUnit.MyBlogGuestApplicationTests.testJackson (1).executor": "Run",
-    "JUnit.MyBlogGuestApplicationTests.testJackson.executor": "Run",
-    "JUnit.MyBlogGuestApplicationTests.testJoin.executor": "Run",
-    "JUnit.MyBlogGuestApplicationTests.testPassword.executor": "Run",
-    "JUnit.MyBlogGuestApplicationTests.testUpdate.executor": "Run",
-    "Maven.MyBlog-Backend [clean].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.MyBlogAdminApplication.executor": "Run",
-    "Spring Boot.MyBlogGuestApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/CodeSpace/Java/MyBlog",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Database Script.article.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.article_tag.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.category.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.comment.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.link.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.menu.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.tag.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.user.sql.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;367279a4-a844-4ea4-a46d-522edff82c8c&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testJackson (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testJackson.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testJoin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testPassword.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyBlogGuestApplicationTests.testUpdate.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MyBlog-Backend [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MyBlogAdminApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MyBlogGuestApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/CodeSpace/Java/MyBlog&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "367279a4-a844-4ea4-a46d-522edff82c8c",
-      "367279a4-a844-4ea4-a46d-522edff82c8c/schema/\"myblog\""
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;367279a4-a844-4ea4-a46d-522edff82c8c&quot;,
+      &quot;367279a4-a844-4ea4-a46d-522edff82c8c/schema/\&quot;myblog\&quot;&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -185,6 +198,7 @@
       </method>
     </configuration>
     <configuration name="MyBlogGuestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="SCHEDULED_DEBUGGER" value="true" />
       <module name="myblog-guest" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="me.myblog.guest.MyBlogGuestApplication" />
       <method v="2">
@@ -266,7 +280,8 @@
       <workItem from="1735079935933" duration="1853000" />
       <workItem from="1735422795804" duration="6432000" />
       <workItem from="1735585360262" duration="886000" />
-      <workItem from="1735769577736" duration="8477000" />
+      <workItem from="1735769577736" duration="8956000" />
+      <workItem from="1735834349095" duration="12320000" />
     </task>
     <servers />
   </component>

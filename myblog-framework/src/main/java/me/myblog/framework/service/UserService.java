@@ -2,6 +2,8 @@ package me.myblog.framework.service;
 
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.User;
+import me.myblog.framework.enums.ResponseStatusEnum;
+import me.myblog.framework.exception.SystemException;
 import me.myblog.framework.repository.UserRepository;
 import me.myblog.framework.utils.BeanCopyUtils;
 import me.myblog.framework.utils.JwtUtils;
@@ -18,7 +20,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Map;
 import java.util.Optional;
@@ -34,6 +38,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private RedisCacheUtils redisCacheUtils;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -81,7 +88,7 @@ public class UserService implements UserDetailsService {
 
     public User getUserInformation() {
         Long userId = SecurityUtils.getUserId();
-        return userRepository.findById(userId).get();
+        return userRepository.getReferenceById(userId);
     }
 
     public void putUserInformation(User user) {
@@ -91,5 +98,49 @@ public class UserService implements UserDetailsService {
         record.setNickName(user.getNickName());
         record.setSex(user.getSex());
         userRepository.saveAndFlush(record);
+    }
+
+    private boolean userNameExist(String userName) {
+        User user = new User();
+        user.setUserName(userName);
+        return userRepository.count(Example.of(user)) > 0;
+    }
+
+    private boolean nickNameExist(String nickName) {
+        User user = new User();
+        user.setNickName(nickName);
+        return userRepository.count(Example.of(user)) > 0;
+    }
+
+    public void register(User user) {
+        // 对数据进行非空判断
+        if (!StringUtils.hasText(user.getUsername())) {
+            throw new SystemException(ResponseStatusEnum.USERNAME_NOT_NULL);
+        }
+        if (!StringUtils.hasText(user.getNickName())) {
+            throw new SystemException(ResponseStatusEnum.NICKNAME_NOT_NULL);
+        }
+        if (!StringUtils.hasText(user.getPassword())) {
+            throw new SystemException(ResponseStatusEnum.PASSWORD_NOT_NULL);
+        }
+        if (!StringUtils.hasText(user.getEmail())) {
+            throw new SystemException(ResponseStatusEnum.EMAIL_NOT_NULL);
+        }
+
+        // 对数据进行是否存在的判断
+        if (userNameExist(user.getUsername())) {
+            throw new SystemException(ResponseStatusEnum.USERNAME_EXIST);
+        }
+        if (nickNameExist(user.getNickName())) {
+            throw new SystemException(ResponseStatusEnum.NICKNAME_EXIST);
+        }
+        // ...
+
+        // 对密码进行加密
+        String encoded = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encoded);
+
+        // 存入数据库
+        userRepository.saveAndFlush(user);
     }
 }
