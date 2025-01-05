@@ -5,24 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/annotation/SystemLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/aspect/LogAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/dto/AddCommentDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestOpenApiConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/job/ViewCountJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/runner/ViewCountRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/TagController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/filter/JwtAuthenticationTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/repository/TagRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/TagService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/config/AdminSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/config/AdminSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/handler/auditing/UserAuditorAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/handler/auditing/UserAuditorAware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/constants/SystemConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/constants/SystemConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/config/GuestSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/java/me/myblog/guest/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-guest/src/test/java/me/myblog/guest/MyBlogGuestApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-guest/src/test/java/me/myblog/guest/MyBlogGuestApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +30,7 @@
         <option value="com.haulmont.jpb.JpaRepository" />
         <option value="com.intellij.jpb.JpaRepository" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -140,6 +135,7 @@
       <recent name="E:\CodeSpace\Project\MyBlog\MyBlog-Backend" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="me.myblog.admin.filter" />
       <recent name="me.myblog.framework.utils" />
       <recent name="me.myblog.framework.config" />
       <recent name="me.myblog.framework.constants" />
@@ -149,7 +145,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MyBlogGuestApplication">
+  <component name="RunManager" selected="Spring Boot.MyBlogAdminApplication">
     <configuration name="link.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/sql/link.sql" />
       <script-mode>FILE</script-mode>
@@ -281,7 +277,8 @@
       <workItem from="1735422795804" duration="6432000" />
       <workItem from="1735585360262" duration="886000" />
       <workItem from="1735769577736" duration="8956000" />
-      <workItem from="1735834349095" duration="12320000" />
+      <workItem from="1735834349095" duration="12428000" />
+      <workItem from="1736104530166" duration="3326000" />
     </task>
     <servers />
   </component>

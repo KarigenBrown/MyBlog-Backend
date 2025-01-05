@@ -58,7 +58,7 @@ public class UserService implements UserDetailsService {
     }
 
     // 登录请求进来先调login，然后通过AuthenticationManager调loadUserByUsername
-    public Map<String, Object> login(User queryUser) {
+    public Map<String, Object> loginUser(User queryUser) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(queryUser.getUsername(), queryUser.getPassword());
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
@@ -77,7 +77,7 @@ public class UserService implements UserDetailsService {
         return Map.of("token", jwt, "userInfo", user);
     }
 
-    public void logout() {
+    public void logoutUser() {
         String userid = SecurityUtils.getUserId().toString();
         redisCacheUtils.deleteCacheObject(SystemConstants.USER_LOGIN_KEY_PREFIX + userid);
     }
@@ -112,7 +112,7 @@ public class UserService implements UserDetailsService {
         return userRepository.count(Example.of(user)) > 0;
     }
 
-    public void register(User user) {
+    public void registerUser(User user) {
         // 对数据进行非空判断
         if (!StringUtils.hasText(user.getUsername())) {
             throw new SystemException(ResponseStatusEnum.USERNAME_NOT_NULL);
@@ -142,5 +142,24 @@ public class UserService implements UserDetailsService {
 
         // 存入数据库
         userRepository.saveAndFlush(user);
+    }
+
+    public Map<String, String> loginAdmin(User queryAdmin) {
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(queryAdmin.getUsername(), queryAdmin.getPassword());
+        Authentication authentication = authenticationManager.authenticate(authenticationToken);
+
+        // 判断是否认证通过
+        Optional.ofNullable(authentication).orElseThrow(() -> new RuntimeException("用户名或密码错误"));
+
+        // 获取userid生成token
+        User admin = (User) authentication.getPrincipal();
+        String userid = admin.getId().toString();
+        String jwt = JwtUtils.createJWT(userid);
+
+        // 把用户信息存入redis
+        redisCacheUtils.setCacheObject(SystemConstants.ADMIN_LOGIN_KEY_PREFIX + userid, BeanCopyUtils.copyBean(admin, User.class));
+
+        // 把token和用户信息封装返回
+        return Map.of("token", jwt);
     }
 }

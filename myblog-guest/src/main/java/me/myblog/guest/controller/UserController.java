@@ -27,19 +27,19 @@ public class UserController {
 
     @SystemLog(businessName = "用户登录")
     @PostMapping("/login")
-    public Response<Map<String, Object>> login(@RequestBody User user) {
+    public Response<Map<String, Object>> loginUser(@RequestBody User user) {
         if (!StringUtils.hasText(user.getUsername())) {
             // 提示，必须要传用户名
             throw new SystemException(ResponseStatusEnum.REQUIRE_USERNAME);
         }
-        Map<String, Object> result = userService.login(user);
+        Map<String, Object> result = userService.loginUser(user);
         return Response.ok(result);
     }
 
     // @DeleteMapping("/logout")
     @PostMapping("/logout")
-    public Response<Object> logout() {
-        userService.logout();
+    public Response<Object> logoutUser() {
+        userService.logoutUser();
         return Response.ok();
     }
 
@@ -68,8 +68,8 @@ public class UserController {
 
     // @PostMapping("/register")
     @PostMapping("/user/register")
-    public Response<Object> register(@RequestBody User user) {
-        userService.register(user);
+    public Response<Object> registerUser(@RequestBody User user) {
+        userService.registerUser(user);
         return Response.ok();
     }
 }

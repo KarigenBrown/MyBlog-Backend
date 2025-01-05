@@ -29,6 +29,8 @@ public class SystemConstants {
 
     public static final String USER_LOGIN_KEY_PREFIX = "loginUser:";
 
+    public static final String ADMIN_LOGIN_KEY_PREFIX = "loginAdmin:";
+
     public static final String ADMINISTRATOR_LOGIN_KEY_PREFIX = "loginAdministrator:";
 
     public static final String VIEW_COUNT_KEY = "article:viewCount";

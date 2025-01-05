@@ -10,13 +10,15 @@ public class SecurityUtils {
     private SecurityUtils() {
     }
 
-    public static Long getUserId() {
-        return (
-                (User) SecurityContextHolder
+    public static User getLoginUser() {
+        return (User) SecurityContextHolder
                         .getContext()
                         .getAuthentication()
-                        .getPrincipal()
-        ).getId();
+                        .getPrincipal();
+    }
+
+    public static Long getUserId() {
+        return getLoginUser().getId();
     }
 
     public static Boolean isAdmin() {
