@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -16,8 +16,12 @@ import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "menu", schema = "myblog")
 @EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Menu {
     @Id
     @Column(name = "id", nullable = false)
@@ -89,4 +93,8 @@ public class Menu {
     @JsonIgnore
     private List<Role> roles;
 
+    // 已经关联出来了，但是需要更多过滤条件
+    // @OneToMany(mappedBy = "parentId")
+    @Transient
+    private List<Menu> children;
 }

@@ -5,6 +5,7 @@ import me.myblog.framework.domain.entity.Menu;
 import me.myblog.framework.domain.entity.Role;
 import me.myblog.framework.domain.entity.User;
 import me.myblog.framework.domain.vo.AdminInfoVo;
+import me.myblog.framework.domain.vo.RoutesVo;
 import me.myblog.framework.domain.vo.UserInfoVo;
 import me.myblog.framework.enums.ResponseStatusEnum;
 import me.myblog.framework.exception.SystemException;
@@ -59,5 +60,15 @@ public class UserController {
         data.setRoles(roleKeys);
         data.setUser(userinfo);
         return Response.ok(data);
+    }
+
+    // @GetMapping("/admin/routes")
+    @GetMapping("/getRouters")
+    public Response<RoutesVo> getAdminRoutes() {
+        Long adminId = SecurityUtils.getUserId();
+        // 查询menu，结果是tree的形式
+        List<Menu> menus = menuService.selectRoutesMenuTreeByUserId(adminId);
+        // 封装数据返回
+        return Response.ok(new RoutesVo(menus));
     }
 }

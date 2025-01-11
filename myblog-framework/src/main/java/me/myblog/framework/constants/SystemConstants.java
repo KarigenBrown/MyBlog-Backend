@@ -39,6 +39,8 @@ public class SystemConstants {
 
     public static final String BUTTON = "F";
 
+    public static final String FOLDER = "M";
+
     public static final Long ADMINISTRATOR = 1L;
 
     public static final Long MENU_TREE_ROOT = 0L;
