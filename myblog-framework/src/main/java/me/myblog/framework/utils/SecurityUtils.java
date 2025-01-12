@@ -12,9 +12,9 @@ public class SecurityUtils {
 
     public static User getLoginUser() {
         return (User) SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getPrincipal();
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
     }
 
     public static Long getUserId() {
@@ -22,6 +22,6 @@ public class SecurityUtils {
     }
 
     public static Boolean isAdmin() {
-        return Objects.equals(SystemConstants.ADMINISTRATOR, SecurityUtils.getUserId());
+        return Objects.equals(SystemConstants.ADMIN, SecurityUtils.getUserId());
     }
 }

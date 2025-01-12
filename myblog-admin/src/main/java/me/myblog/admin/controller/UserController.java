@@ -1,5 +1,6 @@
 package me.myblog.admin.controller;
 
+import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.Response;
 import me.myblog.framework.domain.entity.Menu;
 import me.myblog.framework.domain.entity.Role;
@@ -13,6 +14,7 @@ import me.myblog.framework.service.MenuService;
 import me.myblog.framework.service.RoleService;
 import me.myblog.framework.service.UserService;
 import me.myblog.framework.utils.BeanCopyUtils;
+import me.myblog.framework.utils.RedisCacheUtils;
 import me.myblog.framework.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -43,7 +45,7 @@ public class UserController {
         return Response.ok(result);
     }
 
-    // @GetMapping("/admin/info")
+    // @GetMapping("/info")
     @GetMapping("/getInfo")
     public Response<AdminInfoVo> getAdminInfo() {
         // 获取当前登录的用户
@@ -62,7 +64,7 @@ public class UserController {
         return Response.ok(data);
     }
 
-    // @GetMapping("/admin/routes")
+    // @GetMapping("/routes")
     @GetMapping("/getRouters")
     public Response<RoutesVo> getAdminRoutes() {
         Long adminId = SecurityUtils.getUserId();
@@ -70,5 +72,12 @@ public class UserController {
         List<Menu> menus = menuService.selectRoutesMenuTreeByUserId(adminId);
         // 封装数据返回
         return Response.ok(new RoutesVo(menus));
+    }
+
+    // @DeleteMapping("/logout")
+    @PostMapping("/user/logout")
+    public Response<Object> logout() {
+        userService.logoutAdmin();
+        return Response.ok();
     }
 }

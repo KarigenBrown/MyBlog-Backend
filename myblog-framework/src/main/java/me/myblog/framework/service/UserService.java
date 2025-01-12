@@ -162,4 +162,11 @@ public class UserService implements UserDetailsService {
         // 把token和用户信息封装返回
         return Map.of("token", jwt);
     }
+
+    public void logoutAdmin() {
+        // 获取当前登录用户的id
+        Long adminId = SecurityUtils.getUserId();
+        // 删除redis中对应的值
+        redisCacheUtils.deleteCacheObject(SystemConstants.ADMIN_LOGIN_KEY_PREFIX + adminId);
+    }
 }

@@ -25,13 +25,12 @@ public class SystemConstants {
     public static final Long ROOT_COMMENT = -1L;
 
     public static final String ARTICLE_COMMENT = "0";
+
     public static final Character LINK_COMMENT = '1';
 
     public static final String USER_LOGIN_KEY_PREFIX = "loginUser:";
 
     public static final String ADMIN_LOGIN_KEY_PREFIX = "loginAdmin:";
-
-    public static final String ADMINISTRATOR_LOGIN_KEY_PREFIX = "loginAdministrator:";
 
     public static final String VIEW_COUNT_KEY = "article:viewCount";
 
@@ -41,7 +40,7 @@ public class SystemConstants {
 
     public static final String FOLDER = "M";
 
-    public static final Long ADMINISTRATOR = 1L;
+    public static final Long ADMIN = 1L;
 
     public static final Long MENU_TREE_ROOT = 0L;
 
