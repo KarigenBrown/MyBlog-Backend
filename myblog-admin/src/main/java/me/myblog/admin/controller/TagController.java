@@ -4,7 +4,9 @@ import me.myblog.framework.domain.Response;
 import me.myblog.framework.domain.dto.TagListDto;
 import me.myblog.framework.domain.entity.Tag;
 import me.myblog.framework.domain.vo.PageVo;
+import me.myblog.framework.domain.vo.TagVo;
 import me.myblog.framework.service.TagService;
+import me.myblog.framework.utils.BeanCopyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,5 +53,13 @@ public class TagController {
     public Response<Object> putTag(@RequestBody Tag tag) {
         tagService.putTag(tag);
         return Response.ok();
+    }
+
+    // @GetMapping("/all")
+    @GetMapping("/listAllTag")
+    public Response<List<TagVo>> getAllTags() {
+        List<Tag> tags = tagService.getTags();
+        List<TagVo> data = BeanCopyUtils.copyBeanList(tags, TagVo.class);
+        return Response.ok(data);
     }
 }

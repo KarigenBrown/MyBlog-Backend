@@ -1,9 +1,12 @@
 package me.myblog.framework.service;
 
+import jakarta.transaction.Transactional;
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.Article;
+import me.myblog.framework.domain.entity.Tag;
 import me.myblog.framework.domain.meta.Article_;
 import me.myblog.framework.repository.ArticleRepository;
+import me.myblog.framework.repository.TagRepository;
 import me.myblog.framework.utils.RedisCacheUtils;
 import me.myblog.framework.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,9 @@ public class ArticleService {
 
     @Autowired
     private RedisCacheUtils redisCacheUtils;
+
+    @Autowired
+    private TagRepository tagRepository;
 
     // 查询热门文章，封装成List<Article>返回
     public List<Article> getHotArticles() {
@@ -83,5 +89,16 @@ public class ArticleService {
     public void putViewCount(Long id) {
         // 更新redis中对应id的浏览量
         redisCacheUtils.incrementCacheMapValue(SystemConstants.VIEW_COUNT_KEY, id.toString(), 1);
+    }
+
+    @Transactional
+    public void save(Article article) {
+        List<Long> ids = article.getTags().stream()
+                .map(Tag::getId)
+                .toList();
+        List<Tag> tags = tagRepository.findAllById(ids);
+        article.setTags(tags);
+        articleRepository.saveAndFlush(article);
+
     }
 }

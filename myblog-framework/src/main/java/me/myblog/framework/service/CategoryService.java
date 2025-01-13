@@ -46,4 +46,10 @@ public class CategoryService {
     public Category getCategoryById(Long categoryId) {
         return categoryRepository.getReferenceById(categoryId);
     }
+
+    public List<Category> getAllCategories() {
+        Category example = new Category();
+        example.setStatus(SystemConstants.ARTICLE_STATUS_NORMAL);
+        return categoryRepository.findAll(Example.of(example));
+    }
 }
