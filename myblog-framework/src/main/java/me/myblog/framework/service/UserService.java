@@ -4,6 +4,7 @@ import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.User;
 import me.myblog.framework.enums.ResponseStatusEnum;
 import me.myblog.framework.exception.SystemException;
+import me.myblog.framework.repository.MenuRepository;
 import me.myblog.framework.repository.UserRepository;
 import me.myblog.framework.utils.BeanCopyUtils;
 import me.myblog.framework.utils.JwtUtils;
@@ -24,6 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -42,6 +44,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private MenuService menuService;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 根据用户名查询信息
@@ -50,11 +55,17 @@ public class UserService implements UserDetailsService {
         Optional<User> optionalUser = userRepository.findOne(Example.of(queryUser));
 
         // 判断是否查到用户，如果没查到抛出异常
-        optionalUser.orElseThrow(() -> new RuntimeException("用户不存在"));
+        User user = optionalUser.orElseThrow(() -> new RuntimeException("用户不存在"));
 
         // 返回用户信息
         // todo 查询权限信息封装
-        return optionalUser.get();
+        // todo 如果是后台用户才需要查询权限封装
+        if (user.getType().equals(Character.forDigit(SystemConstants.ADMIN.intValue(), Character.MAX_RADIX))) {
+            List<String> perms = menuService.selectPermsByUserId(user.getId());
+            user.setPermissions(perms);
+        }
+
+        return user;
     }
 
     // 登录请求进来先调login，然后通过AuthenticationManager调loadUserByUsername
