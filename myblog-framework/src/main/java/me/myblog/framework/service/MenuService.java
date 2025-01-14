@@ -13,6 +13,7 @@ import me.myblog.framework.repository.RoleRepository;
 import me.myblog.framework.repository.UserRepository;
 import me.myblog.framework.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -60,7 +61,7 @@ public class MenuService {
 
     public List<Menu> selectRoutesMenuTreeByUserId(Long adminId) {
         List<Menu> menus = null;
-        List<Character>range=List.of(SystemConstants.MENU.charAt(0),SystemConstants.FOLDER.charAt(0));
+        List<Character> range = List.of(SystemConstants.MENU.charAt(0), SystemConstants.FOLDER.charAt(0));
         // 判断是否是管理员
         // todo 改为sql查询
         if (SecurityUtils.isAdmin()) {
@@ -99,5 +100,33 @@ public class MenuService {
                 .filter(m -> menu.getId().equals(m.getParentId()))
                 .peek(m -> m.setChildren(getChildren(m, menus)))
                 .toList();
+    }
+
+    public List<Menu> getMenuList(String status, String menuName) {
+        List<Menu> menus = menuRepository.findAll((root, query, builder) -> {
+            Predicate s = builder.like(root.get(Menu_.STATUS), status);
+            Predicate n = builder.like(root.get(Menu_.MENU_NAME), menuName);
+            query.where(builder.or(s, n));
+            return query.getRestriction();
+        });
+        return menus.stream()
+                .sorted(Comparator.comparing(Menu::getParentId).thenComparing(Menu::getOrderNum))
+                .toList();
+    }
+
+    public void save(Menu menu) {
+        menuRepository.saveAndFlush(menu);
+    }
+
+    public Menu getMenuById(Long id) {
+        return menuRepository.getReferenceById(id);
+    }
+
+    public void putMenu(Menu menu) {
+        menuRepository.saveAndFlush(menu);
+    }
+
+    public void deleteById(Long id) {
+        menuRepository.deleteById(id);
     }
 }

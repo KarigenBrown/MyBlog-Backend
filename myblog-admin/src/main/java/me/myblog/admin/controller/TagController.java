@@ -23,7 +23,6 @@ public class TagController {
     public Response<PageVo> getTags(
             // @RequestParam("pageNumber") Integer pageNumber,
             @RequestParam("pageNum") Integer pageNum,
-            // @RequestParam("pageSize") Integer pageSize
             @RequestParam("pageSize") Integer pageSize,
             @RequestParam TagListDto tagListDto
     ) {

@@ -1,5 +1,6 @@
 package me.myblog.framework.service;
 
+import jakarta.persistence.criteria.Predicate;
 import jakarta.transaction.Transactional;
 import me.myblog.framework.constants.SystemConstants;
 import me.myblog.framework.domain.entity.Article;
@@ -93,12 +94,23 @@ public class ArticleService {
 
     @Transactional
     public void save(Article article) {
-        List<Long> ids = article.getTags().stream()
-                .map(Tag::getId)
-                .toList();
-        List<Tag> tags = tagRepository.findAllById(ids);
+        List<Tag> tags = articleRepository.findById(article.getId()).get().getTags();
         article.setTags(tags);
         articleRepository.saveAndFlush(article);
 
+    }
+
+    public List<Article> listPage(Integer pageNum, Integer pageSize, String title, String summary) {
+        PageRequest pageRequest = PageRequest.of(WebUtils.toJpaPageNumber(pageNum), pageSize);
+        return articleRepository.findAll((root, query, builder) -> {
+            Predicate t = builder.like(root.get(Article_.TITLE), title);
+            Predicate s = builder.like(root.get(Article_.SUMMARY), summary);
+            query.where(builder.or(t, s));
+            return query.getRestriction();
+        }, pageRequest).getContent();
+    }
+
+    public void deleteArticleById(Long id) {
+        articleRepository.deleteById(id);
     }
 }

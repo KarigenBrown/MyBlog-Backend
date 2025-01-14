@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/PermissionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/MenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/RoleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/TagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/TagController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/MenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/RoleService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +280,9 @@
       <workItem from="1736631978275" duration="748000" />
       <workItem from="1736719587061" duration="3117000" />
       <workItem from="1736792875738" duration="3033000" />
-      <workItem from="1736800861273" duration="4842000" />
+      <workItem from="1736800861273" duration="5467000" />
+      <workItem from="1736810139663" duration="208000" />
+      <workItem from="1736869648296" duration="4547000" />
     </task>
     <servers />
   </component>
