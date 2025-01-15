@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ed98239-3107-415d-9b8a-a24d24d18534" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/LinkController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/dto/ArticleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/dto/RoleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/dto/UserDetailVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/UserVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/TagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/TagController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-admin/src/main/java/me/myblog/admin/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/dto/AddArticleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/domain/vo/ArticleVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/LinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/LinkService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/MenuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myblog-framework/src/main/java/me/myblog/framework/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,11 +142,11 @@
       <recent name="E:\CodeSpace\Project\MyBlog\MyBlog-Backend" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="me.myblog.framework.domain.vo" />
       <recent name="me.myblog.admin.filter" />
       <recent name="me.myblog.framework.utils" />
       <recent name="me.myblog.framework.config" />
       <recent name="me.myblog.framework.constants" />
-      <recent name="me.myblog.framework.enums" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="" />
@@ -282,7 +293,8 @@
       <workItem from="1736792875738" duration="3033000" />
       <workItem from="1736800861273" duration="5467000" />
       <workItem from="1736810139663" duration="208000" />
-      <workItem from="1736869648296" duration="4547000" />
+      <workItem from="1736869648296" duration="4655000" />
+      <workItem from="1736949861017" duration="7318000" />
     </task>
     <servers />
   </component>

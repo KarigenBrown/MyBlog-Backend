@@ -3,7 +3,6 @@ package me.myblog.framework.domain.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import me.myblog.framework.domain.entity.Tag;
 
 import java.time.Instant;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddArticleDto {
+public class ArticleDto {
     private Long id;
     private String title;
     private String content;
@@ -22,5 +21,9 @@ public class AddArticleDto {
     private Character status;
     private Long viewCount;
     private Character isComment;
-    private List<Tag> tags;
+    private Long createBy;
+    private Instant createTime;
+    private Long updateBy;
+    private Instant updateTime;
+    private List<String> tags;
 }

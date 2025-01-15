@@ -92,14 +92,6 @@ public class ArticleService {
         redisCacheUtils.incrementCacheMapValue(SystemConstants.VIEW_COUNT_KEY, id.toString(), 1);
     }
 
-    @Transactional
-    public void save(Article article) {
-        List<Tag> tags = articleRepository.findById(article.getId()).get().getTags();
-        article.setTags(tags);
-        articleRepository.saveAndFlush(article);
-
-    }
-
     public List<Article> listPage(Integer pageNum, Integer pageSize, String title, String summary) {
         PageRequest pageRequest = PageRequest.of(WebUtils.toJpaPageNumber(pageNum), pageSize);
         return articleRepository.findAll((root, query, builder) -> {
@@ -112,5 +104,12 @@ public class ArticleService {
 
     public void deleteArticleById(Long id) {
         articleRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void save(Article article, List<Long> ids) {
+        List<Tag> tags = tagRepository.findAllById(ids);
+        article.setTags(tags);
+        articleRepository.saveAndFlush(article);
     }
 }

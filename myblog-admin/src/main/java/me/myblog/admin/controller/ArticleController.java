@@ -1,9 +1,11 @@
 package me.myblog.admin.controller;
 
 import me.myblog.framework.domain.Response;
-import me.myblog.framework.domain.dto.AddArticleDto;
+import me.myblog.framework.domain.dto.ArticleDto;
 import me.myblog.framework.domain.dto.TagListDto;
 import me.myblog.framework.domain.entity.Article;
+import me.myblog.framework.domain.entity.Tag;
+import me.myblog.framework.domain.vo.ArticleVo;
 import me.myblog.framework.domain.vo.PageVo;
 import me.myblog.framework.service.ArticleService;
 import me.myblog.framework.service.FileService;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 // @RequestMapping("/article")
@@ -33,9 +36,12 @@ public class ArticleController {
     }
 
     @PostMapping("/content/article")
-    public Response<Object> postArticle(@RequestBody AddArticleDto addArticleDto) {
-        Article article = BeanCopyUtils.copyBean(addArticleDto, Article.class);
-        articleService.save(article);
+    public Response<Object> postArticle(@RequestBody ArticleDto articleDto) {
+        Article article = BeanCopyUtils.copyBean(articleDto, Article.class);
+        List<Long> ids = articleDto.getTags().stream()
+                .map(Long::parseLong)
+                .toList();
+        articleService.save(article, ids);
         return Response.ok();
     }
 
@@ -53,19 +59,29 @@ public class ArticleController {
     }
 
     @GetMapping("/content/article/{id}")
-    public Response<Article> getArticleById(@PathVariable("id") Long id) {
+    public Response<ArticleVo> getArticleById(@PathVariable("id") Long id) {
         Article article = articleService.getArticleById(id);
-        return Response.ok(article);
+        ArticleVo articleVo = BeanCopyUtils.copyBean(article, ArticleVo.class);
+        List<String> tags = article.getTags().stream()
+                .map(Tag::getId)
+                .map(Objects::toString)
+                .toList();
+        articleVo.setTags(tags);
+        return Response.ok(articleVo);
     }
 
     @PutMapping("/content/article")
-    public Response<Object> putArticle(@RequestBody Article article){
-        articleService.save(article);
+    public Response<Object> putArticle(@RequestBody ArticleDto articleDto) {
+        Article article = BeanCopyUtils.copyBean(articleDto, Article.class);
+        List<Long> ids = articleDto.getTags().stream()
+                .map(Long::parseLong)
+                .toList();
+        articleService.save(article, ids);
         return Response.ok();
     }
 
     @DeleteMapping("/content/article/{id}")
-    public Response<Object> deleteArticleById(@PathVariable("id") Long id){
+    public Response<Object> deleteArticleById(@PathVariable("id") Long id) {
         articleService.deleteArticleById(id);
         return Response.ok();
     }

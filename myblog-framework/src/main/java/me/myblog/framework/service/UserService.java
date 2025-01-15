@@ -1,10 +1,14 @@
 package me.myblog.framework.service;
 
+import jakarta.persistence.criteria.Predicate;
 import me.myblog.framework.constants.SystemConstants;
+import me.myblog.framework.domain.entity.Role;
 import me.myblog.framework.domain.entity.User;
+import me.myblog.framework.domain.meta.User_;
 import me.myblog.framework.enums.ResponseStatusEnum;
 import me.myblog.framework.exception.SystemException;
 import me.myblog.framework.repository.MenuRepository;
+import me.myblog.framework.repository.RoleRepository;
 import me.myblog.framework.repository.UserRepository;
 import me.myblog.framework.utils.BeanCopyUtils;
 import me.myblog.framework.utils.JwtUtils;
@@ -14,6 +18,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -46,6 +52,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private MenuService menuService;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -179,5 +188,25 @@ public class UserService implements UserDetailsService {
         Long adminId = SecurityUtils.getUserId();
         // 删除redis中对应的值
         redisCacheUtils.deleteCacheObject(SystemConstants.ADMIN_LOGIN_KEY_PREFIX + adminId);
+    }
+
+    public List<User> getUserList(Integer pageNum, Integer pageSize, String userName, String phonenumber, String status) {
+        PageRequest pageRequest = PageRequest.of(pageNum, pageSize);
+        User user = new User();
+        user.setUserName(userName);
+        user.setPhoneNumber(phonenumber);
+        user.setStatus(status.charAt(0));
+        return userRepository.findAll(Example.of(user), pageRequest).getContent();
+    }
+
+    public void postUser(User user, List<Long> ids) {
+        List<Role> roles = roleRepository.findAllById(ids);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoles(roles);
+        userRepository.saveAndFlush(user);
+    }
+
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 }

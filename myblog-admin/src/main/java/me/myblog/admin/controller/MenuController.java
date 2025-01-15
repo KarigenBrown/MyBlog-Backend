@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @RestController
@@ -40,8 +41,8 @@ public class MenuController {
     }
 
     @PutMapping
-    public Response<Object>putMenu(@RequestBody Menu menu){
-        if (Objects.equals(menu.getParentId(), menu.getId())){
+    public Response<Object> putMenu(@RequestBody Menu menu) {
+        if (Objects.equals(menu.getParentId(), menu.getId())) {
             throw new SystemException(ResponseStatusEnum.SYSTEM_ERROR);
         }
         menuService.putMenu(menu);
@@ -49,8 +50,22 @@ public class MenuController {
     }
 
     @DeleteMapping("/{id}")
-    public Response<Object> deleteById(@PathVariable("id")Long id){
+    public Response<Object> deleteById(@PathVariable("id") Long id) {
         menuService.deleteById(id);
         return Response.ok();
+    }
+
+    // @GetMapping("/tree")
+    @GetMapping("/treeselect")
+    public Response<List<Menu>> getMenuTree() {
+        List<Menu> tree = menuService.getMenuTree();
+        return Response.ok(tree);
+    }
+
+    // @GetMapping("/{id}/roleMenuTree")
+    @GetMapping("/roleMenuTreeselect/{id}")
+    public Response<Map<String, Object>> getRoleMenuTreeById(@PathVariable("id") Long id) {
+        Map<String, Object> menus = menuService.getRoleMenuTreeById(id);
+        return Response.ok(menus);
     }
 }

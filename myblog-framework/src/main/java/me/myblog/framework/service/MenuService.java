@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MenuService {
@@ -128,5 +129,23 @@ public class MenuService {
 
     public void deleteById(Long id) {
         menuRepository.deleteById(id);
+    }
+
+    public List<Menu> getMenuTree() {
+        List<Menu> menus = menuRepository.findAll().stream()
+                .filter(menu -> menu.getStatus().equals(SystemConstants.MENU_STATUS_NORMAL.charAt(0)))
+                .distinct()
+                .sorted(Comparator.comparing(Menu::getParentId).thenComparing(Menu::getOrderNum))
+                .toList();
+
+        return buildMenuTree(menus, SystemConstants.MENU_TREE_ROOT);
+    }
+
+    public Map<String, Object> getRoleMenuTreeById(Long id) {
+        List<Menu> menuTree = getMenuTree();
+        List<Long> ids = roleRepository.getReferenceById(id).getMenus().stream()
+                .map(Menu::getId)
+                .toList();
+        return Map.of("menus", menuTree, "checkedKeys", ids);
     }
 }

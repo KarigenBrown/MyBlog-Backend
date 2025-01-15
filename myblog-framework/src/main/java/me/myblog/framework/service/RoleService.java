@@ -2,9 +2,11 @@ package me.myblog.framework.service;
 
 import jakarta.persistence.criteria.Predicate;
 import me.myblog.framework.constants.SystemConstants;
+import me.myblog.framework.domain.entity.Menu;
 import me.myblog.framework.domain.entity.Role;
 import me.myblog.framework.domain.entity.Role_;
 import me.myblog.framework.domain.entity.User;
+import me.myblog.framework.repository.MenuRepository;
 import me.myblog.framework.repository.RoleRepository;
 import me.myblog.framework.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class RoleService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private MenuRepository menuRepository;
 
     public List<String> selectRoleKeyByUserId(Long id) {
         // 判断是否是管理员，如果是返回集合中只需要有admin
@@ -52,5 +57,29 @@ public class RoleService {
         Role record = roleRepository.getReferenceById(role.getId());
         record.setStatus(role.getStatus());
         roleRepository.saveAndFlush(record);
+    }
+
+    public void postRole(Role role, List<Long> menuIds) {
+        List<Menu> menus = menuRepository.findAllById(menuIds);
+        role.setMenus(menus);
+        roleRepository.saveAndFlush(role);
+    }
+
+    public Role getById(Long id) {
+        return roleRepository.getReferenceById(id);
+    }
+
+    public void putRole(Role role, List<Long> ids) {
+        List<Menu> menus = menuRepository.findAllById(ids);
+        role.setMenus(menus);
+        roleRepository.saveAndFlush(role);
+    }
+
+    public void deleteById(Long id) {
+        roleRepository.deleteById(id);
+    }
+
+    public List<Role> getRoles() {
+        return roleRepository.findAll();
     }
 }
